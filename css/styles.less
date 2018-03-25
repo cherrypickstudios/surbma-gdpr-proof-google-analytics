@@ -1,0 +1,80 @@
+// UIkit Variables
+@import "src/less/core/variables";
+
+// UIkit Core
+@import "src/less/core/text";
+@import "src/less/core/modal";
+@import "src/less/core/button";
+
+// UIkit Almost Flat
+@import "themes/default/variables";
+@import "themes/default/modal";
+@import "themes/default/button";
+
+// Fixes
+@modal-z-index: 999999999999;
+@button-large-line-height: 1.6em;
+@button-hover-background: darken(@button-background, 10%);;
+@button-primary-hover-background: darken(@button-primary-background, 10%);;
+@button-success-hover-background: darken(@button-success-background, 10%);;
+@button-danger-hover-background: darken(@button-danger-background, 10%);
+
+.uk-modal-header > :last-child,
+.uk-modal-footer > :last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.uk-modal-content a {
+	border-bottom: 1px dashed #666;
+}
+
+.surbma-gpga-dark .uk-modal-content a {
+	color: #fff;
+	border-bottom: 1px dashed #fff;
+}
+
+.uk-modal-content a:hover {
+	border-bottom: none;
+}
+
+.uk-modal-content .cookie-policy {
+	margin-top: 1em;
+}
+
+.uk-modal-footer.surbma-gpga-button-left {
+	text-align: left;
+}
+
+.uk-modal-footer.surbma-gpga-button-center {
+	text-align: center;
+}
+
+.uk-modal-footer.surbma-gpga-button-right {
+	text-align: right;
+}
+
+.surbma-gpga-text-center .uk-modal-dialog {
+	text-align: center;
+}
+
+.uk-modal.surbma-gpga-full-page {
+	background: rgba(256, 256, 256, .95);
+}
+
+.uk-modal.surbma-gpga-full-page.surbma-gpga-dark,
+.uk-modal.surbma-gpga-normal.surbma-gpga-dark .uk-modal-dialog {
+	background: rgba(0, 0, 0, .9);
+}
+
+.surbma-gpga-full-page .uk-modal-dialog,
+.surbma-gpga-full-page .uk-modal-footer {
+	background: transparent;
+	box-shadow: none;
+	border: none;
+}
+
+.surbma-gpga-dark .uk-modal-header h2,
+.surbma-gpga-dark .uk-modal-dialog {
+	color: #fff;
+}
