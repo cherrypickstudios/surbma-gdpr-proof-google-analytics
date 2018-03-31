@@ -64,6 +64,12 @@ It is the reverse version of my last name. ;)
 
 == Changelog ==
 
+= 1.1 =
+
+- Top-Level Menu.
+- Preparing the sidebar to have relevant informations.
+- Simple versioning.
+
 = 1.0.0 =
 
 - Initial commit.

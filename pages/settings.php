@@ -472,8 +472,7 @@ function surbma_gpga_settings_page() {
 							<h3 class="uk-card-title"><?php _e( 'More Informations', 'surbma-gpga' ); ?></h3>
 					    </div>
 		            	<div class="uk-card-body">
-			                <p><?php _e( 'It\'s a free WordPress plugin, made with a lot of care and love. Please consider to donate my work! You can do it for free just by using my Affiliate links to buy something, that you really need. All links are related to WordPress.', 'surbma-gpga' ); ?></p>
-							<p><a class="uk-button uk-button-default uk-width-1-1" href="https://surbma.com/donate/" target="_blank"><?php _e( 'FREE Donation', 'surbma-gpga' ); ?></a></p>
+			                <p><?php _e( '', 'surbma-gpga' ); ?></p>
 			            </div>
 		    	    </div>
 					<div class="uk-card uk-card-small uk-card-secondary uk-card-body">

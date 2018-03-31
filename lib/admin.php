@@ -6,12 +6,13 @@ include_once( SURBMA_GPGA_PLUGIN_DIR . '/pages/settings.php');
 /* Admin options menu */
 function surbma_gpga_add_menus() {
 	global $surbma_gpga_settings_page;
-	$surbma_gpga_settings_page = add_options_page(
+	$surbma_gpga_settings_page = add_menu_page(
 		__( 'Surbma - GDPR Proof Google Analytics', 'surbma-gpga' ),
 		__( 'GDPR Proof GA', 'surbma-gpga' ),
 		'manage_options',
 		'surbma-gpga-menu',
-		'surbma_gpga_settings_page'
+		'surbma_gpga_settings_page',
+		'dashicons-chart-line'
 	);
 }
 add_action( 'admin_menu', 'surbma_gpga_add_menus' );
