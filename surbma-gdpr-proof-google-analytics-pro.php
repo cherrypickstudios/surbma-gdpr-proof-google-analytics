@@ -1,11 +1,11 @@
 <?php
 
 /*
-Plugin Name: Surbma - GDPR Proof Google Analytics Pro
+Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: http://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 1.1
+Version: 2.0
 
 Author: Surbma
 Author URI: http://surbma.com/
@@ -18,6 +18,41 @@ Domain Path: /languages/
 
 // Prevent direct access to the plugin
 if ( !defined( 'ABSPATH' ) ) exit( 'Good try! :)' );
+
+// Create a helper function for easy SDK access.
+function surbma_gpga_fs() {
+    global $surbma_gpga_fs;
+
+    if ( ! isset( $surbma_gpga_fs ) ) {
+        // Include Freemius SDK.
+        require_once dirname(__FILE__) . '/freemius/start.php';
+
+        $surbma_gpga_fs = fs_dynamic_init( array(
+            'id'                  => '1930',
+            'slug'                => 'surbma-gdpr-proof-google-analytics',
+            'type'                => 'plugin',
+            'public_key'          => 'pk_ec2dc653523a01a2ca1fd5a0ff31e',
+            'is_premium'          => true,
+            // If your plugin is a serviceware, set this option to false.
+            'has_premium_version' => true,
+            'has_addons'          => false,
+            'has_paid_plans'      => true,
+            'menu'                => array(
+                'slug'           => 'surbma-gpga-menu',
+            ),
+            // Set the SDK to work in a sandbox mode (for development & testing).
+            // IMPORTANT: MAKE SURE TO REMOVE SECRET KEY BEFORE DEPLOYMENT.
+            'secret_key'          => 'sk_$5i&}Wavq!rO$FRZwsKwceP^{&50;',
+        ) );
+    }
+
+    return $surbma_gpga_fs;
+}
+
+// Init Freemius.
+surbma_gpga_fs();
+// Signal that SDK was initiated.
+do_action( 'surbma_gpga_fs_loaded' );
 
 define( 'SURBMA_GPGA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SURBMA_GPGA_PLUGIN_URL', plugins_url( '', __FILE__ ) );
