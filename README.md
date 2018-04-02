@@ -1,4 +1,4 @@
-Surbma - GDPR Proof Google Analytics Pro
-========================================
+Surbma - GDPR Proof Google Analytics
+====================================
 
 Adds a GDPR compatible Google Analytics tracking to your website.
