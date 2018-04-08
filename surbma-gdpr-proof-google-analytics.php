@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: http://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 2.1
+Version: 3.0
 
 Author: Surbma
 Author URI: http://surbma.com/
@@ -33,12 +33,12 @@ function surbma_gpga_fs() {
             'type'                => 'plugin',
             'public_key'          => 'pk_ec2dc653523a01a2ca1fd5a0ff31e',
             'is_premium'          => true,
-            // If your plugin is a serviceware, set this option to false.
-            'has_premium_version' => true,
             'has_addons'          => false,
             'has_paid_plans'      => true,
+            'has_affiliation'     => 'selected',
             'menu'                => array(
-                'slug'           => 'surbma-gpga-menu',
+				'slug'           => 'surbma-gpga-menu',
+				'support'        => false,
             ),
             // Set the SDK to work in a sandbox mode (for development & testing).
             // IMPORTANT: MAKE SURE TO REMOVE SECRET KEY BEFORE DEPLOYMENT.
@@ -53,6 +53,26 @@ function surbma_gpga_fs() {
 surbma_gpga_fs();
 // Signal that SDK was initiated.
 do_action( 'surbma_gpga_fs_loaded' );
+
+function surbma_gpga_fs_custom_connect_message_on_update(
+	$message,
+	$user_first_name,
+	$plugin_title,
+	$user_login,
+	$site_link,
+	$freemius_link
+) {
+	return sprintf(
+		__( 'Hey %1$s' ) . ',<br>' .
+		__( 'Please help us improve %2$s plugin! If you opt-in, some data about your usage of this plugin will be sent to us. If you skip this, that\'s okay! The plugin will still work just fine.', 'surbma-gdpr-proof-google-analytics' ),
+		$user_first_name,
+		'<b>' . $plugin_title . '</b>',
+		'<b>' . $user_login . '</b>',
+		$site_link,
+		$freemius_link
+	);
+}
+surbma_gpga_fs()->add_filter('connect_message_on_update', 'surbma_gpga_fs_custom_connect_message_on_update', 10, 6);
 
 define( 'SURBMA_GPGA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SURBMA_GPGA_PLUGIN_URL', plugins_url( '', __FILE__ ) );
@@ -70,14 +90,19 @@ if ( is_admin() ) {
 
 function surbma_gpga_activated() {
 	$defaultfields = get_option( 'surbma_gpga_fields' );
-	if ( $defaultfields == '' ) {
+	if ( !$defaultfields ) {
+		$defaultfields['popuptitle'] = 'We are using Google Analytics';
+		$defaultfields['popuptext'] = 'Please confirm, if you accept our Google Analytics tracking. You can also decline the tracking, so you can continue to visit our website without any data sent to Google Analytics.';
 		$defaultfields['popupbutton1text'] = 'Decline';
 		$defaultfields['popupbutton1style'] = 'default';
 		$defaultfields['popupbutton2text'] = 'Accept';
 		$defaultfields['popupbutton2style'] = 'primary';
+		$defaultfields['popupbuttonsize'] = 'large';
+		$defaultfields['popupbuttonalignment'] = 'left';
 		$defaultfields['popupthemes'] = 'normal';
 		$defaultfields['popupcookiedays'] = 30;
 		$defaultfields['gaanonymizeip'] = 1;
+		$defaultfields['gascript'] = 'gtagjs';
 		update_option( 'surbma_gpga_fields', $defaultfields );
 	}
 }
@@ -199,9 +224,9 @@ function surbma_gpga_google_analytics_load() {
 
 	if ( $gaValue && $limitedliabilityValue == 1 && ( !is_user_logged_in() || $galoadloggedinValue == 1 ) )
 		add_action( 'wp_head', 'surbma_gpga_google_analytics_display', 999 );
-	if ( $galoadadminValue == 1 )
+	if ( $gaValue && $limitedliabilityValue == 1 && $galoadadminValue == 1 )
 		add_action( 'admin_head', 'surbma_gpga_google_analytics_display', 999 );
-	if ( $galoadloginValue == 1 )
+	if ( $gaValue && $limitedliabilityValue == 1 && $galoadloginValue == 1 )
 		add_action( 'login_head', 'surbma_gpga_google_analytics_display', 999 );
 }
 add_action( 'wp_loaded', 'surbma_gpga_google_analytics_load' );

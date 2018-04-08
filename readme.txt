@@ -4,7 +4,7 @@ Donate link: https://surbma.com/donate/
 Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cookie law, cookies, eu cookie
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 2.1
+Stable tag: 3.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,17 +18,25 @@ The cookie saved by this plugin is not storing any personally sensitive data, it
 
 **Limited Liability:** This plugin does not substitute any legal adequacy. Texts, that are displayed in the popup is edited by the user of this plugin and I do not take any responsibility regarding GDPR adequacy or change.
 
-**IMPORTANT:** The popup is intentionally obtrusive and can not be closed, except clicking on the buttons.
+**Cookie Policy:** Set youy Cookie Policy page, where the popup won't load for visitors. Google Analytics tracking code is not loading on this page!
 
-**IP Anonymization:** You might need to anonymize the IP address of the hit sent to Google Analytics. This setting is active by default to ensure the maximum GDPR compliance, but you can disable this option.
+**Developer Friendly:** If you enable debug mode, popup will show always, on every refresh, so you can test how it works.
 
-**FULL CUSTOMIZATIONS:** Every text is customizable, even the button's texts! You can also set the design of the buttons and you have the option to make the first or the second button to be the confirmation button.
+**PRO VERSION**
 
-**THEMES:** There are popup themes to choose the design, you like. The Full Page Themes are hiding the entire content behind the popup.
+USE `BEFOREGDPR` COUPON CODE FOR 20% OFF FROM YOUR FIRST PURCHASE TILL MAY 26, 2018!
 
-**FULL CONTROL:** Set cookie expiration for visitors, so the popup won't show again in X days, you set.
+**Full Customizations:** Every text is customizable, even the button's texts! You can also set the design of the buttons.
 
-**DEVELOPER FRIENDLY:** If you enable debug mode, popup will show always, on every refresh, so you can test how it works.
+**Cookie Policy Link:** Show your Cookie Policy page link in the popup.
+
+**Themes:** There are popup themes to choose the design, you like. The Full Page Themes are hiding the entire content behind the popup. There are a lot of design settings to make the popup fit your website design. Dark mode is also available.
+
+**Full Cookie Control:** Set cookie expiration for visitors, so the popup won't show again in X days, you set.
+
+**IP Anonymization:** You might need to disable IP Anonymization of the hit sent to Google Analytics. This setting is active by default to ensure the maximum GDPR compliance, but you can disable this option.
+
+**Google Analytics Tracking Code Customizations:** Choose between gtag.js framework or analytics.js library. You can also set, if you want to track logged in users or the admin area.
 
 **You can find my other plugins and projects on GitHub:**
 
@@ -63,6 +71,14 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 3.0 =
+
+- NEW Pro version upgrade feature is available in the plugin's admin menu. Use BEFOREGDPR coupon to get 50% off till May 26, 2018.
+- ENHANCED Plugin activation hook.
+- ENHANCED Code optimization for settings page.
+- ENHANCED Settings page display for Free users.
+- FIXED Loading logic for admin and login pages.
 
 = 2.1 =
 

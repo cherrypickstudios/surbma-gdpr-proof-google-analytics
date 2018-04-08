@@ -63,6 +63,10 @@
     padding: 0 10px;
 }
 
+.surbma-admin .disabled * {
+    color: #ccc !important;
+}
+
 .surbma-admin .switch-wrap {
     overflow: hidden;
     line-height: 26px;
@@ -117,6 +121,14 @@
     background-color: #1e87f0;
 }
 
+.surbma-admin .disabled input+.slider {
+    background-color: #eee;
+}
+
+.surbma-admin .disabled input:checked+.slider {
+    background-color: #adcdee;
+}
+
 .surbma-admin input:focus+.slider {
     box-shadow: 0 0 1px #1e87f0;
 }
@@ -137,6 +149,9 @@
 .surbma-admin .slider.round:before {
     border-radius: 50%;
 }
+
+
+/* WordPress Fixes */
 
 #wpbody-content {
     padding-bottom: 0;
