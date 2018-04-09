@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: http://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 3.0
+Version: 3.1
 
 Author: Surbma
 Author URI: http://surbma.com/
@@ -78,10 +78,10 @@ define( 'SURBMA_GPGA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SURBMA_GPGA_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 
 // Localization
-add_action( 'plugins_loaded', 'surbma_gpga_init' );
 function surbma_gpga_init() {
-	load_plugin_textdomain( 'surbma-gpga', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'surbma-gpga', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
 }
+add_action( 'plugins_loaded', 'surbma_gpga_init' );
 
 // Include files
 if ( is_admin() ) {
@@ -164,22 +164,22 @@ function surbma_gpga_block() {
 <div id="surbma-gpga" class="uk-modal <?php echo 'surbma-gpga-' . $popupthemesValue; ?><?php echo $popupdarkmodeValue; ?><?php echo $popupcentertextValue; ?>">
     <div class="uk-modal-dialog<?php echo $popuplargeValue; ?>">
 		<div class="uk-modal-header">
-			<h2><a href="#"></a><?php echo esc_attr_e( $options['popuptitle'] ); ?></h2>
+			<h2><a href="#"></a><?php echo esc_attr_e( stripslashes( $options['popuptitle'] ) ); ?></h2>
 		</div>
 		<div class="uk-modal-content">
 			<?php
-				echo $popuptextValue;
+				echo stripslashes( $popuptextValue );
 				if( $popupcookiepolicytextValue != '' && $popupcookiepolicypageValue != 0 ) {
 					echo '<p class="cookie-policy"><a href="' . esc_url( get_permalink( $popupcookiepolicypageValue ) ) . '" target="_blank">';
-					echo $popupcookiepolicytextValue;
+					echo stripslashes( $popupcookiepolicytextValue );
 					echo '</a></p>';
 				}
 			?>
 		</div>
 		<div class="uk-modal-footer <?php echo 'surbma-gpga-button-' . $popupbuttonalignment; ?>">
-			<button id="button1" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton1styleValue; ?> uk-modal-close"><?php echo $popupbutton1textValue; ?></button>
+			<button id="button1" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton1styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton1textValue ); ?></button>
 			<span>&nbsp;</span>
-			<button id="button2" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton2styleValue; ?> uk-modal-close"><?php echo $popupbutton2textValue; ?></button>
+			<button id="button2" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton2styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton2textValue ); ?></button>
 		</div>
 	</div>
 </div>

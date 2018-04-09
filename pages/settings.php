@@ -140,14 +140,14 @@ function surbma_gpga_settings_page() {
 								<label class="uk-form-label" for="surbma_gpga_fields[popuptitle]"><?php _e( 'Title', 'surbma-gpga' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $popuptitleValue = isset( $options['popuptitle'] ) ? $options['popuptitle'] : ''; ?>
-									<input id="surbma_gpga_fields[popuptitle]" class="uk-input" type="text" name="surbma_gpga_fields[popuptitle]" value="<?php echo $popuptitleValue; ?>" />
+									<input id="surbma_gpga_fields[popuptitle]" class="uk-input" type="text" name="surbma_gpga_fields[popuptitle]" value="<?php echo stripslashes( $popuptitleValue ); ?>" />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[popuptext]"><?php _e( 'Text', 'surbma-gpga' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $popuptextValue = isset( $options['popuptext'] ) ? $options['popuptext'] : ''; ?>
-									<textarea id="surbma_gpga_fields[popuptext]" class="uk-textarea" cols="50" rows="10" name="surbma_gpga_fields[popuptext]"><?php echo $popuptextValue; ?></textarea>
+									<textarea id="surbma_gpga_fields[popuptext]" class="uk-textarea" cols="50" rows="10" name="surbma_gpga_fields[popuptext]"><?php echo stripslashes( $popuptextValue ); ?></textarea>
 									<p><?php _e( 'Allowed HTML tags in this field', 'surbma-gpga' ); ?>:</p><pre><?php echo allowed_tags(); ?></pre>
 					    		</div>
 							</div>
@@ -156,7 +156,7 @@ function surbma_gpga_settings_page() {
 								<label class="uk-form-label" for="surbma_gpga_fields[popupcookiepolicytext]"><?php _e( 'Cookie Policy Link Text', 'surbma-gpga' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $popupcookiepolicytextValue = isset( $options['popupcookiepolicytext'] ) ? $options['popupcookiepolicytext'] : ''; ?>
-									<input id="surbma_gpga_fields[popupcookiepolicytext]" class="uk-input" type="text" name="surbma_gpga_fields[popupcookiepolicytext]" value="<?php echo $popupcookiepolicytextValue; ?>"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
+									<input id="surbma_gpga_fields[popupcookiepolicytext]" class="uk-input" type="text" name="surbma_gpga_fields[popupcookiepolicytext]" value="<?php echo stripslashes( $popupcookiepolicytextValue ); ?>"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin">
@@ -184,7 +184,7 @@ function surbma_gpga_settings_page() {
 					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton1text]"><?php _e( 'Decline Button Text', 'surbma-gpga' ); ?></label>
 								<div class="uk-form-controls">
-									<input id="surbma_gpga_fields[popupbutton1text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton1text]" value="<?php esc_attr_e( $options['popupbutton1text'] ); ?>" />
+									<input id="surbma_gpga_fields[popupbutton1text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton1text]" value="<?php esc_attr_e( stripslashes( $options['popupbutton1text'] ) ); ?>" />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
@@ -212,7 +212,7 @@ function surbma_gpga_settings_page() {
 					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton2text]"><?php _e( 'Accept Button Text', 'surbma-gpga' ); ?></label>
 								<div class="uk-form-controls">
-									<input id="surbma_gpga_fields[popupbutton2text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton2text]" value="<?php esc_attr_e( $options['popupbutton2text'] ); ?>" />
+									<input id="surbma_gpga_fields[popupbutton2text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton2text]" value="<?php esc_attr_e( stripslashes( $options['popupbutton2text'] ) ); ?>" />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
@@ -515,7 +515,7 @@ function surbma_gpga_settings_page() {
 							<p><?php _e( '<div class="uk-alert-success" uk-alert>Use this special <strong>BEFOREGDPR</strong> coupon to get 50% OFF your first purchase, which is available till <strong>May 26, 2018</strong>. Hurry, GDPR is coming!</div>', 'surbma-gpga' ); ?></p>
 							<p><a class="uk-button uk-button-default uk-width-1-1" href="/wp-admin/admin.php?page=surbma-gpga-menu-pricing"><?php _e( 'BUY Pro Version!', 'surbma-gpga' ); ?></a></p>
 							<?php } ?>
-							<div class="uk-alert-primary" uk-alert>
+							<div class="uk-alert-primary" style="display: none;" uk-alert>
 								<a class="uk-alert-close" uk-close></a>
 								<h3><?php _e( 'Affiliate Program', 'surbma-gpga' ); ?></h3>
 								<p><?php _e( 'Do you like this plugin? Let\'s make some money by referring new customers and get 20% commission, for the lifetime of the new customers! Good deal, hah?', 'surbma-gpga' ); ?></p>
