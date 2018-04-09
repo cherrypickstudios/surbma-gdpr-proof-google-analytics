@@ -184,7 +184,7 @@ function surbma_gpga_settings_page() {
 					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton1text]"><?php _e( 'Decline Button Text', 'surbma-gpga' ); ?></label>
 								<div class="uk-form-controls">
-									<input id="surbma_gpga_fields[popupbutton1text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton1text]" value="<?php esc_attr_e( stripslashes( $options['popupbutton1text'] ) ); ?>" />
+									<input id="surbma_gpga_fields[popupbutton1text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton1text]" value="<?php echo esc_attr( stripslashes( $options['popupbutton1text'] ) ); ?>" />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
@@ -212,7 +212,7 @@ function surbma_gpga_settings_page() {
 					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton2text]"><?php _e( 'Accept Button Text', 'surbma-gpga' ); ?></label>
 								<div class="uk-form-controls">
-									<input id="surbma_gpga_fields[popupbutton2text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton2text]" value="<?php esc_attr_e( stripslashes( $options['popupbutton2text'] ) ); ?>" />
+									<input id="surbma_gpga_fields[popupbutton2text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton2text]" value="<?php echo esc_attr( stripslashes( $options['popupbutton2text'] ) ); ?>" />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">

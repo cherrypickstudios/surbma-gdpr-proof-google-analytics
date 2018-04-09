@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: http://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 3.1
+Version: 3.2
 
 Author: Surbma
 Author URI: http://surbma.com/
@@ -63,8 +63,8 @@ function surbma_gpga_fs_custom_connect_message_on_update(
 	$freemius_link
 ) {
 	return sprintf(
-		__( 'Hey %1$s' ) . ',<br>' .
-		__( 'Please help us improve %2$s plugin! If you opt-in, some data about your usage of this plugin will be sent to us. If you skip this, that\'s okay! The plugin will still work just fine.', 'surbma-gdpr-proof-google-analytics' ),
+		__( 'Hey %1$s', 'surbma-gpga' ) . ',<br>' .
+		__( 'Please help us improve %2$s plugin! If you opt-in, some data about your usage of this plugin will be sent to us. If you skip this, that\'s okay! The plugin will still work just fine.', 'surbma-gpga' ),
 		$user_first_name,
 		'<b>' . $plugin_title . '</b>',
 		'<b>' . $user_login . '</b>',
@@ -164,7 +164,7 @@ function surbma_gpga_block() {
 <div id="surbma-gpga" class="uk-modal <?php echo 'surbma-gpga-' . $popupthemesValue; ?><?php echo $popupdarkmodeValue; ?><?php echo $popupcentertextValue; ?>">
     <div class="uk-modal-dialog<?php echo $popuplargeValue; ?>">
 		<div class="uk-modal-header">
-			<h2><a href="#"></a><?php echo esc_attr_e( stripslashes( $options['popuptitle'] ) ); ?></h2>
+			<h2><a href="#"></a><?php echo stripslashes( $options['popuptitle'] ); ?></h2>
 		</div>
 		<div class="uk-modal-content">
 			<?php
