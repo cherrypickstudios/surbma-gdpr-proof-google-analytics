@@ -2,13 +2,13 @@
 
 /*
 Plugin Name: Surbma - GDPR Proof Google Analytics
-Plugin URI: http://surbma.com/wordpress-plugins/
+Plugin URI: https://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 3.2
+Version: 4.0
 
 Author: Surbma
-Author URI: http://surbma.com/
+Author URI: https://surbma.com/
 
 License: GPLv2
 
@@ -108,11 +108,38 @@ function surbma_gpga_activated() {
 }
 register_activation_hook( __FILE__, 'surbma_gpga_activated' );
 
+function surbma_gpga_google_analytics_load() {
+	$options = get_option( 'surbma_gpga_fields' );
+
+	$gaValue = isset( $options['ga'] ) ? $options['ga'] : '';
+	$galoadadminValue = isset( $options['galoadadmin'] ) ? $options['galoadadmin'] : 1;
+	$galoadloginValue = isset( $options['galoadlogin'] ) ? $options['galoadlogin'] : 1;
+	$galoadloggedinValue = isset( $options['galoadloggedin'] ) ? $options['galoadloggedin'] : 1;
+
+	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : 0;
+
+	if ( $gaValue && $limitedliabilityValue == 1 && ( !is_user_logged_in() || $galoadloggedinValue == 1 ) ) {
+		add_action( 'wp_head', 'surbma_gpga_google_analytics_display', 999 );
+		add_action( 'wp_footer', 'surbma_gpga_block', 999 );
+		add_action( 'wp_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+	}
+	if ( $gaValue && $limitedliabilityValue == 1 && $galoadadminValue == 1 ) {
+		add_action( 'admin_head', 'surbma_gpga_google_analytics_display', 999 );
+		add_action( 'admin_print_footer_scripts', 'surbma_gpga_block', 999 );
+		add_action( 'admin_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+	}
+	if ( $gaValue && $limitedliabilityValue == 1 && $galoadloginValue == 1 ) {
+		add_action( 'login_head', 'surbma_gpga_google_analytics_display', 999 );
+		add_action( 'login_footer', 'surbma_gpga_block', 999 );
+		add_action( 'login_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+	}
+}
+add_action( 'wp_loaded', 'surbma_gpga_google_analytics_load' );
+
 function surbma_gpga_enqueue_scripts() {
 	wp_enqueue_script( 'surbma-gpga-scripts', plugins_url( '', __FILE__ ) . '/js/scripts-min.js', array( 'jquery' ), '2.27.1', true );
 	wp_enqueue_style( 'surbma-gpga-styles', plugins_url( '', __FILE__ ) . '/css/styles.css', false, '2.27.1' );
 }
-add_action( 'wp_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
 
 function surbma_gpga_block() {
 	$options = get_option( 'surbma_gpga_fields' );
@@ -135,8 +162,9 @@ function surbma_gpga_block() {
 	$popupverticalcenterValue = isset( $options['popupverticalcenter'] ) ? $options['popupverticalcenter'] : true;
 	$popuplargeValue = isset( $options['popuplarge'] ) && $options['popuplarge'] == 1 ? ' uk-modal-dialog-large' : '';
 
-	$popupcookiedaysValue = isset( $options['popupcookiedays'] ) && $options['popupcookiedays'] != 0 ? $options['popupcookiedays'] : 30;
-	$popupdebugValue = isset( $options['popupdebug'] ) && is_user_logged_in() ? $options['popupdebug'] : 0;
+	$popupdebugValue = isset( $options['popupdebug'] ) && is_user_logged_in() && !is_admin() ? $options['popupdebug'] : 0;
+	$popupkeyboardValue = $popupdebugValue == 1 ? 'true' : 'false';
+	$popupbgcloseValue = $popupdebugValue == 1 ? 'true' : 'false';
 
 	$gaValue = isset( $options['ga'] ) ? $options['ga'] : '';
 
@@ -156,7 +184,7 @@ function surbma_gpga_block() {
 			}
 		}
 		if( show_modal == 1 ) {
-			$.UIkit.modal(('#surbma-gpga'), {center: <?php echo $popupverticalcenterValue; ?>,keyboard: false,bgclose: false}).show();
+			$.UIkit.modal(('#surbma-gpga'), {center: <?php echo $popupverticalcenterValue; ?>,keyboard: <?php echo $popupkeyboardValue; ?>,bgclose: <?php echo $popupbgcloseValue; ?>}).show();
 		}
 		// console.log('show_modal = '+show_modal);
 	});
@@ -184,19 +212,6 @@ function surbma_gpga_block() {
 	</div>
 </div>
 <script type="text/javascript">
-	function setCookie(cookieValue) {
-	    var value = cookieValue;
-	    var d = new Date();
-	    d.setTime(d.getTime() + (<?php echo $popupcookiedaysValue; ?>*24*60*60*1000));
-	    var expires = "expires="+ d.toUTCString();
-	    document.cookie = "surbma-gpga=" + value + ";" + expires + ";path=/";
-	}
-	function readCookie(cookieName) {
-		var re = new RegExp('[; ]'+cookieName+'=([^\\s;]*)');
-		var sMatch = (' '+document.cookie).match(re);
-		if (cookieName && sMatch) return unescape(sMatch[1]);
-		return '';
-	}
     document.getElementById("button1").onclick = function () {
 		setCookie('no');
 		// console.log('cookie = no');
@@ -210,38 +225,35 @@ function surbma_gpga_block() {
 </script>
 <?php }
 }
-add_action( 'wp_footer', 'surbma_gpga_block', 999 );
-
-function surbma_gpga_google_analytics_load() {
-	$options = get_option( 'surbma_gpga_fields' );
-
-	$gaValue = isset( $options['ga'] ) ? $options['ga'] : '';
-	$galoadadminValue = isset( $options['galoadadmin'] ) ? $options['galoadadmin'] : 1;
-	$galoadloginValue = isset( $options['galoadlogin'] ) ? $options['galoadlogin'] : 1;
-	$galoadloggedinValue = isset( $options['galoadloggedin'] ) ? $options['galoadloggedin'] : 1;
-
-	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : 0;
-
-	if ( $gaValue && $limitedliabilityValue == 1 && ( !is_user_logged_in() || $galoadloggedinValue == 1 ) )
-		add_action( 'wp_head', 'surbma_gpga_google_analytics_display', 999 );
-	if ( $gaValue && $limitedliabilityValue == 1 && $galoadadminValue == 1 )
-		add_action( 'admin_head', 'surbma_gpga_google_analytics_display', 999 );
-	if ( $gaValue && $limitedliabilityValue == 1 && $galoadloginValue == 1 )
-		add_action( 'login_head', 'surbma_gpga_google_analytics_display', 999 );
-}
-add_action( 'wp_loaded', 'surbma_gpga_google_analytics_load' );
 
 function surbma_gpga_google_analytics_display() {
 	$options = get_option( 'surbma_gpga_fields' );
 
 	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
+	$popupcookiedaysValue = isset( $options['popupcookiedays'] ) && $options['popupcookiedays'] != 0 ? $options['popupcookiedays'] : 30;
 
 	$gaValue = $options['ga'];
 	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
 	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
 
 	if ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) {
-
+?>
+<script type="text/javascript">
+	function setCookie(cookieValue) {
+	    var value = cookieValue;
+	    var d = new Date();
+	    d.setTime(d.getTime() + (<?php echo $popupcookiedaysValue; ?>*24*60*60*1000));
+	    var expires = "expires="+ d.toUTCString();
+	    document.cookie = "surbma-gpga=" + value + ";" + expires + ";path=/";
+	}
+	function readCookie(cookieName) {
+		var re = new RegExp('[; ]'+cookieName+'=([^\\s;]*)');
+		var sMatch = (' '+document.cookie).match(re);
+		if (cookieName && sMatch) return unescape(sMatch[1]);
+		return '';
+	}
+</script>
+<?php
 		if( $gascriptValue == 'analyticsjs' ) {
 ?>
 <!-- Google Analytics -->
