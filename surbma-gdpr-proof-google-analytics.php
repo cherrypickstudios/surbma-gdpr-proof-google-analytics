@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: https://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 4.1
+Version: 4.2
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -115,20 +115,22 @@ function surbma_gpga_google_analytics_load() {
 
 	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : 0;
 
-	if ( $gaValue && $limitedliabilityValue == 1 && ( !is_user_logged_in() || $galoadloggedinValue == 1 ) ) {
-		add_action( 'wp_head', 'surbma_gpga_google_analytics_display', 999 );
-		add_action( 'wp_footer', 'surbma_gpga_block', 999 );
-		add_action( 'wp_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
-	}
-	if ( $gaValue && $limitedliabilityValue == 1 && $galoadadminValue == 1 ) {
-		add_action( 'admin_head', 'surbma_gpga_google_analytics_display', 999 );
-		add_action( 'admin_print_footer_scripts', 'surbma_gpga_block', 999 );
-		add_action( 'admin_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
-	}
-	if ( $gaValue && $limitedliabilityValue == 1 && $galoadloginValue == 1 ) {
-		add_action( 'login_head', 'surbma_gpga_google_analytics_display', 999 );
-		add_action( 'login_footer', 'surbma_gpga_block', 999 );
-		add_action( 'login_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+	if ( $gaValue && $limitedliabilityValue == 1 ) {
+		if ( !is_user_logged_in() || $galoadloggedinValue == 1 ) {
+			add_action( 'wp_head', 'surbma_gpga_google_analytics_display', 999 );
+			add_action( 'wp_footer', 'surbma_gpga_block', 999 );
+			add_action( 'wp_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+		}
+		if ( $galoadadminValue == 1 ) {
+			add_action( 'admin_head', 'surbma_gpga_google_analytics_display', 999 );
+			add_action( 'admin_print_footer_scripts', 'surbma_gpga_block', 999 );
+			add_action( 'admin_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+		}
+		if ( $galoadloginValue == 1 ) {
+			add_action( 'login_head', 'surbma_gpga_google_analytics_display', 999 );
+			add_action( 'login_footer', 'surbma_gpga_block', 999 );
+			add_action( 'login_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+		}
 	}
 }
 add_action( 'wp_loaded', 'surbma_gpga_google_analytics_load' );

@@ -581,19 +581,19 @@ function surbma_gpga_fields_validate( $input ) {
 	$input['popupdebug'] = ( $input['popupdebug'] == 1 ? 1 : 0 );
 
 	if ( !isset( $input['gaanonymizeip'] ) )
-		$input['gaanonymizeip'] = 1;
+		$input['gaanonymizeip'] = null;
 	$input['gaanonymizeip'] = ( $input['gaanonymizeip'] == 1 ? 1 : 0 );
 
 	if ( !isset( $input['galoadloggedin'] ) )
-		$input['galoadloggedin'] = 1;
+		$input['galoadloggedin'] = null;
 	$input['galoadloggedin'] = ( $input['galoadloggedin'] == 1 ? 1 : 0 );
 
 	if ( !isset( $input['galoadadmin'] ) )
-		$input['galoadadmin'] = 1;
+		$input['galoadadmin'] = null;
 	$input['galoadadmin'] = ( $input['galoadadmin'] == 1 ? 1 : 0 );
 
 	if ( !isset( $input['galoadlogin'] ) )
-		$input['galoadlogin'] = 1;
+		$input['galoadlogin'] = null;
 	$input['galoadlogin'] = ( $input['galoadlogin'] == 1 ? 1 : 0 );
 
 	if ( !isset( $input['limitedliability'] ) )
