@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: https://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 4.2
+Version: 4.3
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -178,7 +178,7 @@ function surbma_gpga_block() {
 		if( $('#surbma-gpga-popupdebug').val() == '1' ) {
 			show_modal = 1;
 		} else {
-			if( !readCookie('surbma-gpga') ) {
+			if( !surbma_gpga_readCookie('surbma-gpga') ) {
 				show_modal = 1;
 			}
 		}
@@ -212,12 +212,12 @@ function surbma_gpga_block() {
 </div>
 <script type="text/javascript">
     document.getElementById("button1").onclick = function () {
-		setCookie('no');
+		surbma_gpga_setCookie('no');
 		// console.log('cookie = no');
 		window.location.reload(true);
     };
     document.getElementById("button2").onclick = function () {
-		setCookie('yes');
+		surbma_gpga_setCookie('yes');
 		// console.log('cookie = yes');
 		window.location.reload(true);
     };
@@ -238,14 +238,14 @@ function surbma_gpga_google_analytics_display() {
 	if ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) {
 ?>
 <script type="text/javascript">
-	function setCookie(cookieValue) {
+	function surbma_gpga_setCookie(cookieValue) {
 	    var value = cookieValue;
 	    var d = new Date();
 	    d.setTime(d.getTime() + (<?php echo $popupcookiedaysValue; ?>*24*60*60*1000));
 	    var expires = "expires="+ d.toUTCString();
 	    document.cookie = "surbma-gpga=" + value + ";" + expires + ";path=/";
 	}
-	function readCookie(cookieName) {
+	function surbma_gpga_readCookie(cookieName) {
 		var re = new RegExp('[; ]'+cookieName+'=([^\\s;]*)');
 		var sMatch = (' '+document.cookie).match(re);
 		if (cookieName && sMatch) return unescape(sMatch[1]);
@@ -262,7 +262,7 @@ function surbma_gpga_google_analytics_display() {
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-	if( readCookie('surbma-gpga') == 'yes' ) {
+	if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
 		ga('create', '<?php echo $gaValue; ?>', 'auto');
 <?php if ( $gaanonymizeipValue == '1' ) { ?>
 		ga('send', 'pageview', { 'anonymizeIp': true });
@@ -281,7 +281,7 @@ function surbma_gpga_google_analytics_display() {
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 
-	if( readCookie('surbma-gpga') == 'yes' ) {
+	if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
 <?php if ( $gaanonymizeipValue == '1' ) { ?>
 		gtag('config', '<?php echo $gaValue; ?>', { 'anonymize_ip': true });
 <?php } else { ?>
