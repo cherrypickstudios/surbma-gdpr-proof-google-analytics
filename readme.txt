@@ -4,7 +4,7 @@ Donate link: https://surbma.com/donate/
 Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cookie law, cookies, eu cookie
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 4.3
+Stable tag: 5.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,14 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 5.0 =
+
+- ENHANCED - Popup buttons are not refreshing the page. Accept button still sends the hit to Google Analytics.
+- ENHANCED - Settings page sidebar is updated with Google's latest websites about GDPR.
+- TWEAK - General admin notice is removed. A more informational alert is added to the plugin's settings page.
+- FIX - Internationalization fixes.
+- FIX - Admin URLs are fixed to work with every WordPress configuration.
 
 = 4.3 =
 

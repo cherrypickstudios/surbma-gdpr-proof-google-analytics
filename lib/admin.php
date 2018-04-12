@@ -21,7 +21,16 @@ function surbma_gpga_admin_notices() {
 	$options = get_option( 'surbma_gpga_fields' );
 	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : '';
 	if ( $limitedliabilityValue == '' ) {
-		_e( '<div class="error notice"><p><strong>Thank you for using Surbma - GDPR Proof Google Analytics plugin!</strong></p><p>By using this plugin, you agree, that all responsibility is yours regarding the GDPR legal compliance. The plugin author does not substitute any legal adequacy.</p><p>To hide this notice and activate the plugin, please go to <a href="/wp-admin/admin.php?page=surbma-gpga-menu"><strong>GDPR Proof GA</strong></a> menu and accept the Limited Liability option!</p></div>', 'surbma-gpga' );
+		$url = get_admin_url() . 'admin.php?page=surbma-gpga-menu';
+		echo '<div class="notice notice-error"><p><strong>';
+		_e( 'Thank you for using Surbma - GDPR Proof Google Analytics plugin!', 'surbma-gpga' );
+		echo '</strong></p><p>';
+		_e( 'By using this plugin, you agree, that all responsibility is yours regarding the GDPR legal compliance. The plugin author does not substitute any legal adequacy.', 'surbma-gpga' );
+		echo '</p><p>';
+		_e( 'To hide this notice and activate the plugin, please accept the Limited Liability option!', 'surbma-gpga' );
+		echo '</p><p><a class="button" href="' . esc_url( $url ) . '">';
+		_e( 'Accept Limited Liability option »', 'surbma-gpga' );
+		echo '</a></p></div>';
 	}
 }
-add_action( 'admin_notices', 'surbma_gpga_admin_notices' );
+// add_action( 'admin_notices', 'surbma_gpga_admin_notices' );

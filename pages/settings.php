@@ -499,27 +499,39 @@ function surbma_gpga_settings_page() {
 				<div uk-sticky="offset: 42; bottom: #bottom">
 			        <div class="uk-card uk-card-small uk-card-default">
 		            	<div class="uk-card-body">
-							<h3 class="uk-heading-divider">Useful links</h3>
+							<?php if ( $limitedliabilityValue == '' || $gaValue == '' ) { ?>
+							<div class="uk-alert-danger" uk-alert>
+								<h3><?php _e( 'Missing settings', 'surbma-gpga' ); ?></h3>
+								<p><?php _e( 'The <strong>Google Analytics Tracking Code</strong> field and the <strong>Limited Liability</strong> setting are required for the plugin to work. Please add your GA code and accept the Limited Liability setting to start using this plugin!', 'surbma-gpga' ); ?></p>
+							</div>
+							<?php } ?>
+							<h3 class="uk-heading-divider"><?php _e( 'Google links', 'surbma-gpga' ); ?></h3>
 							<p>
-								<?php _e( '<a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics" target="_blank">Official Support Forum</a>', 'surbma-gpga' ); ?>
-								<br><?php _e( '<a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/" target="_blank">Read the Reviews (5 out of 5 stars)</a>', 'surbma-gpga' ); ?>
+								<a href="https://privacy.google.com/businesses/compliance/" target="_blank"><?php _e( 'How Google complies with data protection laws', 'surbma-gpga' ); ?></a>
+								<br><a href="https://www.google.com/about/company/consentstaging.html" target="_blank"><?php _e( 'EU user consent policy', 'surbma-gpga' ); ?></a>
+								<br><a href="https://www.google.com/about/company/consenthelpstaging.html" target="_blank"><?php _e( 'Help with the EU user consent policy', 'surbma-gpga' ); ?></a>
+							</p>
+							<h3 class="uk-heading-divider"><?php _e( 'Plugin links', 'surbma-gpga' ); ?></h3>
+							<p>
+								<a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics" target="_blank"><?php _e( 'Official Support Forum', 'surbma-gpga' ); ?></a>
+								<br><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/" target="_blank"><?php _e( 'Read the Reviews (5 out of 5 stars)', 'surbma-gpga' ); ?></a>
 							</p>
 							<hr>
 							<p>
-								<strong>Do you like the plugin? Please give it a five star review!</strong>
-								<br><?php _e( '<a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/#new-post" target="_blank">Create Your New Review</a>', 'surbma-gpga' ); ?>
+								<strong><?php _e( 'Do you like the plugin? Please give it a five star review!', 'surbma-gpga' ); ?></strong>
+								<br><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/#new-post" target="_blank"><?php _e( 'Create Your New Review', 'surbma-gpga' ); ?></a>
 							</p>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
 							<h3 class="uk-heading-divider"><?php _e( 'Get the Pro Version', 'surbma-gpga' ); ?></h3>
 							<p><?php _e( 'Unlock all options and features of GDPR Proof Google Analytics plugin! Buy the Pro version and get the most out of all display options and get more control over the tracking code! All disabled options are available in the PRO version.', 'surbma-gpga' ); ?></p>
 							<p><?php _e( '<div class="uk-alert-success" uk-alert>Use this special <strong>BEFOREGDPR</strong> coupon to get 50% OFF your first purchase, which is available till <strong>May 26, 2018</strong>. Hurry, GDPR is coming!</div>', 'surbma-gpga' ); ?></p>
-							<p><a class="uk-button uk-button-default uk-width-1-1" href="/wp-admin/admin.php?page=surbma-gpga-menu-pricing"><?php _e( 'BUY Pro Version!', 'surbma-gpga' ); ?></a></p>
+							<p><a class="uk-button uk-button-default uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-pricing"><?php _e( 'BUY Pro Version!', 'surbma-gpga' ); ?></a></p>
 							<?php } ?>
 							<div class="uk-alert-primary" style="display: none;" uk-alert>
 								<a class="uk-alert-close" uk-close></a>
 								<h3><?php _e( 'Affiliate Program', 'surbma-gpga' ); ?></h3>
 								<p><?php _e( 'Do you like this plugin? Let\'s make some money by referring new customers and get 20% commission, for the lifetime of the new customers! Good deal, hah?', 'surbma-gpga' ); ?></p>
-								<p><a class="uk-button uk-button-primary uk-width-1-1" href="/wp-admin/admin.php?page=surbma-gpga-menu-affiliation"><?php _e( 'Be an Affiliate!', 'surbma-gpga' ); ?></a></p>
+								<p><a class="uk-button uk-button-primary uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-affiliation"><?php _e( 'Be an Affiliate!', 'surbma-gpga' ); ?></a></p>
 							</div>
 			            </div>
 		    	    </div>

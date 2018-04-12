@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: https://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 4.3
+Version: 5.0
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -166,6 +166,8 @@ function surbma_gpga_block() {
 	$popupbgcloseValue = $popupdebugValue == 1 ? 'true' : 'false';
 
 	$gaValue = isset( $options['ga'] ) ? $options['ga'] : '';
+	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
+	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
 
 	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : '';
 
@@ -211,16 +213,25 @@ function surbma_gpga_block() {
 	</div>
 </div>
 <script type="text/javascript">
-    document.getElementById("button1").onclick = function () {
+	document.getElementById("button1").onclick = function () {
 		surbma_gpga_setCookie('no');
-		// console.log('cookie = no');
-		window.location.reload(true);
-    };
-    document.getElementById("button2").onclick = function () {
+	};
+	document.getElementById("button2").onclick = function () {
 		surbma_gpga_setCookie('yes');
-		// console.log('cookie = yes');
-		window.location.reload(true);
-    };
+<?php if( $gascriptValue == 'analyticsjs' ) { ?>
+<?php if ( $gaanonymizeipValue == '1' ) { ?>
+		ga('send', 'pageview', { 'anonymizeIp': true });
+<?php } else { ?>
+		ga('send', 'pageview');
+<?php } ?>
+<?php } else { ?>
+<?php if ( $gaanonymizeipValue == '1' ) { ?>
+		gtag('config', '<?php echo $gaValue; ?>', { 'anonymize_ip': true });
+<?php } else { ?>
+		gtag('config', '<?php echo $gaValue; ?>');
+<?php } ?>
+<?php } ?>
+	};
 </script>
 <?php }
 }
