@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: https://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 6.0
+Version: 6.1
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -111,6 +111,8 @@ register_activation_hook( __FILE__, 'surbma_gpga_activated' );
 function surbma_gpga_google_analytics_load() {
 	$options = get_option( 'surbma_gpga_fields' );
 
+	$popupdebugValue = isset( $options['popupdebug'] ) && is_user_logged_in() && !is_admin() ? $options['popupdebug'] : 0;
+
 	$gaValue = isset( $options['ga'] ) ? $options['ga'] : '';
 	$galoadadminValue = isset( $options['galoadadmin'] ) ? $options['galoadadmin'] : 1;
 	$galoadloginValue = isset( $options['galoadlogin'] ) ? $options['galoadlogin'] : 1;
@@ -119,7 +121,7 @@ function surbma_gpga_google_analytics_load() {
 	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : 0;
 
 	if ( $gaValue && $limitedliabilityValue == 1 ) {
-		if ( !is_user_logged_in() || $galoadloggedinValue == 1 ) {
+		if ( $popupdebugValue == 1 || !is_user_logged_in() || $galoadloggedinValue == 1 ) {
 			add_action( 'wp_head', 'surbma_gpga_header_scripts', 999 );
 			add_action( 'wp_head', 'surbma_gpga_google_analytics_display', 999 );
 			add_action( 'wp_footer', 'surbma_gpga_block', 999 );
