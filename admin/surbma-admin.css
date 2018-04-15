@@ -63,6 +63,7 @@
     padding: 0 10px;
 }
 
+.surbma-admin .disabled,
 .surbma-admin .disabled * {
     color: #ccc !important;
 }

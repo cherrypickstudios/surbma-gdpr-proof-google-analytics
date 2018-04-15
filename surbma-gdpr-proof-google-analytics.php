@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: https://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 5.1
+Version: 6.0
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -120,19 +120,24 @@ function surbma_gpga_google_analytics_load() {
 
 	if ( $gaValue && $limitedliabilityValue == 1 ) {
 		if ( !is_user_logged_in() || $galoadloggedinValue == 1 ) {
+			add_action( 'wp_head', 'surbma_gpga_header_scripts', 999 );
 			add_action( 'wp_head', 'surbma_gpga_google_analytics_display', 999 );
 			add_action( 'wp_footer', 'surbma_gpga_block', 999 );
 			add_action( 'wp_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
 		}
 		if ( $galoadadminValue == 1 ) {
+			add_action( 'admin_head', 'surbma_gpga_header_scripts', 999 );
 			add_action( 'admin_head', 'surbma_gpga_google_analytics_display', 999 );
-			add_action( 'admin_print_footer_scripts', 'surbma_gpga_block', 999 );
-			add_action( 'admin_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+			// add_action( 'admin_print_footer_scripts', 'surbma_gpga_block', 999 );
+			// add_action( 'admin_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+		}
+		if ( $galoadadminValue == 1 || $galoadloginValue == 1 ) {
+			add_action( 'login_head', 'surbma_gpga_header_scripts', 999 );
+			add_action( 'login_footer', 'surbma_gpga_block', 999 );
+			add_action( 'login_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
 		}
 		if ( $galoadloginValue == 1 ) {
 			add_action( 'login_head', 'surbma_gpga_google_analytics_display', 999 );
-			add_action( 'login_footer', 'surbma_gpga_block', 999 );
-			add_action( 'login_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
 		}
 	}
 }
@@ -143,122 +148,9 @@ function surbma_gpga_enqueue_scripts() {
 	wp_enqueue_style( 'surbma-gpga-styles', plugins_url( '', __FILE__ ) . '/css/styles.css', false, '2.27.1' );
 }
 
-function surbma_gpga_block() {
-	$options = get_option( 'surbma_gpga_fields' );
-
-	$popuptextValue = isset( $options['popuptext'] ) ? $options['popuptext'] : '';
-
-	$popupcookiepolicytextValue = isset( $options['popupcookiepolicytext'] ) ? $options['popupcookiepolicytext'] : '';
-	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
-
-	$popupbutton1styleValue = isset( $options['popupbutton1style'] ) ? $options['popupbutton1style'] : 'default';
-	$popupbutton1textValue = isset( $options['popupbutton1text'] ) ? $options['popupbutton1text'] : 'Decline';
-	$popupbutton2styleValue = isset( $options['popupbutton2style'] ) ? $options['popupbutton2style'] : 'primary';
-	$popupbutton2textValue = isset( $options['popupbutton2text'] ) ? $options['popupbutton2text'] : 'Accept';
-	$popupbuttonsizeValue = isset( $options['popupbuttonsize'] ) ? $options['popupbuttonsize'] : 'large';
-	$popupbuttonalignmentValue = isset( $options['popupbuttonalignment'] ) ? $options['popupbuttonalignment'] : 'left';
-
-	$popupthemesValue = isset( $options['popupthemes'] ) ? $options['popupthemes'] : 'normal';
-	$popupdarkmodeValue = isset( $options['popupdarkmode'] ) && $options['popupdarkmode'] == 1 ? ' surbma-gpga-dark' : '';
-	$popupcentertextValue = isset( $options['popupcentertext'] ) && $options['popupcentertext'] == 1 ? ' surbma-gpga-text-center' : '';
-	$popupverticalcenterValue = isset( $options['popupverticalcenter'] ) ? $options['popupverticalcenter'] : true;
-	$popuplargeValue = isset( $options['popuplarge'] ) && $options['popuplarge'] == 1 ? ' uk-modal-dialog-large' : '';
-
-	$popupdebugValue = isset( $options['popupdebug'] ) && is_user_logged_in() && !is_admin() ? $options['popupdebug'] : 0;
-	$popupkeyboardValue = $popupdebugValue == 1 ? 'true' : 'false';
-	$popupbgcloseValue = $popupdebugValue == 1 ? 'true' : 'false';
-
-	$gaValue = isset( $options['ga'] ) ? $options['ga'] : '';
-	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
-	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
-
-	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : '';
-
-	if ( $gaValue && $limitedliabilityValue == 1 && ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) ) {
-?>
-<input type="hidden" id="surbma-gpga-popupdebug" value="<?php echo $popupdebugValue; ?>" />
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		var show_modal = 0;
-		if( $('#surbma-gpga-popupdebug').val() == '1' ) {
-			show_modal = 1;
-		} else {
-			if( !surbma_gpga_readCookie('surbma-gpga') ) {
-				show_modal = 1;
-			}
-		}
-		if( show_modal == 1 ) {
-			$.UIkit.modal(('#surbma-gpga'), {center: <?php echo $popupverticalcenterValue; ?>,keyboard: <?php echo $popupkeyboardValue; ?>,bgclose: <?php echo $popupbgcloseValue; ?>}).show();
-		}
-		// console.log('show_modal = '+show_modal);
-	});
-</script>
-<div id="surbma-gpga" class="uk-modal <?php echo 'surbma-gpga-' . $popupthemesValue; ?><?php echo $popupdarkmodeValue; ?><?php echo $popupcentertextValue; ?>">
-    <div class="uk-modal-dialog<?php echo $popuplargeValue; ?>">
-		<div class="uk-modal-header">
-			<h2><a href="#"></a><?php echo stripslashes( $options['popuptitle'] ); ?></h2>
-		</div>
-		<div class="uk-modal-content">
-			<?php
-				echo stripslashes( $popuptextValue );
-				if( $popupcookiepolicytextValue != '' && $popupcookiepolicypageValue != 0 ) {
-					echo '<p class="cookie-policy"><a href="' . esc_url( get_permalink( $popupcookiepolicypageValue ) ) . '" target="_blank">';
-					echo stripslashes( $popupcookiepolicytextValue );
-					echo '</a></p>';
-				}
-			?>
-		</div>
-		<div class="uk-modal-footer <?php echo 'surbma-gpga-button-' . $popupbuttonalignment; ?>">
-			<button id="button1" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton1styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton1textValue ); ?></button>
-			<span>&nbsp;</span>
-			<button id="button2" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton2styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton2textValue ); ?></button>
-		</div>
-	</div>
-</div>
-<script type="text/javascript">
-	document.getElementById("button1").onclick = function () {
-		surbma_gpga_setCookie('no');
-	};
-	document.getElementById("button2").onclick = function () {
-		surbma_gpga_setCookie('yes');
-<?php if( $gascriptValue == 'analyticsjs' ) { ?>
-<?php if ( $gaanonymizeipValue == '1' ) { ?>
-		ga('send', 'pageview', { 'anonymizeIp': true });
-<?php } else { ?>
-		ga('send', 'pageview');
-<?php } ?>
-<?php } else { ?>
-<?php if ( $gaanonymizeipValue == '1' ) { ?>
-		gtag('config', '<?php echo $gaValue; ?>', { 'anonymize_ip': true });
-<?php } else { ?>
-		gtag('config', '<?php echo $gaValue; ?>');
-<?php } ?>
-<?php } ?>
-	};
-</script>
-<?php }
-}
-
-function surbma_gpga_google_analytics_display() {
-	$options = get_option( 'surbma_gpga_fields' );
-
-	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
-	$popupcookiedaysValue = isset( $options['popupcookiedays'] ) && $options['popupcookiedays'] != 0 ? $options['popupcookiedays'] : 30;
-
-	$gaValue = $options['ga'];
-	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
-	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
-
-	if ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) {
+function surbma_gpga_header_scripts() {
 ?>
 <script type="text/javascript">
-	function surbma_gpga_setCookie(cookieValue) {
-	    var value = cookieValue;
-	    var d = new Date();
-	    d.setTime(d.getTime() + (<?php echo $popupcookiedaysValue; ?>*24*60*60*1000));
-	    var expires = "expires="+ d.toUTCString();
-	    document.cookie = "surbma-gpga=" + value + ";" + expires + ";path=/";
-	}
 	function surbma_gpga_readCookie(cookieName) {
 		var re = new RegExp('[; ]'+cookieName+'=([^\\s;]*)');
 		var sMatch = (' '+document.cookie).match(re);
@@ -267,6 +159,18 @@ function surbma_gpga_google_analytics_display() {
 	}
 </script>
 <?php
+}
+
+function surbma_gpga_google_analytics_display() {
+	$options = get_option( 'surbma_gpga_fields' );
+
+	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
+
+	$gaValue = $options['ga'];
+	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
+	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
+
+	if ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) {
 		if( $gascriptValue == 'analyticsjs' ) {
 ?>
 <!-- Google Analytics -->
@@ -306,6 +210,121 @@ function surbma_gpga_google_analytics_display() {
 </script>
 <?php }
 	}
+}
+
+function surbma_gpga_block() {
+	$options = get_option( 'surbma_gpga_fields' );
+
+	$popuptextValue = isset( $options['popuptext'] ) ? $options['popuptext'] : '';
+
+	$popupcookiepolicytextValue = isset( $options['popupcookiepolicytext'] ) ? $options['popupcookiepolicytext'] : '';
+	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
+
+	$popupbutton1styleValue = isset( $options['popupbutton1style'] ) ? $options['popupbutton1style'] : 'default';
+	$popupbutton1textValue = isset( $options['popupbutton1text'] ) ? $options['popupbutton1text'] : 'Decline';
+	$popupbutton2styleValue = isset( $options['popupbutton2style'] ) ? $options['popupbutton2style'] : 'primary';
+	$popupbutton2textValue = isset( $options['popupbutton2text'] ) ? $options['popupbutton2text'] : 'Accept';
+	$popupbuttonsizeValue = isset( $options['popupbuttonsize'] ) ? $options['popupbuttonsize'] : 'large';
+	$popupbuttonalignmentValue = isset( $options['popupbuttonalignment'] ) ? $options['popupbuttonalignment'] : 'left';
+
+	$popupthemesValue = isset( $options['popupthemes'] ) ? $options['popupthemes'] : 'normal';
+	$popupdarkmodeValue = isset( $options['popupdarkmode'] ) && $options['popupdarkmode'] == 1 ? ' surbma-gpga-dark' : '';
+	$popupcentertextValue = isset( $options['popupcentertext'] ) && $options['popupcentertext'] == 1 ? ' surbma-gpga-text-center' : '';
+	$popupverticalcenterValue = isset( $options['popupverticalcenter'] ) && $options['popupverticalcenter'] == 1 ? 'true' : 'false';
+	$popuplargeValue = isset( $options['popuplarge'] ) && $options['popuplarge'] == 1 ? ' uk-modal-dialog-large' : '';
+
+	$popupdebugValue = isset( $options['popupdebug'] ) && is_user_logged_in() && !is_admin() ? $options['popupdebug'] : 0;
+
+	$popupclosebuttonValue = isset( $options['popupclosebutton'] ) ? $options['popupclosebutton'] : 0;
+	$popupclosekeyboardValue = $popupdebugValue == 1 || ( isset( $options['popupclosekeyboard'] ) && $options['popupclosekeyboard'] == 1 ) ? 'true' : 'false';
+	$popupclosebgcloseValue = isset( $options['popupclosebgclose'] ) && $options['popupclosebgclose'] == 1 ? 'true' : 'false';
+
+	$popupdelayValue = isset( $options['popupdelay'] ) ? $options['popupdelay'] : 0;
+	$popupdelayValue = 1000 * (int)$popupdelayValue;
+
+	$gaValue = isset( $options['ga'] ) ? $options['ga'] : '';
+	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
+	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
+
+	$popupcookiedaysValue = isset( $options['popupcookiedays'] ) && $options['popupcookiedays'] != 0 ? $options['popupcookiedays'] : 30;
+
+	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : '';
+
+	if ( $gaValue && $limitedliabilityValue == 1 && ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) ) {
+?>
+<input type="hidden" id="surbma-gpga-popupdebug" value="<?php echo $popupdebugValue; ?>" />
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		var show_modal = 0;
+		if( $('#surbma-gpga-popupdebug').val() == '1' ) {
+			show_modal = 1;
+		} else {
+			if( !surbma_gpga_readCookie('surbma-gpga') ) {
+				show_modal = 1;
+			}
+		}
+		if( show_modal == 1 ) {
+			setTimeout(function() {
+				$.UIkit.modal(('#surbma-gpga'), {center: <?php echo $popupverticalcenterValue; ?>,keyboard: <?php echo $popupclosekeyboardValue; ?>,bgclose: <?php echo $popupclosebgcloseValue; ?>}).show();
+			}, <?php echo $popupdelayValue; ?>);
+		}
+		// console.log('show_modal = '+show_modal);
+	});
+</script>
+<div id="surbma-gpga" class="uk-modal <?php echo 'surbma-gpga-' . $popupthemesValue; ?><?php echo $popupdarkmodeValue; ?><?php echo $popupcentertextValue; ?>">
+	<div class="uk-modal-dialog<?php echo $popuplargeValue; ?>">
+		<?php if( $popupclosebuttonValue == 1 ) { ?>
+		<a class="uk-modal-close uk-close"></a>
+		<?php } ?>
+		<div class="uk-modal-header">
+			<h2><a href="#"></a><?php echo stripslashes( $options['popuptitle'] ); ?></h2>
+		</div>
+		<div class="uk-modal-content">
+			<?php
+				echo stripslashes( $popuptextValue );
+				if( $popupcookiepolicytextValue != '' && $popupcookiepolicypageValue != 0 ) {
+					echo '<p class="cookie-policy"><a href="' . esc_url( get_permalink( $popupcookiepolicypageValue ) ) . '" target="_blank">';
+					echo stripslashes( $popupcookiepolicytextValue );
+					echo '</a></p>';
+				}
+			?>
+		</div>
+		<div class="uk-modal-footer <?php echo 'surbma-gpga-button-' . $popupbuttonalignment; ?>">
+			<button id="button1" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton1styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton1textValue ); ?></button>
+			<span>&nbsp;</span>
+			<button id="button2" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton2styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton2textValue ); ?></button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function surbma_gpga_setCookie(cookieValue) {
+	    var value = cookieValue;
+	    var d = new Date();
+	    d.setTime(d.getTime() + (<?php echo $popupcookiedaysValue; ?>*24*60*60*1000));
+	    var expires = "expires="+ d.toUTCString();
+	    document.cookie = "surbma-gpga=" + value + ";" + expires + ";path=/";
+	}
+	document.getElementById("button1").onclick = function () {
+		surbma_gpga_setCookie('no');
+	};
+	document.getElementById("button2").onclick = function () {
+		surbma_gpga_setCookie('yes');
+<?php if( $gascriptValue == 'analyticsjs' ) { ?>
+<?php if ( $gaanonymizeipValue == '1' ) { ?>
+		ga('send', 'pageview', { 'anonymizeIp': true });
+<?php } else { ?>
+		ga('send', 'pageview');
+<?php } ?>
+<?php } else { ?>
+<?php if ( $gaanonymizeipValue == '1' ) { ?>
+		gtag('config', '<?php echo $gaValue; ?>', { 'anonymize_ip': true });
+<?php } else { ?>
+		gtag('config', '<?php echo $gaValue; ?>');
+<?php } ?>
+<?php } ?>
+	};
+</script>
+<?php }
 }
 
 } // End of surbma_gpga_fs function exists condition.

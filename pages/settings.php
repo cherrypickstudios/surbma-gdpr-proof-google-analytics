@@ -347,12 +347,53 @@ function surbma_gpga_settings_page() {
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
 							<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gpga' ); ?></p>
 							<?php } ?>
+							<h4 class="uk-heading-divider"><?php _e( 'Other Settings', 'surbma-gpga' ); ?></h4>
+					    	<div class="uk-margin">
+								<div class="uk-form-label"><?php _e( 'Close options', 'surbma-gpga' ); ?></div>
+								<div class="uk-form-controls">
+									<p class="switch-wrap">
+										<?php _e( 'Close button in popup', 'surbma-gpga' ); ?>:
+										<label class="switch">
+											<?php $popupclosebuttonValue = isset( $options['popupclosebutton'] ) ? $options['popupclosebutton'] : 0; ?>
+											<input id="surbma_gpga_fields[popupclosebutton]" name="surbma_gpga_fields[popupclosebutton]" type="checkbox" value="1" <?php checked( '1', $popupclosebuttonValue); ?> />
+											<span class="slider round"></span>
+										</label>
+									</p>
+									<p class="switch-wrap<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
+										<?php _e( 'Close with keyboard (ESC button)', 'surbma-gpga' ); ?>:
+										<label class="switch">
+											<?php $popupclosekeyboardValue = isset( $options['popupclosekeyboard'] ) ? $options['popupclosekeyboard'] : 0; ?>
+											<input id="surbma_gpga_fields[popupclosekeyboard]" name="surbma_gpga_fields[popupclosekeyboard]" type="checkbox" value="1" <?php checked( '1', $popupclosekeyboardValue); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
+											<span class="slider round"></span>
+										</label>
+									</p>
+									<p class="switch-wrap<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
+										<?php _e( 'Close with a click on the background', 'surbma-gpga' ); ?>:
+										<label class="switch">
+											<?php $popupclosebgcloseValue = isset( $options['popupclosebgclose'] ) ? $options['popupclosebgclose'] : 0; ?>
+											<input id="surbma_gpga_fields[popupclosebgclose]" name="surbma_gpga_fields[popupclosebgclose]" type="checkbox" value="1" <?php checked( '1', $popupclosebgcloseValue); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
+											<span class="slider round"></span>
+										</label>
+									</p>
+									<p class="uk-text-meta"><?php _e( 'Popup close without <strong>Accept</strong> or <strong>Decline</strong> button click will never enable Google Analytics tracking. Popup will still load on every page.', 'surbma-gpga' ); ?></p>
+					    		</div>
+							</div>
+					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
+								<label class="uk-form-label" for="surbma_gpga_fields[popupdelay]"><?php _e( 'Popup delay', 'surbma-gpga' ); ?></label>
+								<div class="uk-form-controls">
+									<?php $popupdelayValue = isset( $options['popupdelay'] ) ? $options['popupdelay'] : 0; ?>
+									<input id="surbma_gpga_fields[popupdelay]" class="uk-input uk-form-width-small" type="number" name="surbma_gpga_fields[popupdelay]" value="<?php echo $popupdelayValue; ?>" placeholder="0"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> /> seconds
+								</div>
+							</div>
+							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
+							<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gpga' ); ?></p>
+							<?php } ?>
 							<h4 class="uk-heading-divider"><?php _e( 'Cookie Options', 'surbma-gpga' ); ?></h4>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
 								<label class="uk-form-label" for="surbma_gpga_fields[popupcookiedays]"><?php _e( 'Cookie expires in', 'surbma-gpga' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $popupcookiedaysValue = isset( $options['popupcookiedays'] ) ? $options['popupcookiedays'] : 30; ?>
-									<input id="surbma_gpga_fields[popupcookiedays]" class="uk-input uk-form-width-small" type="number" name="surbma_gpga_fields[popupcookiedays]" value="<?php echo $popupcookiedaysValue; ?>" min="1" max="365" placeholder="30"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> /> days
+									<input id="surbma_gpga_fields[popupcookiedays]" class="uk-input uk-form-width-small" type="number" name="surbma_gpga_fields[popupcookiedays]" value="<?php echo $popupcookiedaysValue; ?>" min="1" max="180" placeholder="30"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> /> days
 								</div>
 							</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
@@ -370,7 +411,7 @@ function surbma_gpga_settings_page() {
 											<span class="slider round"></span>
 										</label>
 									</p>
-									<p class="uk-text-meta"><?php _e( 'If this option is enabled, Popup will always be visible for logged in users! Good for testing.', 'surbma-gpga' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'If this option is enabled, Popup will always be visible for logged in users! The keyboard (ESC button) close is also enabled. Good for testing.', 'surbma-gpga' ); ?></p>
 					    		</div>
 							</div>
 					    </div>
@@ -570,6 +611,7 @@ function surbma_gpga_fields_validate( $input ) {
 	$input['popuptext'] = wp_filter_post_kses( $input['popuptext'] );
 
 	// Say our input option must be only numbers
+	$input['popupdelay'] = preg_replace( "/[^0-9]/", "", $input['popupdelay'] );
 	$input['popupcookiedays'] = preg_replace( "/[^0-9]/", "", $input['popupcookiedays'] );
 
 	if ( !isset( $input['popupdarkmode'] ) )
@@ -587,6 +629,18 @@ function surbma_gpga_fields_validate( $input ) {
 	if ( !isset( $input['popuplarge'] ) )
 		$input['popuplarge'] = null;
 	$input['popuplarge'] = ( $input['popuplarge'] == 1 ? 1 : 0 );
+
+	if ( !isset( $input['popupclosebutton'] ) )
+		$input['popupclosebutton'] = null;
+	$input['popupclosebutton'] = ( $input['popupclosebutton'] == 1 ? 1 : 0 );
+
+	if ( !isset( $input['popupclosekeyboard'] ) )
+		$input['popupclosekeyboard'] = null;
+	$input['popupclosekeyboard'] = ( $input['popupclosekeyboard'] == 1 ? 1 : 0 );
+
+	if ( !isset( $input['popupclosebgclose'] ) )
+		$input['popupclosebgclose'] = null;
+	$input['popupclosebgclose'] = ( $input['popupclosebgclose'] == 1 ? 1 : 0 );
 
 	if ( !isset( $input['popupdebug'] ) )
 		$input['popupdebug'] = null;
@@ -614,17 +668,47 @@ function surbma_gpga_fields_validate( $input ) {
 
 	// Our select option must actually be in our array of select options
 	if ( !array_key_exists( $input['popupbutton1style'], $popupbutton1style_options ) )
-		$input['popupbutton1style'] = null;
+		$input['popupbutton1style'] = 'default';
 	if ( !array_key_exists( $input['popupbutton2style'], $popupbutton2style_options ) )
-		$input['popupbutton2style'] = null;
+		$input['popupbutton2style'] = 'primary';
 	if ( !array_key_exists( $input['popupbuttonsize'], $popupbuttonsize_options ) )
-		$input['popupbuttonsize'] = null;
+		$input['popupbuttonsize'] = 'large';
 	if ( !array_key_exists( $input['popupbuttonalignment'], $popupbuttonalignment_options ) )
-		$input['popupbuttonalignment'] = null;
+		$input['popupbuttonalignment'] = 'left';
 	if ( !array_key_exists( $input['popupthemes'], $popup_themes ) )
-		$input['popupthemes'] = null;
+		$input['popupthemes'] = 'normal';
 	if ( !array_key_exists( $input['gascript'], $ga_script ) )
-		$input['gascript'] = null;
+		$input['gascript'] = 'gtagjs';
+
+	// Set Free version's default values
+	if ( surbma_gpga_fs()->is_not_paying() ) {
+		$input['popupcookiepolicytext'] = null;
+
+		$input['popupbutton1style'] = 'default';
+		$input['popupbutton2style'] = 'primary';
+		$input['popupbuttonsize'] = 'large';
+		$input['popupbuttonalignment'] = 'left';
+
+		$input['popupthemes'] = 'normal';
+		$input['popupdarkmode'] = 0;
+		$input['popupcentertext'] = 0;
+		$input['popupverticalcenter'] = 0;
+		$input['popuplarge'] = 0;
+
+		// $input['popupclosebutton'] = 0;
+		$input['popupclosekeyboard'] = 0;
+		$input['popupclosebgclose'] = 0;
+		$input['popupdelay'] = 0;
+
+		$input['popupcookiedays'] = 30;
+
+		$input['gaanonymizeip'] = 1;
+
+		$input['gascript'] = 'gtagjs';
+		$input['galoadloggedin'] = 1;
+		$input['galoadadmin'] = 1;
+		$input['galoadlogin'] = 1;
+	}
 
 	return $input;
 }

@@ -5,11 +5,13 @@
 @import "src/less/core/text";
 @import "src/less/core/modal";
 @import "src/less/core/button";
+@import "src/less/core/close";
 
 // UIkit Almost Flat
 @import "themes/default/variables";
 @import "themes/default/modal";
 @import "themes/default/button";
+@import "themes/default/close";
 
 // Fixes
 @modal-z-index: 999999999999;
@@ -77,4 +79,10 @@
 .surbma-gpga-dark .uk-modal-header h2,
 .surbma-gpga-dark .uk-modal-dialog {
 	color: #fff;
+}
+
+#surbma-gpga .uk-close:after {
+    content: "\00d7";
+	font-family: inherit;
+	font-size: 20px;
 }
