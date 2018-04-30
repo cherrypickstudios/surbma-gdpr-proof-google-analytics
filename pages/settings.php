@@ -12,102 +12,102 @@ function surbma_gpga_fields_init() {
 $popupbutton1style_options = array(
 	'link' => array(
 		'value' => 'link',
-		'label' => __( 'Link', 'surbma-gpga' )
+		'label' => __( 'Link', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'default' => array(
 		'value' => 'default',
-		'label' => __( 'Default', 'surbma-gpga' )
+		'label' => __( 'Default', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'primary' => array(
 		'value' => 'primary',
-		'label' => __( 'Primary', 'surbma-gpga' )
+		'label' => __( 'Primary', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'success' => array(
 		'value' => 'success',
-		'label' => __( 'Success', 'surbma-gpga' )
+		'label' => __( 'Success', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'danger' => array(
 		'value' => 'danger',
-		'label' => __( 'Danger', 'surbma-gpga' )
+		'label' => __( 'Danger', 'surbma-gdpr-proof-google-analytics' )
 	)
 );
 
 $popupbutton2style_options = array(
 	'link' => array(
 		'value' => 'link',
-		'label' => __( 'Link', 'surbma-gpga' )
+		'label' => __( 'Link', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'default' => array(
 		'value' => 'default',
-		'label' => __( 'Default', 'surbma-gpga' )
+		'label' => __( 'Default', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'primary' => array(
 		'value' => 'primary',
-		'label' => __( 'Primary', 'surbma-gpga' )
+		'label' => __( 'Primary', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'success' => array(
 		'value' => 'success',
-		'label' => __( 'Success', 'surbma-gpga' )
+		'label' => __( 'Success', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'danger' => array(
 		'value' => 'danger',
-		'label' => __( 'Danger', 'surbma-gpga' )
+		'label' => __( 'Danger', 'surbma-gdpr-proof-google-analytics' )
 	)
 );
 
 $popupbuttonsize_options = array(
 	'mini' => array(
 		'value' => 'mini',
-		'label' => __( 'Mini', 'surbma-gpga' )
+		'label' => __( 'Mini', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'small' => array(
 		'value' => 'small',
-		'label' => __( 'Small', 'surbma-gpga' )
+		'label' => __( 'Small', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'default' => array(
 		'value' => 'default',
-		'label' => __( 'Default', 'surbma-gpga' )
+		'label' => __( 'Default', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'large' => array(
 		'value' => 'large',
-		'label' => __( 'Large', 'surbma-gpga' )
+		'label' => __( 'Large', 'surbma-gdpr-proof-google-analytics' )
 	)
 );
 
 $popupbuttonalignment_options = array(
 	'left' => array(
 		'value' => 'left',
-		'label' => __( 'Left', 'surbma-gpga' )
+		'label' => __( 'Left', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'center' => array(
 		'value' => 'center',
-		'label' => __( 'Center', 'surbma-gpga' )
+		'label' => __( 'Center', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'right' => array(
 		'value' => 'right',
-		'label' => __( 'Right', 'surbma-gpga' )
+		'label' => __( 'Right', 'surbma-gdpr-proof-google-analytics' )
 	)
 );
 
 $popup_themes = array(
 	'normal' => array(
 		'value' => 'normal',
-		'label' => __( 'Normal Theme', 'surbma-gpga' )
+		'label' => __( 'Normal Theme', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'full-page' => array(
 		'value' => 'full-page',
-		'label' => __( 'Full Page Theme', 'surbma-gpga' )
+		'label' => __( 'Full Page Theme', 'surbma-gdpr-proof-google-analytics' )
 	)
 );
 
 $ga_script = array(
 	'gtagjs' => array(
 		'value' => 'gtagjs',
-		'label' => __( 'Global site tag (gtag.js)', 'surbma-gpga' )
+		'label' => __( 'Global site tag (gtag.js)', 'surbma-gdpr-proof-google-analytics' )
 	),
 	'analyticsjs' => array(
 		'value' => 'analyticsjs',
-		'label' => __( 'Universal Analytics library (analytics.js)', 'surbma-gpga' )
+		'label' => __( 'Universal Analytics library (analytics.js)', 'surbma-gdpr-proof-google-analytics' )
 	)
 );
 
@@ -132,35 +132,35 @@ function surbma_gpga_settings_page() {
 
 					<div class="uk-card uk-card-default uk-card-hover uk-margin-bottom">
 					    <div class="uk-card-header">
-							<h3 class="uk-card-title"><?php _e( 'Popup Settings', 'surbma-gpga' ); ?></h3>
+							<h3 class="uk-card-title"><?php _e( 'Popup Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
 					    </div>
 					    <div class="uk-card-body">
-							<h4 class="uk-heading-divider"><?php _e( 'Content', 'surbma-gpga' ); ?></h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Content', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin">
-								<label class="uk-form-label" for="surbma_gpga_fields[popuptitle]"><?php _e( 'Title', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popuptitle]"><?php _e( 'Title', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $popuptitleValue = isset( $options['popuptitle'] ) ? $options['popuptitle'] : ''; ?>
 									<input id="surbma_gpga_fields[popuptitle]" class="uk-input" type="text" name="surbma_gpga_fields[popuptitle]" value="<?php echo stripslashes( $popuptitleValue ); ?>" />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin">
-								<label class="uk-form-label" for="surbma_gpga_fields[popuptext]"><?php _e( 'Text', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popuptext]"><?php _e( 'Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $popuptextValue = isset( $options['popuptext'] ) ? $options['popuptext'] : ''; ?>
 									<textarea id="surbma_gpga_fields[popuptext]" class="uk-textarea" cols="50" rows="10" name="surbma_gpga_fields[popuptext]"><?php echo stripslashes( $popuptextValue ); ?></textarea>
-									<p><?php _e( 'Allowed HTML tags in this field', 'surbma-gpga' ); ?>:</p><pre><?php echo allowed_tags(); ?></pre>
+									<p><?php _e( 'Allowed HTML tags in this field', 'surbma-gdpr-proof-google-analytics' ); ?>:</p><pre><?php echo allowed_tags(); ?></pre>
 					    		</div>
 							</div>
-							<h4 class="uk-heading-divider"><?php _e( 'Cookie Policy', 'surbma-gpga' ); ?></h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Cookie Policy', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupcookiepolicytext]"><?php _e( 'Cookie Policy Link Text', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupcookiepolicytext]"><?php _e( 'Cookie Policy Link Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $popupcookiepolicytextValue = isset( $options['popupcookiepolicytext'] ) ? $options['popupcookiepolicytext'] : ''; ?>
 									<input id="surbma_gpga_fields[popupcookiepolicytext]" class="uk-input" type="text" name="surbma_gpga_fields[popupcookiepolicytext]" value="<?php echo stripslashes( $popupcookiepolicytextValue ); ?>"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupcookiepolicypage]"><?php _e( 'Cookie Policy Page', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupcookiepolicypage]"><?php _e( 'Cookie Policy Page', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php
 										$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : '';
@@ -174,21 +174,21 @@ function surbma_gpga_settings_page() {
 										);
 										wp_dropdown_pages( $args );
 									?>
-									<p class="uk-text-meta"><?php _e( 'The Popup and the Google Analytics tracking codes are not loading on the selected page. You can use this page to show your cookie policy.', 'surbma-gpga' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'The Popup and the Google Analytics tracking codes are not loading on the selected page. You can use this page to show your cookie policy.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 					    		</div>
 					    	</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
-								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gpga' ); ?></p>
+								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<?php } ?>
-							<h4 class="uk-heading-divider"><?php _e( 'Buttons', 'surbma-gpga' ); ?></h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Buttons', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton1text]"><?php _e( 'Decline Button Text', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton1text]"><?php _e( 'Decline Button Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<input id="surbma_gpga_fields[popupbutton1text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton1text]" value="<?php echo esc_attr( stripslashes( $options['popupbutton1text'] ) ); ?>" />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton1style]"><?php _e( 'Decline Button Style', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton1style]"><?php _e( 'Decline Button Style', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<select class="uk-select" name="surbma_gpga_fields[popupbutton1style]"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>>
 										<?php
@@ -210,13 +210,13 @@ function surbma_gpga_settings_page() {
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton2text]"><?php _e( 'Accept Button Text', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton2text]"><?php _e( 'Accept Button Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<input id="surbma_gpga_fields[popupbutton2text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton2text]" value="<?php echo esc_attr( stripslashes( $options['popupbutton2text'] ) ); ?>" />
 					    		</div>
 					    	</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton2style]"><?php _e( 'Accept Button Style', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton2style]"><?php _e( 'Accept Button Style', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<select class="uk-select" name="surbma_gpga_fields[popupbutton2style]"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>>
 										<?php
@@ -238,7 +238,7 @@ function surbma_gpga_settings_page() {
 					    		</div>
 							</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupbuttonsize]"><?php _e( 'Button Size', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupbuttonsize]"><?php _e( 'Button Size', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<select class="uk-select" name="surbma_gpga_fields[popupbuttonsize]"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>>
 										<?php
@@ -260,7 +260,7 @@ function surbma_gpga_settings_page() {
 					    		</div>
 							</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupbuttonalignment]"><?php _e( 'Button Alignment', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupbuttonalignment]"><?php _e( 'Button Alignment', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<select class="uk-select" name="surbma_gpga_fields[popupbuttonalignment]"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>>
 										<?php
@@ -282,11 +282,11 @@ function surbma_gpga_settings_page() {
 					    		</div>
 							</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
-								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gpga' ); ?></p>
+								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<?php } ?>
-							<h4 class="uk-heading-divider"><?php _e( 'Design Settings', 'surbma-gpga' ); ?></h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Design Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupthemes]"><?php _e( 'Theme', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupthemes]"><?php _e( 'Theme', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<select class="uk-select" name="surbma_gpga_fields[popupthemes]"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>>
 										<?php
@@ -308,10 +308,10 @@ function surbma_gpga_settings_page() {
 					    		</div>
 							</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<div class="uk-form-label"><?php _e( 'Display options', 'surbma-gpga' ); ?></div>
+								<div class="uk-form-label"><?php _e( 'Display options', 'surbma-gdpr-proof-google-analytics' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
-										<?php _e( 'Dark mode', 'surbma-gpga' ); ?>:
+										<?php _e( 'Dark mode', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $popupdarkmodeValue = isset( $options['popupdarkmode'] ) ? $options['popupdarkmode'] : 0; ?>
 											<input id="surbma_gpga_fields[popupdarkmode]" name="surbma_gpga_fields[popupdarkmode]" type="checkbox" value="1" <?php checked( '1', $popupdarkmodeValue); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
@@ -319,7 +319,7 @@ function surbma_gpga_settings_page() {
 										</label>
 									</p>
 									<p class="switch-wrap">
-										<?php _e( 'Center text alignment', 'surbma-gpga' ); ?>:
+										<?php _e( 'Center text alignment', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $popupcentertextValue = isset( $options['popupcentertext'] ) ? $options['popupcentertext'] : 0; ?>
 											<input id="surbma_gpga_fields[popupcentertext]" name="surbma_gpga_fields[popupcentertext]" type="checkbox" value="1" <?php checked( '1', $popupcentertextValue); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
@@ -327,7 +327,7 @@ function surbma_gpga_settings_page() {
 										</label>
 									</p>
 									<p class="switch-wrap">
-										<?php _e( 'Vertically center the Popup', 'surbma-gpga' ); ?>:
+										<?php _e( 'Vertically center the Popup', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $popupverticalcenterValue = isset( $options['popupverticalcenter'] ) ? $options['popupverticalcenter'] : 0; ?>
 											<input id="surbma_gpga_fields[popupverticalcenter]" name="surbma_gpga_fields[popupverticalcenter]" type="checkbox" value="1" <?php checked( '1', $popupverticalcenterValue); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
@@ -335,7 +335,7 @@ function surbma_gpga_settings_page() {
 										</label>
 									</p>
 									<p class="switch-wrap">
-										<?php _e( 'Large modifier', 'surbma-gpga' ); ?>:
+										<?php _e( 'Large modifier', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $popuplargeValue = isset( $options['popuplarge'] ) ? $options['popuplarge'] : 0; ?>
 											<input id="surbma_gpga_fields[popuplarge]" name="surbma_gpga_fields[popuplarge]" type="checkbox" value="1" <?php checked( '1', $popuplargeValue); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
@@ -345,14 +345,14 @@ function surbma_gpga_settings_page() {
 					    		</div>
 							</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
-							<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gpga' ); ?></p>
+							<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<?php } ?>
-							<h4 class="uk-heading-divider"><?php _e( 'Other Settings', 'surbma-gpga' ); ?></h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Other Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin">
-								<div class="uk-form-label"><?php _e( 'Close options', 'surbma-gpga' ); ?></div>
+								<div class="uk-form-label"><?php _e( 'Close options', 'surbma-gdpr-proof-google-analytics' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
-										<?php _e( 'Close button in popup', 'surbma-gpga' ); ?>:
+										<?php _e( 'Close button in popup', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $popupclosebuttonValue = isset( $options['popupclosebutton'] ) ? $options['popupclosebutton'] : 0; ?>
 											<input id="surbma_gpga_fields[popupclosebutton]" name="surbma_gpga_fields[popupclosebutton]" type="checkbox" value="1" <?php checked( '1', $popupclosebuttonValue); ?> />
@@ -360,7 +360,7 @@ function surbma_gpga_settings_page() {
 										</label>
 									</p>
 									<p class="switch-wrap<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-										<?php _e( 'Close with keyboard (ESC button)', 'surbma-gpga' ); ?>:
+										<?php _e( 'Close with keyboard (ESC button)', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $popupclosekeyboardValue = isset( $options['popupclosekeyboard'] ) ? $options['popupclosekeyboard'] : 0; ?>
 											<input id="surbma_gpga_fields[popupclosekeyboard]" name="surbma_gpga_fields[popupclosekeyboard]" type="checkbox" value="1" <?php checked( '1', $popupclosekeyboardValue); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
@@ -368,50 +368,50 @@ function surbma_gpga_settings_page() {
 										</label>
 									</p>
 									<p class="switch-wrap<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-										<?php _e( 'Close with a click on the background', 'surbma-gpga' ); ?>:
+										<?php _e( 'Close with a click on the background', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $popupclosebgcloseValue = isset( $options['popupclosebgclose'] ) ? $options['popupclosebgclose'] : 0; ?>
 											<input id="surbma_gpga_fields[popupclosebgclose]" name="surbma_gpga_fields[popupclosebgclose]" type="checkbox" value="1" <?php checked( '1', $popupclosebgcloseValue); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
 											<span class="slider round"></span>
 										</label>
 									</p>
-									<p class="uk-text-meta"><?php _e( 'Popup close without <strong>Accept</strong> or <strong>Decline</strong> button click will never enable Google Analytics tracking. Popup will still load on every page.', 'surbma-gpga' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'Popup close without <strong>Accept</strong> or <strong>Decline</strong> button click will never enable Google Analytics tracking. Popup will still load on every page.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 					    		</div>
 							</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupdelay]"><?php _e( 'Popup delay', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupdelay]"><?php _e( 'Popup delay', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $popupdelayValue = isset( $options['popupdelay'] ) ? $options['popupdelay'] : 0; ?>
-									<input id="surbma_gpga_fields[popupdelay]" class="uk-input uk-form-width-small" type="number" name="surbma_gpga_fields[popupdelay]" value="<?php echo $popupdelayValue; ?>" placeholder="0"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> /> seconds
+									<input id="surbma_gpga_fields[popupdelay]" class="uk-input uk-form-width-small" type="number" name="surbma_gpga_fields[popupdelay]" value="<?php echo $popupdelayValue; ?>" placeholder="0"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> /> <?php _e( 'seconds', 'surbma-gdpr-proof-google-analytics' ); ?>
 								</div>
 							</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
-							<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gpga' ); ?></p>
+							<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<?php } ?>
-							<h4 class="uk-heading-divider"><?php _e( 'Cookie Options', 'surbma-gpga' ); ?></h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Cookie Options', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<label class="uk-form-label" for="surbma_gpga_fields[popupcookiedays]"><?php _e( 'Cookie expires in', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[popupcookiedays]"><?php _e( 'Cookie expires in', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $popupcookiedaysValue = isset( $options['popupcookiedays'] ) ? $options['popupcookiedays'] : 30; ?>
-									<input id="surbma_gpga_fields[popupcookiedays]" class="uk-input uk-form-width-small" type="number" name="surbma_gpga_fields[popupcookiedays]" value="<?php echo $popupcookiedaysValue; ?>" min="1" max="180" placeholder="30"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> /> days
+									<input id="surbma_gpga_fields[popupcookiedays]" class="uk-input uk-form-width-small" type="number" name="surbma_gpga_fields[popupcookiedays]" value="<?php echo $popupcookiedaysValue; ?>" min="1" max="180" placeholder="30"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> /> <?php _e( 'days', 'surbma-gdpr-proof-google-analytics' ); ?>
 								</div>
 							</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
-							<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gpga' ); ?></p>
+							<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<?php } ?>
-							<h4 class="uk-heading-divider"><?php _e( 'Development Options', 'surbma-gpga' ); ?></h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Development Options', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin">
-								<div class="uk-form-label"><?php _e( 'Debug Mode', 'surbma-gpga' ); ?></div>
+								<div class="uk-form-label"><?php _e( 'Debug Mode', 'surbma-gdpr-proof-google-analytics' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
-										<?php _e( 'Always show Popup', 'surbma-gpga' ); ?>:
+										<?php _e( 'Always show Popup', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $popupdebugValue = isset( $options['popupdebug'] ) ? $options['popupdebug'] : 0; ?>
 											<input id="surbma_gpga_fields[popupdebug]" name="surbma_gpga_fields[popupdebug]" type="checkbox" value="1" <?php checked( '1', $popupdebugValue); ?> />
 											<span class="slider round"></span>
 										</label>
 									</p>
-									<p class="uk-text-meta"><?php _e( 'If this option is enabled, Popup will always be visible for logged in users! The keyboard (ESC button) close is also enabled. Good for testing.', 'surbma-gpga' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'If this option is enabled, Popup will always be visible for logged in users! The keyboard (ESC button) close is also enabled. Good for testing.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 					    		</div>
 							</div>
 					    </div>
@@ -422,37 +422,37 @@ function surbma_gpga_settings_page() {
 
 					<div class="uk-card uk-card-default uk-card-hover uk-margin-bottom">
 					    <div class="uk-card-header">
-							<h3 class="uk-card-title"><?php _e( 'Google Analytics Settings', 'surbma-gpga' ); ?></h3>
+							<h3 class="uk-card-title"><?php _e( 'Google Analytics Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
 					    </div>
 					    <div class="uk-card-body">
 					    	<div class="uk-margin">
-								<label class="uk-form-label" for="surbma_gpga_fields[ga]"><?php _e( 'GA Tracking Code', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[ga]"><?php _e( 'GA Tracking Code', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $gaValue = isset( $options['ga'] ) ? $options['ga'] : ''; ?>
 									<input id="surbma_gpga_fields[ga]" class="uk-input" type="text" name="surbma_gpga_fields[ga]" value="<?php echo $gaValue; ?>" placeholder="UA-000000-00" />
-									<p class="uk-text-meta"><?php _e( 'IMPORTANT! You have to give only the UA tracking code.', 'surbma-gpga' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'IMPORTANT! You have to give only the UA tracking code.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 								</div>
 							</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<div class="uk-form-label"><?php _e( 'IP Anonymization', 'surbma-gpga' ); ?></div>
+								<div class="uk-form-label"><?php _e( 'IP Anonymization', 'surbma-gdpr-proof-google-analytics' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
-										<?php _e( 'Anonymize the IP address of the hit sent to Google Analytics', 'surbma-gpga' ); ?>:
+										<?php _e( 'Anonymize the IP address of the hit sent to Google Analytics', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1; ?>
 											<input id="surbma_gpga_fields[gaanonymizeip]" name="surbma_gpga_fields[gaanonymizeip]" type="checkbox" value="1" <?php checked( '1', $gaanonymizeipValue ); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
 											<span class="slider round"></span>
 										</label>
 									</p>
-									<p class="uk-text-meta"><?php _e( 'More information about IP anonymization: <a href="https://developers.google.com/analytics/devguides/collection/gtagjs/ip-anonymization" target="_blank"><u>IP anonymization with gtag.js</u></a>', 'surbma-gpga' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'More information about IP anonymization: <a href="https://developers.google.com/analytics/devguides/collection/gtagjs/ip-anonymization" target="_blank"><u>IP anonymization with gtag.js</u></a>', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 					    		</div>
 							</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
-								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gpga' ); ?></p>
+								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<?php } ?>
-							<h4 class="uk-heading-divider"><?php _e( 'Tracking Script Settings', 'surbma-gpga' ); ?></h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Tracking Script Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<label class="uk-form-label" for="surbma_gpga_fields[gascript]"><?php _e( 'Tracking Script Type', 'surbma-gpga' ); ?></label>
+								<label class="uk-form-label" for="surbma_gpga_fields[gascript]"><?php _e( 'Tracking Script Type', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<select class="uk-select" name="surbma_gpga_fields[gascript]"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>>
 										<?php
@@ -473,10 +473,10 @@ function surbma_gpga_settings_page() {
 					    		</div>
 							</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
-								<div class="uk-form-label"><?php _e( 'Tracking Script Loading', 'surbma-gpga' ); ?></div>
+								<div class="uk-form-label"><?php _e( 'Tracking Script Loading', 'surbma-gdpr-proof-google-analytics' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
-										<?php _e( 'Load Google Analytics tracking for <strong>logged in users</strong>', 'surbma-gpga' ); ?>:
+										<?php _e( 'Load Google Analytics tracking for <strong>logged in users</strong>', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $galoadloggedinValue = isset( $options['galoadloggedin'] ) ? $options['galoadloggedin'] : 1; ?>
 											<input id="surbma_gpga_fields[galoadloggedin]" name="surbma_gpga_fields[galoadloggedin]" type="checkbox" value="1" <?php checked( '1', $galoadloggedinValue ); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
@@ -484,7 +484,7 @@ function surbma_gpga_settings_page() {
 										</label>
 									</p>
 									<p class="switch-wrap">
-										<?php _e( 'Load Google Analytics tracking on <strong>admin pages</strong>', 'surbma-gpga' ); ?>:
+										<?php _e( 'Load Google Analytics tracking on <strong>admin pages</strong>', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $galoadadminValue = isset( $options['galoadadmin'] ) ? $options['galoadadmin'] : 1; ?>
 											<input id="surbma_gpga_fields[galoadadmin]" name="surbma_gpga_fields[galoadadmin]" type="checkbox" value="1" <?php checked( '1', $galoadadminValue ); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
@@ -492,7 +492,7 @@ function surbma_gpga_settings_page() {
 										</label>
 									</p>
 									<p class="switch-wrap">
-									<?php _e( 'Load Google Analytics tracking on <strong>login pages</strong>', 'surbma-gpga' ); ?>:
+									<?php _e( 'Load Google Analytics tracking on <strong>login pages</strong>', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $galoadloginValue = isset( $options['galoadlogin'] ) ? $options['galoadlogin'] : 1; ?>
 											<input id="surbma_gpga_fields[galoadlogin]" name="surbma_gpga_fields[galoadlogin]" type="checkbox" value="1" <?php checked( '1', $galoadloginValue ); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
@@ -502,7 +502,7 @@ function surbma_gpga_settings_page() {
 					    		</div>
 							</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
-								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gpga' ); ?></p>
+								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<?php } ?>
 					    </div>
 					    <div class="uk-card-footer">
@@ -512,21 +512,21 @@ function surbma_gpga_settings_page() {
 
 					<div class="uk-card uk-card-default uk-card-hover uk-margin-bottom">
 					    <div class="uk-card-header">
-							<h3 class="uk-card-title"><?php _e( 'General Settings', 'surbma-gpga' ); ?></h3>
+							<h3 class="uk-card-title"><?php _e( 'General Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
 					    </div>
 					    <div class="uk-card-body">
 					    	<div class="uk-margin">
-								<div class="uk-form-label"><?php _e( 'Limited Liability', 'surbma-gpga' ); ?></div>
+								<div class="uk-form-label"><?php _e( 'Limited Liability', 'surbma-gdpr-proof-google-analytics' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
-										<?php _e( 'By using this plugin, you agree, that all responsibility is yours regarding the GDPR legal compliance', 'surbma-gpga' ); ?>:
+										<?php _e( 'By using this plugin, you agree, that all responsibility is yours regarding the GDPR legal compliance', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : ''; ?>
 											<input id="surbma_gpga_fields[limitedliability]" name="surbma_gpga_fields[limitedliability]" type="checkbox" value="1" <?php checked( '1', $limitedliabilityValue ); ?> />
 											<span class="slider round"></span>
 										</label>
 									</p>
-									<p class="uk-text-meta"><?php _e( 'It is valid particularly for the title, description, texts of the buttons displaying in the popup and your cookie policy.', 'surbma-gpga' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'It is valid particularly for the title, description, texts of the buttons displaying in the popup and your cookie policy.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 					    		</div>
 							</div>
 					    </div>
@@ -542,42 +542,42 @@ function surbma_gpga_settings_page() {
 		            	<div class="uk-card-body">
 							<?php if ( $limitedliabilityValue == '' || $gaValue == '' ) { ?>
 							<div class="uk-alert-danger" uk-alert>
-								<h3><?php _e( 'Missing settings', 'surbma-gpga' ); ?></h3>
-								<p><?php _e( 'The <strong>Google Analytics Tracking Code</strong> field and the <strong>Limited Liability</strong> setting are required for the plugin to work. Please add your GA code and accept the Limited Liability setting to start using this plugin!', 'surbma-gpga' ); ?></p>
+								<h3><?php _e( 'Missing settings', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
+								<p><?php _e( 'The <strong>Google Analytics Tracking Code</strong> field and the <strong>Limited Liability</strong> setting are required for the plugin to work. Please add your GA code and accept the Limited Liability setting to start using this plugin!', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							</div>
 							<?php } ?>
-							<h3 class="uk-heading-divider"><?php _e( 'Google links', 'surbma-gpga' ); ?></h3>
+							<h3 class="uk-heading-divider"><?php _e( 'Google links', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
 							<p>
-								<a href="https://privacy.google.com/businesses/compliance/" target="_blank"><?php _e( 'How Google complies with data protection laws', 'surbma-gpga' ); ?></a>
-								<br><a href="https://www.google.com/about/company/consentstaging.html" target="_blank"><?php _e( 'EU user consent policy', 'surbma-gpga' ); ?></a>
-								<br><a href="https://www.google.com/about/company/consenthelpstaging.html" target="_blank"><?php _e( 'Help with the EU user consent policy', 'surbma-gpga' ); ?></a>
+								<a href="https://privacy.google.com/businesses/compliance/" target="_blank"><?php _e( 'How Google complies with data protection laws', 'surbma-gdpr-proof-google-analytics' ); ?></a>
+								<br><a href="https://www.google.com/about/company/consentstaging.html" target="_blank"><?php _e( 'EU user consent policy', 'surbma-gdpr-proof-google-analytics' ); ?></a>
+								<br><a href="https://www.google.com/about/company/consenthelpstaging.html" target="_blank"><?php _e( 'Help with the EU user consent policy', 'surbma-gdpr-proof-google-analytics' ); ?></a>
 							</p>
-							<h3 class="uk-heading-divider"><?php _e( 'Plugin links', 'surbma-gpga' ); ?></h3>
+							<h3 class="uk-heading-divider"><?php _e( 'Plugin links', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
 							<p>
-								<a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics" target="_blank"><?php _e( 'Official Support Forum', 'surbma-gpga' ); ?></a>
-								<br><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/" target="_blank"><?php _e( 'Read the Reviews (5 out of 5 stars)', 'surbma-gpga' ); ?></a>
+								<a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics" target="_blank"><?php _e( 'Official Support Forum', 'surbma-gdpr-proof-google-analytics' ); ?></a>
+								<br><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/" target="_blank"><?php _e( 'Read the Reviews (5 out of 5 stars)', 'surbma-gdpr-proof-google-analytics' ); ?></a>
 							</p>
 							<hr>
 							<p>
-								<strong><?php _e( 'Do you like the plugin? Please give it a five star review!', 'surbma-gpga' ); ?></strong>
-								<br><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/#new-post" target="_blank"><?php _e( 'Create Your New Review', 'surbma-gpga' ); ?></a>
+								<strong><?php _e( 'Do you like the plugin? Please give it a five star review!', 'surbma-gdpr-proof-google-analytics' ); ?></strong>
+								<br><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/#new-post" target="_blank"><?php _e( 'Create Your New Review', 'surbma-gdpr-proof-google-analytics' ); ?></a>
 							</p>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
-							<h3 class="uk-heading-divider"><?php _e( 'Get the Pro Version', 'surbma-gpga' ); ?></h3>
-							<p><?php _e( 'Unlock all options and features of GDPR Proof Google Analytics plugin! Buy the Pro version and get the most out of all display options and get more control over the tracking code! All disabled options are available in the PRO version.', 'surbma-gpga' ); ?></p>
-							<p><?php _e( '<div class="uk-alert-success" uk-alert>Use this special <strong>BEFOREGDPR</strong> coupon to get 50% OFF your first purchase, which is available till <strong>May 26, 2018</strong>. Hurry, GDPR is coming!</div>', 'surbma-gpga' ); ?></p>
-							<p><a class="uk-button uk-button-default uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-pricing"><?php _e( 'BUY Pro Version!', 'surbma-gpga' ); ?></a></p>
+							<h3 class="uk-heading-divider"><?php _e( 'Get the Pro Version', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
+							<p><?php _e( 'Unlock all options and features of GDPR Proof Google Analytics plugin! Buy the Pro version and get the most out of all display options and get more control over the tracking code! All disabled options are available in the PRO version.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<p><?php _e( '<div class="uk-alert-success" uk-alert>Use this special <strong>BEFOREGDPR</strong> coupon to get 50% OFF your first purchase, which is available till <strong>May 26, 2018</strong>. Hurry, GDPR is coming!</div>', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<p><a class="uk-button uk-button-default uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-pricing"><?php _e( 'BUY Pro Version!', 'surbma-gdpr-proof-google-analytics' ); ?></a></p>
 							<?php } ?>
 							<div class="uk-alert-primary" style="display: none;" uk-alert>
 								<a class="uk-alert-close" uk-close></a>
-								<h3><?php _e( 'Affiliate Program', 'surbma-gpga' ); ?></h3>
-								<p><?php _e( 'Do you like this plugin? Let\'s make some money by referring new customers and get 20% commission, for the lifetime of the new customers! Good deal, hah?', 'surbma-gpga' ); ?></p>
-								<p><a class="uk-button uk-button-primary uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-affiliation"><?php _e( 'Be an Affiliate!', 'surbma-gpga' ); ?></a></p>
+								<h3><?php _e( 'Affiliate Program', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
+								<p><?php _e( 'Do you like this plugin? Let\'s make some money by referring new customers and get 20% commission, for the lifetime of the new customers! Good deal, hah?', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+								<p><a class="uk-button uk-button-primary uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-affiliation"><?php _e( 'Be an Affiliate!', 'surbma-gdpr-proof-google-analytics' ); ?></a></p>
 							</div>
 			            </div>
 		    	    </div>
 					<div class="uk-card uk-card-small uk-card-secondary uk-card-body">
-		            	<p class="uk-text-right"><?php _e( 'License: GPLv2', 'surbma-gpga' ); ?></p>
+		            	<p class="uk-text-right"><?php _e( 'License: GPLv2', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 		        	</div>
 				</div>
 			</div>
