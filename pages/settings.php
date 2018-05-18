@@ -122,8 +122,19 @@ function surbma_gpga_settings_page() {
 
 ?>
 <div class="surbma-admin">
-	<?php surbma_admin_header(); ?>
+	<?php surbma_gpga_admin_header(); ?>
 	<div class="wrap">
+		<?php /*
+		<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
+			<div class="uk-card-header">
+				<h3 class="uk-card-title"><?php _e( 'NEW PLUGIN RELEASED: Surbma - GDPR Proof Cookies', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
+		    </div>
+			<div class="uk-card-body">
+				<p><?php _e( '<p><strong>The Surbma - GDPR Proof Google Analytics plugin will no longer be updated! But it is good news!</strong></p><p>I have created a new plugin, that will continue all its features and giving much more to this plugin. The <strong>Surbma - GDPR Proof Cookies</strong> plugin will give you the same feature and add more services, like Facebook Pixel, Remarketing, HotJar and more.</p><p>When you activate the new plugin, it will inherit all your settings, so you can continue with the same settings. You have to deactivate Surbma - GDPR Proof Google Analytics plugin first and than activate the new <strong>Surbma - GDPR Proof Cookies</strong> plugin.</p><p>Download the new plugin by clicking on this button:</p><p><a class="uk-button uk-button-large uk-button-danger" href="https://surbma.com/surbma-gdpr-proof-cookies.zip" target="_blank">Download Surbma - GDPR Proof Cookies »</a></p><p>(The new plugin is not yet published in the official WordPress plugin directory, because both plugins can not be in the repository at the same time.)</p><p>Install the downloaded zip file to your website and activate it. Don\'t forget to deactivate the Surbma - GDPR Proof Google Analytics plugin!</p>', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+				<p><?php _e( '<p><strong>FOR PRO USERS!</strong></p><p>Please email me, when you activated the new Surbma - GDPR Proof Cookies plugin and I will set the same plan for the new plugin and provide a new license key for you for free. So you can enjoy all the extended features for free. :)</p>', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+			</div>
+		</div>
+		*/ ?>
 		<div class="uk-grid-small" uk-grid>
 			<div class="uk-width-3-4@m">
 				<form class="uk-form-horizontal" method="post" action="options.php">
@@ -584,7 +595,7 @@ function surbma_gpga_settings_page() {
 		</div>
 		<div class="uk-margin-bottom" id="bottom"></div>
 	</div>
-	<?php surbma_admin_footer(); ?>
+	<?php surbma_gpga_admin_footer(); ?>
 </div>
 <?php
 }

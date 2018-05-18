@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Google Analytics
 Plugin URI: https://surbma.com/wordpress-plugins/
 Description: Adds a GDPR compatible Google Analytics tracking to your website.
 
-Version: 6.2
+Version: 6.3
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -76,6 +76,7 @@ surbma_gpga_fs()->add_filter('connect_message_on_update', 'surbma_gpga_fs_custom
 
 define( 'SURBMA_GPGA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SURBMA_GPGA_PLUGIN_URL', plugins_url( '', __FILE__ ) );
+define( 'SURBMA_GPGA_PLUGIN_FILE', __FILE__ );
 
 // Localization
 function surbma_gpga_init() {

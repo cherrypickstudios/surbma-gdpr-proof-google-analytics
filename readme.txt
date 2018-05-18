@@ -4,7 +4,7 @@ Donate link: https://surbma.com/donate/
 Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cookie law, cookies, eu cookie
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 6.2
+Stable tag: 6.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,11 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 6.3 =
+
+- FIX - Fixed method to get plugin info. It was generating errors for Pro users.
+- TWEAK - New UIkit version added for the admin area.
 
 = 6.2 =
 
