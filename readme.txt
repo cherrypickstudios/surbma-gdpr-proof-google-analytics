@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 7.0
+Stable tag: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,11 +13,35 @@ This plugin helps your website to comply with GDPR cookie regulations by asking 
 
 == Description ==
 
+>USE **BEFOREGDPR** COUPON CODE FOR 50% OFF FROM YOUR FIRST PURCHASE TILL MAY 26, 2018!
+
 This plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookie tracking. If visitor choose to decline, than no visitor data will be sent to third party services. If visitor accepts tracking, than data will be sent to third parties. So visitors can choose to be tracked or not, before they visit any page of the website.
 
-The Surbma - GDPR Proof Cookies plugin is a clone from my original Surbma - GDPR Proof Google Analytics plugin. So it is now supporting only Google Analytics tracking, but it will soon support Facebook Pixel, Google Remarketing, HotJar and other popular services also. It will even support custom codes also. Websites, where my Surbma - GDPR Proof Google Analytics plugin have already installed and used will be inheriting all settings, so every website will be the same as with the previous plugin. You have to deactivate my Surbma - GDPR Proof Google Analytics plugin first.
+The Surbma - GDPR Proof Cookies plugin is born from my original Surbma - GDPR Proof Google Analytics plugin. It is now supporting only Google Analytics tracking, but it will soon support Facebook Pixel, Google Remarketing, HotJar and other popular services also. It will even support custom codes also.
 
 The cookie saved by this plugin is not storing any sensitive personal data, it is storing only two fix values: "yes" or "no". This cookie management is GDPR proof, as it is impossible to identify any user with the cookie data. Cookies will expire in 30 days by default.
+
+#### Limited Liability
+
+>This plugin does not substitute any legal adequacy. Texts, that are displayed in the popup is edited by the user of this plugin and I do not take any responsibility regarding GDPR adequacy or change.
+
+#### Free version features
+
+* Cookie settings link with shortcode
+* Cookie Policy
+* Developer Friendly
+* WPML Compatible
+
+#### Additional features in the Pro version
+
+* Full Customizations
+* Cookie Policy Link
+* Themes
+* Full Cookie Control
+* Google Analytics IP Anonymization
+* Google Analytics Tracking Code Customizations
+
+#### Features in details
 
 **Cookie Settings Link:**
 There is a shortcode, that will place a link in your content. Clicking on the link will open the Cookie Popup again, and users can change their settings about the Cookie trackings.
@@ -25,15 +49,12 @@ There is a shortcode, that will place a link in your content. Clicking on the li
 This is the shortcode: `[surbma-cookie-popup-link]`
 
 It has 2 attributes:
-- class - You can set the class of the link, so you can easily create a button like link.
-- text - You can change the default text of the link, which is "Open Cookie Settings".
+`class` - You can set the class of the link, so you can easily create a button like link.
+`text` - You can change the default text of the link, which is "Open Cookie Settings".
 
 Examples:
-- `[surbma-cookie-popup-link text="I've changed my mind about Cookie settings."]`
-- `[surbma-cookie-popup-link class="button" text="Please show me the Cookie settings again!"]`
-
-**Limited Liability:**
-This plugin does not substitute any legal adequacy. Texts, that are displayed in the popup is edited by the user of this plugin and I do not take any responsibility regarding GDPR adequacy or change.
+`[surbma-cookie-popup-link text="I've changed my mind about Cookie settings."]`
+`[surbma-cookie-popup-link class="button" text="Please show me the Cookie settings again!"]`
 
 **Cookie Policy:**
 Set your Cookie Policy page, where the popup won't load for visitors. Cookie tracking codes are not loading on this page!
@@ -43,10 +64,6 @@ If you enable debug mode, popup will show always, on every refresh, so you can t
 
 **WPML Compatible:**
 If you have a multilingual website, you can set the texts for each language with WPML String Translation add-on.
-
-**PRO VERSION**
-
-USE `BEFOREGDPR` COUPON CODE FOR 20% OFF FROM YOUR FIRST PURCHASE TILL MAY 26, 2018!
 
 **Full Customizations:**
 Every text is customizable, even the button's texts! You can also set the design of the buttons.
@@ -66,6 +83,8 @@ You might need to disable IP Anonymization of the hit sent to Google Analytics. 
 **Google Analytics Tracking Code Customizations:**
 Choose between gtag.js framework or analytics.js library. You can also set, if you want to track logged in users or the admin area.
 
+#### About Surbma
+
 **You can find my other plugins and projects on GitHub:**
 
 [https://github.com/Surbma](https://github.com/Surbma)
@@ -74,11 +93,11 @@ Please feel free to contribute, help or recommend any new features for my plugin
 
 **Do you want to know more about me?**
 
-Visit my webpage: [Surbma.com](http://surbma.com/)
+Visit my webpage: [Surbma.com](https://surbma.com/)
 
 **Do you like and use my free plugins?**
 
-You can donate me for FREE here: [Surbma.com](http://surbma.com/donate/)
+You can donate me for FREE here: [Surbma.com](https://surbma.com/donate/)
 
 == Installation ==
 
@@ -99,6 +118,10 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 7.1 =
+
+- ENHANCED - Description text modified.
 
 = 7.0 =
 
