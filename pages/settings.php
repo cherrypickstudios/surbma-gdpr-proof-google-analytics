@@ -124,28 +124,17 @@ function surbma_gpga_settings_page() {
 <div class="surbma-admin">
 	<?php surbma_gpga_admin_header(); ?>
 	<div class="wrap">
-		<?php /*
-		<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
-			<div class="uk-card-header">
-				<h3 class="uk-card-title"><?php _e( 'NEW PLUGIN RELEASED: Surbma - GDPR Proof Cookies', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
-		    </div>
-			<div class="uk-card-body">
-				<p><?php _e( '<p><strong>The Surbma - GDPR Proof Google Analytics plugin will no longer be updated! But it is good news!</strong></p><p>I have created a new plugin, that will continue all its features and giving much more to this plugin. The <strong>Surbma - GDPR Proof Cookies</strong> plugin will give you the same feature and add more services, like Facebook Pixel, Remarketing, HotJar and more.</p><p>When you activate the new plugin, it will inherit all your settings, so you can continue with the same settings. You have to deactivate Surbma - GDPR Proof Google Analytics plugin first and than activate the new <strong>Surbma - GDPR Proof Cookies</strong> plugin.</p><p>Download the new plugin by clicking on this button:</p><p><a class="uk-button uk-button-large uk-button-danger" href="https://surbma.com/surbma-gdpr-proof-cookies.zip" target="_blank">Download Surbma - GDPR Proof Cookies »</a></p><p>(The new plugin is not yet published in the official WordPress plugin directory, because both plugins can not be in the repository at the same time.)</p><p>Install the downloaded zip file to your website and activate it. Don\'t forget to deactivate the Surbma - GDPR Proof Google Analytics plugin!</p>', 'surbma-gdpr-proof-google-analytics' ); ?></p>
-				<p><?php _e( '<p><strong>FOR PRO USERS!</strong></p><p>Please email me, when you activated the new Surbma - GDPR Proof Cookies plugin and I will set the same plan for the new plugin and provide a new license key for you for free. So you can enjoy all the extended features for free. :)</p>', 'surbma-gdpr-proof-google-analytics' ); ?></p>
-			</div>
-		</div>
-		*/ ?>
 		<div class="uk-grid-small" uk-grid>
-			<div class="uk-width-3-4@m">
+			<div class="uk-width-4-5@l">
 				<form class="uk-form-horizontal" method="post" action="options.php">
 					<?php settings_fields( 'surbma_gpga_options' ); ?>
 					<?php $options = get_option( 'surbma_gpga_fields' ); ?>
 
-					<div class="uk-card uk-card-default uk-card-hover uk-margin-bottom">
-					    <div class="uk-card-header">
-							<h3 class="uk-card-title"><?php _e( 'Popup Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
+					<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
+					    <div class="uk-card-header uk-background-muted">
+							<h3 class="uk-card-title"><?php _e( 'Popup Settings', 'surbma-gdpr-proof-google-analytics' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #popup-settings"></a></h3>
 					    </div>
-					    <div class="uk-card-body">
+					    <div id="popup-settings" class="uk-card-body">
 							<h4 class="uk-heading-divider"><?php _e( 'Content', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[popuptitle]"><?php _e( 'Title', 'surbma-gdpr-proof-google-analytics' ); ?></label>
@@ -426,16 +415,16 @@ function surbma_gpga_settings_page() {
 					    		</div>
 							</div>
 					    </div>
-					    <div class="uk-card-footer">
+					    <div class="uk-card-footer uk-background-muted">
 							<p><input type="submit" class="uk-button uk-button-primary" value="<?php _e( 'Save Changes' ); ?>" /></p>
 						</div>
 					</div>
 
-					<div class="uk-card uk-card-default uk-card-hover uk-margin-bottom">
-					    <div class="uk-card-header">
-							<h3 class="uk-card-title"><?php _e( 'Google Analytics Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
+					<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
+						<div class="uk-card-header uk-background-muted">
+							<h3 class="uk-card-title"><?php _e( 'Google Analytics Settings', 'surbma-gdpr-proof-google-analytics' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #ga-settings"></a></h3>
 					    </div>
-					    <div class="uk-card-body">
+					    <div id="ga-settings" class="uk-card-body">
 					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[ga]"><?php _e( 'GA Tracking Code', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
@@ -516,16 +505,16 @@ function surbma_gpga_settings_page() {
 								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<?php } ?>
 					    </div>
-					    <div class="uk-card-footer">
+					    <div class="uk-card-footer uk-background-muted">
 							<p><input type="submit" class="uk-button uk-button-primary" value="<?php _e( 'Save Changes' ); ?>" /></p>
 						</div>
 					</div>
 
-					<div class="uk-card uk-card-default uk-card-hover uk-margin-bottom">
-					    <div class="uk-card-header">
-							<h3 class="uk-card-title"><?php _e( 'General Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
+					<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
+					    <div class="uk-card-header uk-background-muted">
+							<h3 class="uk-card-title"><?php _e( 'General Settings', 'surbma-gdpr-proof-google-analytics' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #general-settings"></a></h3>
 					    </div>
-					    <div class="uk-card-body">
+					    <div id="general-settings" class="uk-card-body">
 					    	<div class="uk-margin">
 								<div class="uk-form-label"><?php _e( 'Limited Liability', 'surbma-gdpr-proof-google-analytics' ); ?></div>
 								<div class="uk-form-controls">
@@ -541,40 +530,63 @@ function surbma_gpga_settings_page() {
 					    		</div>
 							</div>
 					    </div>
-					    <div class="uk-card-footer">
+					    <div class="uk-card-footer uk-background-muted">
 							<p><input type="submit" class="uk-button uk-button-primary" value="<?php _e( 'Save Changes' ); ?>" /></p>
 						</div>
 					</div>
 				</form>
 			</div>
-			<div class="uk-width-1-4@m">
+			<div class="uk-width-1-5@l">
 				<div uk-sticky="offset: 42; bottom: #bottom">
-			        <div class="uk-card uk-card-small uk-card-default">
-		            	<div class="uk-card-body">
-							<?php if ( $limitedliabilityValue == '' || $gaValue == '' ) { ?>
+					<div class="uk-card uk-card-small uk-card-default uk-card-hover">
+						<div class="uk-card-header uk-background-muted">
+							<h3 class="uk-card-title"><?php _e( 'Informations', 'surbma-gdpr-proof-google-analytics' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #informations"></a></h3>
+					    </div>
+		            	<div id="informations" class="uk-card-body">
+							<?php if ( $limitedliabilityValue == '' ) { ?>
 							<div class="uk-alert-danger" uk-alert>
-								<h3><?php _e( 'Missing settings', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
-								<p><?php _e( 'The <strong>Google Analytics Tracking Code</strong> field and the <strong>Limited Liability</strong> setting are required for the plugin to work. Please add your GA code and accept the Limited Liability setting to start using this plugin!', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+								<h4><?php _e( 'Missing settings', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
+								<p><?php _e( 'The <strong>Limited Liability</strong> setting is required for the plugin to work. Please accept the Limited Liability setting to start using this plugin!', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							</div>
 							<?php } ?>
-							<h3 class="uk-heading-divider"><?php _e( 'Google links', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
-							<p>
-								<a href="https://privacy.google.com/businesses/compliance/" target="_blank"><?php _e( 'How Google complies with data protection laws', 'surbma-gdpr-proof-google-analytics' ); ?></a>
-								<br><a href="https://www.google.com/about/company/consentstaging.html" target="_blank"><?php _e( 'EU user consent policy', 'surbma-gdpr-proof-google-analytics' ); ?></a>
-								<br><a href="https://www.google.com/about/company/consenthelpstaging.html" target="_blank"><?php _e( 'Help with the EU user consent policy', 'surbma-gdpr-proof-google-analytics' ); ?></a>
-							</p>
-							<h3 class="uk-heading-divider"><?php _e( 'Plugin links', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
-							<p>
-								<a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics" target="_blank"><?php _e( 'Official Support Forum', 'surbma-gdpr-proof-google-analytics' ); ?></a>
-								<br><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/" target="_blank"><?php _e( 'Read the Reviews (5 out of 5 stars)', 'surbma-gdpr-proof-google-analytics' ); ?></a>
-							</p>
+							<h4 class="uk-heading-divider"><?php _e( 'Shortcodes', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
+							<p><code>[surbma-cookie-popup-link]</code></p>
+							<p>It will place a link in your content. Clicking on the link will open the Cookie Popup again, and users can change their settings about the Cookie trackings.</p>
+							<p><strong>It has 2 attributes:</strong></p>
+							<ul class="uk-list">
+								<li><code>class</code> - You can set the class of the link, so you can easily create a button like link.</li>
+								<li><code>text</code> - You can change the default text of the link, which is "Open Cookie Settings".</li>
+							</ul>
+							<p><strong>Examples:</strong></p>
+							<ul class="uk-list">
+								<li><code style="white-space: normal;">[surbma-cookie-popup-link text="I've changed my mind about Cookie settings."]</code></li>
+								<li><code style="white-space: normal;">[surbma-cookie-popup-link class="button" text="Please show me the Cookie settings again!"]</code></li>
+							</ul>
+							<h4 class="uk-heading-divider"><?php _e( 'Google links', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
+							<ul class="uk-list">
+								<li><a href="https://privacy.google.com/businesses/compliance/" target="_blank"><?php _e( 'How Google complies with data protection laws', 'surbma-gdpr-proof-google-analytics' ); ?></a></li>
+								<li><a href="https://www.google.com/about/company/consentstaging.html" target="_blank"><?php _e( 'EU user consent policy', 'surbma-gdpr-proof-google-analytics' ); ?></a></li>
+								<li><a href="https://www.google.com/about/company/consenthelpstaging.html" target="_blank"><?php _e( 'Help with the EU user consent policy', 'surbma-gdpr-proof-google-analytics' ); ?></a></li>
+							</ul>
+							<h4 class="uk-heading-divider"><?php _e( 'Plugin links', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
+							<ul class="uk-list">
+								<li><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics" target="_blank"><?php _e( 'Official Support Forum', 'surbma-gdpr-proof-google-analytics' ); ?></a></li>
+								<li><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/" target="_blank"><?php _e( 'Read the Reviews (5 out of 5 stars)', 'surbma-gdpr-proof-google-analytics' ); ?></a></li>
+							</ul>
+							<h4 class="uk-heading-divider"><?php _e( 'Upcoming features', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
+							<ul class="uk-list">
+								<li><span uk-icon="icon: check; ratio: 0.8"></span> Modest snackbar before popup display, so the first time is not that aggressive.</li>
+								<li><span uk-icon="icon: check; ratio: 0.8"></span> More tracking services: Facebook Pixel, AdWords Remarketing, HotJar and more.</li>
+								<li><span uk-icon="icon: check; ratio: 0.8"></span> Cookie categories: necessary, performance, marketing, statistics</li>
+								<li><span uk-icon="icon: check; ratio: 0.8"></span> Individual opt-in & opt-out by Cookie categories.</li>
+							</ul>
 							<hr>
 							<p>
 								<strong><?php _e( 'Do you like the plugin? Please give it a five star review!', 'surbma-gdpr-proof-google-analytics' ); ?></strong>
 								<br><a href="https://wordpress.org/support/plugin/surbma-gdpr-proof-google-analytics/reviews/#new-post" target="_blank"><?php _e( 'Create Your New Review', 'surbma-gdpr-proof-google-analytics' ); ?></a>
 							</p>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
-							<h3 class="uk-heading-divider"><?php _e( 'Get the Pro Version', 'surbma-gdpr-proof-google-analytics' ); ?></h3>
+							<h4 class="uk-heading-divider"><?php _e( 'Get the Pro Version', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 							<p><?php _e( 'Unlock all options and features of GDPR Proof Google Analytics plugin! Buy the Pro version and get the most out of all display options and get more control over the tracking code! All disabled options are available in the PRO version.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<p><?php _e( '<div class="uk-alert-success" uk-alert>Use this special <strong>BEFOREGDPR</strong> coupon to get 50% OFF your first purchase, which is available till <strong>May 26, 2018</strong>. Hurry, GDPR is coming!</div>', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<p><a class="uk-button uk-button-default uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-pricing"><?php _e( 'BUY Pro Version!', 'surbma-gdpr-proof-google-analytics' ); ?></a></p>
@@ -586,10 +598,10 @@ function surbma_gpga_settings_page() {
 								<p><a class="uk-button uk-button-primary uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-affiliation"><?php _e( 'Be an Affiliate!', 'surbma-gdpr-proof-google-analytics' ); ?></a></p>
 							</div>
 			            </div>
+					    <div class="uk-card-footer uk-background-muted">
+		            		<p class="uk-text-right"><?php _e( 'License: GPLv2', 'surbma-gdpr-proof-cookies' ); ?></p>
+						</div>
 		    	    </div>
-					<div class="uk-card uk-card-small uk-card-secondary uk-card-body">
-		            	<p class="uk-text-right"><?php _e( 'License: GPLv2', 'surbma-gdpr-proof-google-analytics' ); ?></p>
-		        	</div>
 				</div>
 			</div>
 		</div>
