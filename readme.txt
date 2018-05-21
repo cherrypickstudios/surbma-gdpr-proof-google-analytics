@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 8.0
+Stable tag: 9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,7 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 ### Free version features
 
 * Simple Cookie Policy popup (if no tracking or marketing cookies are used on your website)
+* Cookie Scan page
 * Cookie settings link with shortcode
 * Cookie Policy
 * Developer Friendly
@@ -45,6 +46,12 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 * Google Analytics Tracking Code Customizations
 
 ### Features in details
+
+#### Simple Cookie Policy popup
+If you don't have such cookies on your website, that need visitor consent, you can use this plugin as a simple Cookie Policy popup, so you can inform your visitors about the cookies you use. It will show your informations in a beautiful popup and a link to your Cookie Policy page.
+
+#### Cookie Scan page
+This page will display all the saved cookies for you, so you can see, what cookies are used in your website.
 
 #### Cookie Settings Link
 There is a shortcode, that will place a link in your content. Clicking on the link will open the Cookie Popup again, and users can change their settings about the Cookie trackings.
@@ -121,6 +128,11 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 9.0 =
+
+- NEW - Cookie Scan page added. This page will display all the saved cookies for you, so you can see, what cookies are used in your website.
+- FIX - Some texts were not set for localization. They all fixed.
 
 = 8.0 =
 

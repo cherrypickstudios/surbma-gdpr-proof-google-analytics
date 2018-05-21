@@ -551,13 +551,13 @@ function surbma_gpga_settings_page() {
 							<?php } ?>
 							<h4 class="uk-heading-divider"><?php _e( 'Shortcodes', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 							<p><code>[surbma-cookie-popup-link]</code></p>
-							<p>It will place a link in your content. Clicking on the link will open the Cookie Popup again, and users can change their settings about the Cookie trackings.</p>
-							<p><strong>It has 2 attributes:</strong></p>
+							<p><?php _e( 'It will place a link in your content. Clicking on the link will open the Cookie Popup again, and users can change their settings about the Cookie trackings.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<p><strong><?php _e( 'It has 2 attributes', 'surbma-gdpr-proof-google-analytics' ); ?>:</strong></p>
 							<ul class="uk-list">
-								<li><code>class</code> - You can set the class of the link, so you can easily create a button like link.</li>
-								<li><code>text</code> - You can change the default text of the link, which is "Open Cookie Settings".</li>
+								<li><code>class</code> - <?php _e( 'You can set the class of the link, so you can easily create a button like link.', 'surbma-gdpr-proof-google-analytics' ); ?></li>
+								<li><code>text</code> - <?php _e( 'You can change the default text of the link, which is "Open Cookie Settings".', 'surbma-gdpr-proof-google-analytics' ); ?></li>
 							</ul>
-							<p><strong>Examples:</strong></p>
+							<p><strong><?php _e( 'Examples', 'surbma-gdpr-proof-google-analytics' ); ?>:</strong></p>
 							<ul class="uk-list">
 								<li><code style="white-space: normal;">[surbma-cookie-popup-link text="I've changed my mind about Cookie settings."]</code></li>
 								<li><code style="white-space: normal;">[surbma-cookie-popup-link class="button" text="Please show me the Cookie settings again!"]</code></li>
