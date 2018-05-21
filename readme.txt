@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 7.2
+Stable tag: 8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,8 @@ This plugin helps your website to comply with GDPR cookie regulations by asking 
 
 This plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookie tracking. If visitor choose to decline, than no visitor data will be sent to third party services. If visitor accepts tracking, than data will be sent to third parties. So visitors can choose to be tracked or not, before they visit any page of the website.
 
+This plugin can be used as a simple Cookie Policy plugin, if you don't have any tracking or marketing cookies on your website. Simple and beautiful solution for all websites.
+
 The Surbma - GDPR Proof Cookies plugin is born from my original Surbma - GDPR Proof Google Analytics plugin. It is now supporting only Google Analytics tracking, but it will soon support Facebook Pixel, Google Remarketing, HotJar and other popular services also. It will even support custom codes also.
 
 The cookie saved by this plugin is not storing any sensitive personal data, it is storing only two fix values: "yes" or "no". This cookie management is GDPR proof, as it is impossible to identify any user with the cookie data. Cookies will expire in 30 days by default.
@@ -27,6 +29,7 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 
 ### Free version features
 
+* Simple Cookie Policy popup (if no tracking or marketing cookies are used on your website)
 * Cookie settings link with shortcode
 * Cookie Policy
 * Developer Friendly
@@ -118,6 +121,10 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 8.0 =
+
+- NEW - The popup is loading now, even if no Google Analytics code has been added. So the plugin is working as a simple cookie policy popup.
 
 = 7.2 =
 
