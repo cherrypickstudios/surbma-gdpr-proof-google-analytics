@@ -4,6 +4,7 @@
             <key name="popuptitle" />
             <key name="popuptext" />
             <key name="popupcookiepolicytext" />
+            <key name="popupcookiepolicypage" />
             <key name="popupbutton1text" />
             <key name="popupbutton2text" />
         </key>

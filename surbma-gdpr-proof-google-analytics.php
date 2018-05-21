@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Cookies
 Plugin URI: https://surbma.com/wordpress-plugins/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 7.1
+Version: 7.2
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -92,7 +92,7 @@ if ( is_admin() ) {
 function surbma_gpga_activated() {
 	$defaultfields = get_option( 'surbma_gpga_fields' );
 	if ( !$defaultfields ) {
-		$defaultfields['popuptitle'] = 'We are using tracking codes';
+		$defaultfields['popuptitle'] = 'We are using cookies on our website';
 		$defaultfields['popuptext'] = 'Please confirm, if you accept our tracking cookies. You can also decline the tracking, so you can continue to visit our website without any data sent to third party services.';
 		$defaultfields['popupbutton1text'] = 'Decline';
 		$defaultfields['popupbutton1style'] = 'default';
@@ -274,7 +274,7 @@ function surbma_gpga_block() {
 			}, <?php echo $popupdelayValue; ?>);
 		}
 		// console.log('show_modal = '+show_modal);
-		$snackContent = '<a href="#"></a><?php echo $popuptextValue; ?>';
+		// $snackContent = '<a href="#"></a>';
 		// https://www.polonel.com/snackbar/
 		// Snackbar.show({
 		// 	text: $snackContent,

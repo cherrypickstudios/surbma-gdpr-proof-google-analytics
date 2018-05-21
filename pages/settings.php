@@ -174,7 +174,7 @@ function surbma_gpga_settings_page() {
 										);
 										wp_dropdown_pages( $args );
 									?>
-									<p class="uk-text-meta"><?php _e( 'The Popup and the Google Analytics tracking codes are not loading on the selected page. You can use this page to show your cookie policy.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'The Popup and the tracking codes are not loading on the selected page. You can use this page to show your Cookie Policy.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 					    		</div>
 					    	</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
@@ -375,7 +375,7 @@ function surbma_gpga_settings_page() {
 											<span class="slider round"></span>
 										</label>
 									</p>
-									<p class="uk-text-meta"><?php _e( 'Popup close without <strong>Accept</strong> or <strong>Decline</strong> button click will never enable Google Analytics tracking. Popup will still load on every page.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'Popup close without <strong>Accept</strong> or <strong>Decline</strong> button click will never enable tracking. Popup will still load on every page.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 					    		</div>
 							</div>
 					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
@@ -587,7 +587,7 @@ function surbma_gpga_settings_page() {
 							</p>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
 							<h4 class="uk-heading-divider"><?php _e( 'Get the Pro Version', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
-							<p><?php _e( 'Unlock all options and features of GDPR Proof Google Analytics plugin! Buy the Pro version and get the most out of all display options and get more control over the tracking code! All disabled options are available in the PRO version.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<p><?php _e( 'Unlock all options and features of GDPR Proof Cookies plugin! Buy the Pro version and get the most out of all display options and get more control over the tracking code! All disabled options are available in the PRO version.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<p><?php _e( '<div class="uk-alert-success" uk-alert>Use this special <strong>BEFOREGDPR</strong> coupon to get 50% OFF your first purchase, which is available till <strong>May 26, 2018</strong>. Hurry, GDPR is coming!</div>', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<p><a class="uk-button uk-button-default uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-pricing"><?php _e( 'BUY Pro Version!', 'surbma-gdpr-proof-google-analytics' ); ?></a></p>
 							<?php } ?>
