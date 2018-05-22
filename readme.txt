@@ -5,9 +5,9 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 9.0
+Stable tag: 9.1
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookie tracking.
 
@@ -29,21 +29,21 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 
 ### Free version features
 
-* Simple Cookie Policy popup (if no tracking or marketing cookies are used on your website)
-* Cookie Scan page
-* Cookie settings link with shortcode
-* Cookie Policy
-* Developer Friendly
-* WPML Compatible
+- Simple Cookie Policy popup (if no tracking or marketing cookies are used on your website)
+- Cookie Scan page
+- Cookie settings link with shortcode
+- Cookie Policy
+- Developer Friendly
+- WPML Compatible
 
 ### Additional features in the Pro version
 
-* Full Customizations
-* Cookie Policy Link
-* Themes
-* Full Cookie Control
-* Google Analytics IP Anonymization
-* Google Analytics Tracking Code Customizations
+- Full Customizations
+- Cookie Policy Link
+- Themes
+- Full Cookie Control
+- Google Analytics IP Anonymization
+- Google Analytics Tracking Code Customizations
 
 ### Features in details
 
@@ -63,8 +63,8 @@ It has 2 attributes:
 `text` - You can change the default text of the link, which is "Open Cookie Settings".
 
 Examples:
-`[surbma-cookie-popup-link text="I've changed my mind about Cookie settings."]`
-`[surbma-cookie-popup-link class="button" text="Please show me the Cookie settings again!"]`
+    `[surbma-cookie-popup-link text="I've changed my mind about Cookie settings."]`
+    `[surbma-cookie-popup-link class="button" text="Please show me the Cookie settings again!"]`
 
 #### Cookie Policy
 Set your Cookie Policy page, where the popup won't load for visitors. Cookie tracking codes are not loading on this page!
@@ -129,28 +129,29 @@ It is the reverse version of my last name. ;)
 
 == Changelog ==
 
-= 9.0 =
+= 9.1 =
+- FIX - Cookie Popup will load on Cookie Policy page with the [surbma-cookie-popup-link] shortcode.
+- FIX - Popup close X button format, to prevent underline text decoration.
+- ENHANCED - Google Analytics code will load on Cookie Policy page, if tracking is enabled.
+- ENHANCED - The whole script is embed in the condition to load or not.
 
+= 9.0 =
 - NEW - Cookie Scan page added. This page will display all the saved cookies for you, so you can see, what cookies are used in your website.
 - FIX - Some texts were not set for localization. They all fixed.
 
 = 8.0 =
-
 - NEW - The popup is loading now, even if no Google Analytics code has been added. So the plugin is working as a simple cookie policy popup.
 
 = 7.2 =
-
 - NEW - Added Cookie Policy page setting to WPML config, so you can set the page for all languages. The page ID must be used as a "translation".
 - ENHANCED - Description text modified.
 - FIX - Replaced old plugin names in admin area.
 - FIX - Future snackbar script conflict removed.
 
 = 7.1 =
-
 - ENHANCED - Description text modified.
 
 = 7.0 =
-
 - NEW - Changed plugin name: Surbma - GDPR Proof Cookies
 - This is the new version of my previous Surbma - GDPR Proof Google Analytics plugin, which will add Google Remarketing, Facebook Pixel, Hotjar and other services. It will be a complete cookie management solution for WordPress.
 - NEW - Shortcode, that can be used to give users the possibility to change their settings: [surbma-cookie-popup-link]
@@ -158,20 +159,16 @@ It is the reverse version of my last name. ;)
 - TWEAK - Modified admin area look. Preparing for the upcoming new features.
 
 = 6.3 =
-
 - FIX - Fixed method to get plugin info. It was generating errors for Pro users.
 - TWEAK - New UIkit version added for the admin area.
 
 = 6.2 =
-
 - FIX - Localization fixes.
 
 = 6.1 =
-
 - FIX - Show the popup, when Debug mode is enabled and popup is disabled for logged in users.
 
 = 6.0 =
-
 - NEW - Added popup close without clicking on the buttons: button, ESC, background click.
 - NEW - Added popup delay option.
 - ENHANCED - Optimized script loading logic.
@@ -181,11 +178,9 @@ It is the reverse version of my last name. ;)
 - FIX - Corrected modal values.
 
 = 5.1 =
-
 - FIX - Freemius mechanism added to prevent conflicts with premium version.
 
 = 5.0 =
-
 - ENHANCED - Popup buttons are not refreshing the page. Accept button still sends the hit to Google Analytics.
 - ENHANCED - Settings page sidebar is updated with Google's latest websites about GDPR.
 - TWEAK - General admin notice is removed. A more informational alert is added to the plugin's settings page.
@@ -193,37 +188,30 @@ It is the reverse version of my last name. ;)
 - FIX - Admin URLs are fixed to work with every WordPress configuration.
 
 = 4.3 =
-
 - FIX Unique JavaScript function names to avoid conflicts with other plugins.
 
 = 4.2 =
-
 - FIX Settings validation error.
 - ENHANCED Popup load conditions.
 
 = 4.1 =
-
 - FIX Freemius sandbox mode removed.
 
 = 4.0 =
-
 - ENHANCED Debug mode has the option to close popup with ESC or clicking on the background.
 - ENHANCED A lot of code optimization.
 - FIX Popup related JavaScript codes are reordered.
 
 = 3.2 =
-
 - FIX Localization fixes.
 
 = 3.1 =
-
 - FIX The Limited Liability option notice.
 - FIX Text sanitization an validation.
 - FIX Minor code fixes.
 - CHANGED Removed Affiliate banner from sidebar.
 
 = 3.0 =
-
 - NEW Pro version upgrade feature is available in the plugin's admin menu. Use BEFOREGDPR coupon to get 50% off till May 26, 2018.
 - ENHANCED Plugin activation hook.
 - ENHANCED Code optimization for settings page.
@@ -231,21 +219,17 @@ It is the reverse version of my last name. ;)
 - FIXED Loading logic for admin and login pages.
 
 = 2.1 =
-
 - Main plugin file is renamed to prepare for merging free and pro versions to one plugin.
 - Fix README plugin name.
 
 = 2.0 =
-
 - Added Freemius service to manage premium version and payment system.
 - Preparing to merge free and pro codes to one plugin.
 
 = 1.1 =
-
 - Top-Level Menu.
 - Preparing the sidebar to have relevant informations.
 - Simple versioning.
 
 = 1.0.0 =
-
 - Initial commit.

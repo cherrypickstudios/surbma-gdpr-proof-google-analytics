@@ -2,10 +2,10 @@
 
 /*
 Plugin Name: Surbma - GDPR Proof Cookies
-Plugin URI: https://surbma.com/wordpress-plugins/
+Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 9.0
+Version: 9.1
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -172,24 +172,25 @@ function surbma_gpga_google_analytics_display() {
 	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
 	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
 
-	if ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) {
-		if( $gascriptValue == 'analyticsjs' ) {
+	if( $gascriptValue == 'analyticsjs' ) {
 ?>
 <!-- Google Analytics -->
 <script>
+	if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
+
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-	if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
-		ga('create', '<?php echo $gaValue; ?>', 'auto');
+	ga('create', '<?php echo $gaValue; ?>', 'auto');
 <?php if ( $gaanonymizeipValue == '1' ) { ?>
-		ga('send', 'pageview', { 'anonymizeIp': true });
+	ga('send', 'pageview', { 'anonymizeIp': true });
 <?php } else { ?>
-		ga('send', 'pageview');
+	ga('send', 'pageview');
 <?php } ?>
 <?php do_action( 'surbma_gpga_analyticsjs_settings' ); ?>
+
 	}
 </script>
 <?php } else {
@@ -197,21 +198,21 @@ function surbma_gpga_google_analytics_display() {
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $gaValue; ?>"></script>
 <script>
+	if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
+
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
-
-	if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
 <?php if ( $gaanonymizeipValue == '1' ) { ?>
-		gtag('config', '<?php echo $gaValue; ?>', { 'anonymize_ip': true });
+	gtag('config', '<?php echo $gaValue; ?>', { 'anonymize_ip': true });
 <?php } else { ?>
-		gtag('config', '<?php echo $gaValue; ?>');
+	gtag('config', '<?php echo $gaValue; ?>');
 <?php } ?>
 <?php do_action( 'surbma_gpga_gtagjs_settings' ); ?>
+
 	}
 </script>
 <?php }
-	}
 }
 
 function surbma_gpga_block() {
@@ -252,13 +253,14 @@ function surbma_gpga_block() {
 
 	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : '';
 
-	if ( $limitedliabilityValue == 1 && ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) ) {
+	if ( $limitedliabilityValue == 1 ) {
 ?>
 <input type="hidden" id="surbma-gpga-popupdebug" value="<?php echo $popupdebugValue; ?>" />
 <script type="text/javascript">
 	function surbma_gpga_openModal() {
 		UIkit.modal(('#surbma-gpga-modal'), {center: <?php echo $popupverticalcenterValue; ?>,keyboard: <?php echo $popupclosekeyboardValue; ?>,bgclose: <?php echo $popupclosebgcloseValue; ?>}).show();
 	}
+	<?php if ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) { ?>
 	jQuery(document).ready(function($) {
 		var show_modal = 0;
 		if( $('#surbma-gpga-popupdebug').val() == '1' ) {
@@ -293,6 +295,7 @@ function surbma_gpga_block() {
 		// 	}
 		// });
 	});
+	<?php } ?>
 </script>
 <div id="surbma-gpga-modal" class="uk-modal <?php echo 'surbma-gpga-' . $popupthemesValue; ?><?php echo $popupdarkmodeValue; ?><?php echo $popupcentertextValue; ?>">
 	<div class="uk-modal-dialog<?php echo $popuplargeValue; ?>">

@@ -174,7 +174,7 @@ function surbma_gpga_settings_page() {
 										);
 										wp_dropdown_pages( $args );
 									?>
-									<p class="uk-text-meta"><?php _e( 'The Popup and the tracking codes are not loading on the selected page. You can use this page to show your Cookie Policy.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+									<p class="uk-text-meta"><?php _e( 'The Popup is not loading on the selected page. You can use this page to show your Cookie Policy.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 					    		</div>
 					    	</div>
 							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
