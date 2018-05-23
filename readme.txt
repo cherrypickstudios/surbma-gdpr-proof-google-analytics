@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 9.1
+Stable tag: 10.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,8 +29,10 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 
 ### Free version features
 
-- Simple Cookie Policy popup (if no tracking or marketing cookies are used on your website)
+- Simple Cookie Policy popup
+- Hide Decline button
 - Cookie Scan page
+- Live Cookie Scan shortcode
 - Cookie settings link with shortcode
 - Cookie Policy
 - Developer Friendly
@@ -50,19 +52,37 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 #### Simple Cookie Policy popup
 If you don't have such cookies on your website, that need visitor consent, you can use this plugin as a simple Cookie Policy popup, so you can inform your visitors about the cookies you use. It will show your informations in a beautiful popup and a link to your Cookie Policy page.
 
+#### Hide Decline button
+If you only want to show the Accept button, you can hide the Decline button.
+
 #### Cookie Scan page
 This page will display all the saved cookies for you, so you can see, what cookies are used in your website.
+
+#### Live Cookie Scan shortcode
+You can display all the actual Cookies, a visitor has right now. It is not a full list of Cookies, that your website is using!
+
+This is the shortcode: `[surbma-live-cookie-scan]`
+
+**It has 1 attribute:**
+
+`cookievalue` - Show or hide the Cookie values in the list.
+
+**Example:**
+
+    `[surbma-live-cookie-scan cookievalue="false"]`
 
 #### Cookie Settings Link
 There is a shortcode, that will place a link in your content. Clicking on the link will open the Cookie Popup again, and users can change their settings about the Cookie trackings.
 
 This is the shortcode: `[surbma-cookie-popup-link]`
 
-It has 2 attributes:
+**It has 2 attributes:**
+
 `class` - You can set the class of the link, so you can easily create a button like link.
 `text` - You can change the default text of the link, which is "Open Cookie Settings".
 
-Examples:
+**Examples:**
+
     `[surbma-cookie-popup-link text="I've changed my mind about Cookie settings."]`
     `[surbma-cookie-popup-link class="button" text="Please show me the Cookie settings again!"]`
 
@@ -128,6 +148,12 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 10.0 =
+
+- NEW - Shortcode to show the actual Cookies for visitors: [surbma-live-cookie-scan]
+- NEW - Hide Decline button, if you don't want to show it.
+- PRO - 7 days trial can be selected to try all PRO features.
 
 = 9.1 =
 - FIX - Cookie Popup will load on Cookie Policy page with the [surbma-cookie-popup-link] shortcode.

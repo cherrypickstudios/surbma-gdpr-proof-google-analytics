@@ -182,6 +182,19 @@ function surbma_gpga_settings_page() {
 							<?php } ?>
 							<h4 class="uk-heading-divider"><?php _e( 'Buttons', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin">
+								<div class="uk-form-label"><?php _e( 'Decline Button Display', 'surbma-gdpr-proof-google-analytics' ); ?></div>
+								<div class="uk-form-controls">
+									<p class="switch-wrap">
+										<?php _e( 'Show the Decline button in the Popup', 'surbma-gdpr-proof-google-analytics' ); ?>:
+										<label class="switch">
+											<?php $popupbutton1displayValue = isset( $options['popupbutton1display'] ) ? $options['popupbutton1display'] : 1; ?>
+											<input id="surbma_gpga_fields[popupbutton1display]" name="surbma_gpga_fields[popupbutton1display]" type="checkbox" value="1" <?php checked( '1', $popupbutton1displayValue ); ?> />
+											<span class="slider round"></span>
+										</label>
+									</p>
+					    		</div>
+							</div>
+					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton1text]"><?php _e( 'Decline Button Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<input id="surbma_gpga_fields[popupbutton1text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton1text]" value="<?php echo esc_attr( stripslashes( $options['popupbutton1text'] ) ); ?>" />
@@ -510,6 +523,35 @@ function surbma_gpga_settings_page() {
 						</div>
 					</div>
 
+					<?php if ( current_user_can( 'unfiltered_html' ) ) { ?>
+					<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom" style="display: none;">
+					    <div class="uk-card-header uk-background-muted">
+							<h3 class="uk-card-title"><?php _e( 'Other Services', 'surbma-gdpr-proof-google-analytics' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #other"></a></h3>
+					    </div>
+					    <div id="other" class="uk-card-body">
+					    	<div class="uk-margin">
+								<label class="uk-form-label" for="surbma_gpga_fields[customthirdpartyscripts]"><?php _e( 'Custom "Third Party" scripts', 'surbma-gdpr-proof-google-analytics' ); ?></label>
+								<div class="uk-form-controls">
+									<?php $customthirdpartyscriptsValue = isset( $options['customthirdpartyscripts'] ) ? $options['customthirdpartyscripts'] : ''; ?>
+									<textarea id="surbma_gpga_fields[customthirdpartyscripts]" class="uk-textarea" cols="50" rows="10" name="surbma_gpga_fields[customthirdpartyscripts]"><?php echo stripslashes( $customthirdpartyscriptsValue ); ?></textarea>
+									<p class="uk-text-meta"><?php _e( 'Add your own scripts here. These scripts will be part of the "Third Party" category.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+					    		</div>
+							</div>
+					    	<div class="uk-margin">
+								<label class="uk-form-label" for="surbma_gpga_fields[custommarketingscripts]"><?php _e( 'Custom "Marketing" scripts', 'surbma-gdpr-proof-google-analytics' ); ?></label>
+								<div class="uk-form-controls">
+									<?php $custommarketingscriptsValue = isset( $options['custommarketingscripts'] ) ? $options['custommarketingscripts'] : ''; ?>
+									<textarea id="surbma_gpga_fields[custommarketingscripts]" class="uk-textarea" cols="50" rows="10" name="surbma_gpga_fields[custommarketingscripts]"><?php echo stripslashes( $custommarketingscriptsValue ); ?></textarea>
+									<p class="uk-text-meta"><?php _e( 'Add your own scripts here. These scripts will be part of the "Marketing" category.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+					    		</div>
+							</div>
+					    </div>
+					    <div class="uk-card-footer uk-background-muted">
+							<p><input type="submit" class="uk-button uk-button-primary" value="<?php _e( 'Save Changes' ); ?>" /></p>
+						</div>
+					</div>
+					<?php } ?>
+
 					<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
 					    <div class="uk-card-header uk-background-muted">
 							<h3 class="uk-card-title"><?php _e( 'General Settings', 'surbma-gdpr-proof-google-analytics' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #general-settings"></a></h3>
@@ -623,6 +665,8 @@ function surbma_gpga_fields_validate( $input ) {
 	global $popup_themes;
 	global $ga_script;
 
+	$options = get_option( 'surbma_gpga_fields' );
+
 	// Say our text option must be safe text with no HTML tags
 	$input['popuptitle'] = wp_filter_nohtml_kses( $input['popuptitle'] );
 	$input['popupcookiepolicytext'] = wp_filter_nohtml_kses( $input['popupcookiepolicytext'] );
@@ -633,9 +677,24 @@ function surbma_gpga_fields_validate( $input ) {
 	// Say our textarea option must be safe text with the allowed tags for posts
 	$input['popuptext'] = wp_filter_post_kses( $input['popuptext'] );
 
+	if ( current_user_can( 'unfiltered_html' ) ) {
+		$input['customthirdpartyscripts'] = $input['customthirdpartyscripts'];
+		$input['custommarketingscripts'] = $input['custommarketingscripts'];
+	}
+	if ( !current_user_can( 'unfiltered_html' ) ) {
+		$customthirdpartyscriptsValue = isset( $options['customthirdpartyscripts'] ) ? $options['customthirdpartyscripts'] : '';
+		$custommarketingscriptsValue = isset( $options['custommarketingscripts'] ) ? $options['custommarketingscripts'] : '';
+		$input['customthirdpartyscripts'] = $customthirdpartyscriptsValue;
+		$input['custommarketingscripts'] = $custommarketingscriptsValue;
+	}
+
 	// Say our input option must be only numbers
 	$input['popupdelay'] = preg_replace( "/[^0-9]/", "", $input['popupdelay'] );
 	$input['popupcookiedays'] = preg_replace( "/[^0-9]/", "", $input['popupcookiedays'] );
+
+	if ( !isset( $input['popupbutton1display'] ) )
+		$input['popupbutton1display'] = null;
+	$input['popupbutton1display'] = ( $input['popupbutton1display'] == 1 ? 1 : 0 );
 
 	if ( !isset( $input['popupdarkmode'] ) )
 		$input['popupdarkmode'] = null;

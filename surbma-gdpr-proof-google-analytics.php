@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Cookies
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 9.1
+Version: 10.0
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -38,11 +38,17 @@ function surbma_gpga_fs() {
             'is_premium'          => true,
             'has_addons'          => false,
             'has_paid_plans'      => true,
-            'has_affiliation'     => 'selected',
-            'menu'                => array(
-				'slug'           => 'surbma-gpga-menu',
-				'support'        => false,
+            'trial'               => array(
+                'days'               => 7,
+                'is_require_payment' => true,
             ),
+            'menu'                => array(
+                'slug'           => 'surbma-gpga-menu',
+                'support'        => false,
+            ),
+            // Set the SDK to work in a sandbox mode (for development & testing).
+            // IMPORTANT: MAKE SURE TO REMOVE SECRET KEY BEFORE DEPLOYMENT.
+            'secret_key'          => 'sk_$5i&}Wavq!rO$FRZwsKwceP^{&50;',
         ) );
     }
 
@@ -88,12 +94,14 @@ add_action( 'plugins_loaded', 'surbma_gpga_init' );
 if ( is_admin() ) {
 	include_once( SURBMA_GPGA_PLUGIN_DIR . '/lib/admin.php' );
 }
+include_once( SURBMA_GPGA_PLUGIN_DIR . '/lib/shortcodes.php' );
 
 function surbma_gpga_activated() {
 	$defaultfields = get_option( 'surbma_gpga_fields' );
 	if ( !$defaultfields ) {
 		$defaultfields['popuptitle'] = 'We are using cookies on our website';
 		$defaultfields['popuptext'] = 'Please confirm, if you accept our tracking cookies. You can also decline the tracking, so you can continue to visit our website without any data sent to third party services.';
+		$defaultfields['popupbutton1display'] = 1;
 		$defaultfields['popupbutton1text'] = 'Decline';
 		$defaultfields['popupbutton1style'] = 'default';
 		$defaultfields['popupbutton2text'] = 'Accept';
@@ -168,11 +176,15 @@ function surbma_gpga_google_analytics_display() {
 
 	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
 
-	$gaValue = $options['ga'];
+	$gaValue = isset( $options['ga'] ) ? stripslashes( $options['ga'] ) : '';
 	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
 	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
 
-	if( $gascriptValue == 'analyticsjs' ) {
+	$customthirdpartyscriptsValue = isset( $options['customthirdpartyscripts'] ) ? stripslashes( $options['customthirdpartyscripts'] ) : '';
+	$custommarketingscriptsValue = isset( $options['custommarketingscripts'] ) ? stripslashes( $options['custommarketingscripts'] ) : '';
+
+	if( $gaValue != '' ) {
+		if( $gascriptValue == 'analyticsjs' ) {
 ?>
 <!-- Google Analytics -->
 <script>
@@ -213,6 +225,13 @@ function surbma_gpga_google_analytics_display() {
 	}
 </script>
 <?php }
+	}
+
+	if( $customthirdpartyscriptsValue != '' )
+		echo $customthirdpartyscriptsValue;
+
+	if( $custommarketingscriptsValue != '' )
+		echo $custommarketingscriptsValue;
 }
 
 function surbma_gpga_block() {
@@ -223,6 +242,7 @@ function surbma_gpga_block() {
 	$popupcookiepolicytextValue = isset( $options['popupcookiepolicytext'] ) ? $options['popupcookiepolicytext'] : '';
 	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
 
+	$popupbutton1displayValue = isset( $options['popupbutton1display'] ) ? $options['popupbutton1display'] : 1;
 	$popupbutton1styleValue = isset( $options['popupbutton1style'] ) ? $options['popupbutton1style'] : 'default';
 	$popupbutton1textValue = isset( $options['popupbutton1text'] ) ? $options['popupbutton1text'] : 'Decline';
 	$popupbutton2styleValue = isset( $options['popupbutton2style'] ) ? $options['popupbutton2style'] : 'primary';
@@ -316,8 +336,10 @@ function surbma_gpga_block() {
 			?>
 		</div>
 		<div class="uk-modal-footer <?php echo 'surbma-gpga-button-' . $popupbuttonalignment; ?>">
-			<button id="button1" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton1styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton1textValue ); ?></button>
-			<span>&nbsp;</span>
+			<?php if( $popupbutton1displayValue == 1 ) { ?>
+				<button id="button1" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton1styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton1textValue ); ?></button>
+				<span>&nbsp;</span>
+			<?php } ?>
 			<button id="button2" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton2styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton2textValue ); ?></button>
 		</div>
 	</div>
@@ -352,14 +374,5 @@ function surbma_gpga_block() {
 </script>
 <?php }
 }
-
-function surbma_gpga_modal_link_shortcode( $atts ) {
-    extract( shortcode_atts( array(
-        'class' => '',
-        'text' => 'Open Cookie Settings'
-    ), $atts ) );
-    return '<a class="'.$class.'" href="#" onclick="surbma_gpga_openModal();">'.$text.'</a>';
-}
-add_shortcode( 'surbma-cookie-popup-link', 'surbma_gpga_modal_link_shortcode' );
 
 } // End of surbma_gpga_fs function exists condition.
