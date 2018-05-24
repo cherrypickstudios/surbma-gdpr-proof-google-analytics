@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 11.1
+Stable tag: 11.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,10 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 11.2 =
+
+- FIX - Pro features are enabled for trial users also. Sorry!
 
 = 11.1 =
 

@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Cookies
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 11.1
+Version: 11.2
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -238,6 +238,11 @@ function surbma_gpga_google_analytics_display() {
 }
 
 function surbma_gpga_block() {
+	$license = 'all';
+	if ( surbma_gpga_fs()->is_not_paying() && !surbma_gpga_fs()->is_trial() ) {
+		$license = 'free';
+	}
+
 	$options = get_option( 'surbma_gpga_fields' );
 
 	$popuptextValue = isset( $options['popuptext'] ) ? $options['popuptext'] : '';
@@ -274,9 +279,7 @@ function surbma_gpga_block() {
 
 	$popupcookiedaysValue = isset( $options['popupcookiedays'] ) && $options['popupcookiedays'] != 0 ? $options['popupcookiedays'] : 30;
 
-	$snackbarValue = isset( $options['snackbar'] ) ? $options['snackbar'] : 0;
-	if ( surbma_gpga_fs()->is_not_paying() )
-		$snackbarValue = 0;
+	$snackbarValue = isset( $options['snackbar'] ) && $license != 'free' ? $options['snackbar'] : 0;
 	$snackbartextValue = isset( $options['snackbartext'] ) ? stripslashes( $options['snackbartext'] ) : '';
 	$snackbaropenpopuptextValue = isset( $options['snackbaropenpopuptext'] ) ? stripslashes( $options['snackbaropenpopuptext'] ) : '';
 	$snackbarposValue = isset( $options['snackbarpos'] ) ? $options['snackbarpos'] : 'bottom-left';
