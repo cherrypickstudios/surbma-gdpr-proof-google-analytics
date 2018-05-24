@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Cookies
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 11.0
+Version: 11.1
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -290,6 +290,22 @@ function surbma_gpga_block() {
 	function surbma_gpga_openModal() {
 		UIkit.modal(('#surbma-gpga-modal'), {center: <?php echo $popupverticalcenterValue; ?>,keyboard: <?php echo $popupclosekeyboardValue; ?>,bgclose: <?php echo $popupclosebgcloseValue; ?>}).show();
 	}
+	function surbma_gpga_openSnackbar() {
+		Snackbar.show({
+			text: '<?php echo $snackbartextValue; ?>',
+			textColor: '#fff',
+			pos: '<?php echo $snackbarposValue; ?>',
+			width: 'auto',
+			actionText: '<?php echo $snackbaropenpopuptextValue; ?>',
+			actionTextColor: '#4caf50',
+			backgroundColor: '#323232',
+			duration: 0,
+			onActionClick: function(element) {
+				jQuery(element).css('opacity', 0);
+				surbma_gpga_openModal();
+			}
+		});
+	}
 	<?php if ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) { ?>
 	jQuery(document).ready(function($) {
 		<?php if ( $snackbarValue != 1 ) { ?>
@@ -309,20 +325,13 @@ function surbma_gpga_block() {
 		// console.log('show_modal = '+show_modal);
 		<?php } else { ?>
 		// https://www.polonel.com/snackbar/
-		Snackbar.show({
-			text: '<?php echo $snackbartextValue; ?>',
-			textColor: '#fff',
-			pos: '<?php echo $snackbarposValue; ?>',
-			width: 'auto',
-			actionText: '<?php echo $snackbaropenpopuptextValue; ?>',
-			actionTextColor: '#4caf50',
-			backgroundColor: '#323232',
-			duration: 0,
-			onActionClick: function(element) {
-				$(element).css('opacity', 0);
-				surbma_gpga_openModal();
-			}
-		});
+		var show_snackbar = 0;
+		if( !surbma_gpga_readCookie('surbma-gpga') ) {
+			show_snackbar = 1;
+		}
+		if( show_snackbar == 1 ) {
+			surbma_gpga_openSnackbar();
+		}
 		<?php } ?>
 	});
 	<?php } ?>
