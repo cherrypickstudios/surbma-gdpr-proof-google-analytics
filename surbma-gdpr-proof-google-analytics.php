@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Cookies
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 10.0
+Version: 11.0
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -110,6 +110,9 @@ function surbma_gpga_activated() {
 		$defaultfields['popupbuttonalignment'] = 'left';
 		$defaultfields['popupthemes'] = 'normal';
 		$defaultfields['popupcookiedays'] = 30;
+		$defaultfields['snackbartext'] = 'We are using Cookies on our website.';
+		$defaultfields['snackbaropenpopuptext'] = 'Cookie settings';
+		$defaultfields['snackbarpos'] = 'bottom-left';
 		$defaultfields['gaanonymizeip'] = 1;
 		$defaultfields['gascript'] = 'gtagjs';
 		update_option( 'surbma_gpga_fields', $defaultfields );
@@ -271,6 +274,13 @@ function surbma_gpga_block() {
 
 	$popupcookiedaysValue = isset( $options['popupcookiedays'] ) && $options['popupcookiedays'] != 0 ? $options['popupcookiedays'] : 30;
 
+	$snackbarValue = isset( $options['snackbar'] ) ? $options['snackbar'] : 0;
+	if ( surbma_gpga_fs()->is_not_paying() )
+		$snackbarValue = 0;
+	$snackbartextValue = isset( $options['snackbartext'] ) ? stripslashes( $options['snackbartext'] ) : '';
+	$snackbaropenpopuptextValue = isset( $options['snackbaropenpopuptext'] ) ? stripslashes( $options['snackbaropenpopuptext'] ) : '';
+	$snackbarposValue = isset( $options['snackbarpos'] ) ? $options['snackbarpos'] : 'bottom-left';
+
 	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : '';
 
 	if ( $limitedliabilityValue == 1 ) {
@@ -282,6 +292,7 @@ function surbma_gpga_block() {
 	}
 	<?php if ( $popupcookiepolicypageValue == 0 || !is_page( $popupcookiepolicypageValue ) ) { ?>
 	jQuery(document).ready(function($) {
+		<?php if ( $snackbarValue != 1 ) { ?>
 		var show_modal = 0;
 		if( $('#surbma-gpga-popupdebug').val() == '1' ) {
 			show_modal = 1;
@@ -296,24 +307,23 @@ function surbma_gpga_block() {
 			}, <?php echo $popupdelayValue; ?>);
 		}
 		// console.log('show_modal = '+show_modal);
-		// $snackContent = '<a href="#"></a>';
+		<?php } else { ?>
 		// https://www.polonel.com/snackbar/
-		// Snackbar.show({
-		// 	text: $snackContent,
-		// 	textColor: '#fff',
-		// 	pos: 'bottom-left',
-		// 	// width: '50%',
-		// 	// showAction: true,
-		// 	actionText: 'Cookie policy',
-		// 	actionTextColor: '#4CAF50',
-		// 	backgroundColor: '#323232',
-		// 	duration: 0,
-		// 	onActionClick: function(element) {
-		// 		//Set opacity of element to 0 to close Snackbar
-		// 		$(element).css('opacity', 0);
-		// 		surbma_gpc_openModal();
-		// 	}
-		// });
+		Snackbar.show({
+			text: '<?php echo $snackbartextValue; ?>',
+			textColor: '#fff',
+			pos: '<?php echo $snackbarposValue; ?>',
+			width: 'auto',
+			actionText: '<?php echo $snackbaropenpopuptextValue; ?>',
+			actionTextColor: '#4caf50',
+			backgroundColor: '#323232',
+			duration: 0,
+			onActionClick: function(element) {
+				$(element).css('opacity', 0);
+				surbma_gpga_openModal();
+			}
+		});
+		<?php } ?>
 	});
 	<?php } ?>
 </script>
@@ -352,10 +362,12 @@ function surbma_gpga_block() {
 	    var expires = "expires="+ d.toUTCString();
 	    document.cookie = "surbma-gpga=" + value + ";" + expires + ";path=/";
 	}
-	document.getElementById("button1").onclick = function () {
-		surbma_gpga_setCookie('no');
-	};
-	document.getElementById("button2").onclick = function () {
+	<?php if( $popupbutton1displayValue == 1 ) { ?>
+		document.getElementById("button1").onclick = function() {
+			surbma_gpga_setCookie('no');
+		};
+	<?php } ?>
+	document.getElementById("button2").onclick = function() {
 		surbma_gpga_setCookie('yes');
 <?php if( $gascriptValue == 'analyticsjs' ) { ?>
 <?php if ( $gaanonymizeipValue == '1' ) { ?>

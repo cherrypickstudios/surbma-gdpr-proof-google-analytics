@@ -4,7 +4,8 @@
 function surbma_gpga_admin_scripts( $hook ) {
 	global $surbma_gpga_settings_page;
 	global $surbma_gpga_cookies_page;
-    if ( $hook == $surbma_gpga_settings_page || $hook == $surbma_gpga_cookies_page ) {
+	global $surbma_gpga_documentation_page;
+    if ( $hook == $surbma_gpga_settings_page || $hook == $surbma_gpga_cookies_page || $hook == $surbma_gpga_documentation_page ) {
 		$admin_url = plugins_url( '', __FILE__ );
 		wp_enqueue_script( 'uikit-js', $admin_url . '/uikit/js/uikit.min.js', array( 'jquery' ), '3.0.0-rc.2', true );
 		wp_enqueue_script( 'uikit-icons', $admin_url . '/uikit/js/uikit-icons.min.js', array( 'jquery' ), '3.0.0-rc.2', true );

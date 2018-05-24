@@ -68,6 +68,14 @@
     color: #ccc !important;
 }
 
+.surbma-admin .disabled label,
+.surbma-admin .disabled .uk-form-label,
+.surbma-admin .disabled .slider,
+.surbma-admin .disabled input,
+.surbma-admin .disabled select {
+    cursor: not-allowed;
+}
+
 .surbma-admin .switch-wrap {
     overflow: hidden;
     line-height: 26px;

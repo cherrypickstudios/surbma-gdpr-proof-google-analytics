@@ -100,6 +100,33 @@ $popup_themes = array(
 	)
 );
 
+$snackbarpos_options = array(
+	'top-left' => array(
+		'value' => 'top-left',
+		'label' => __( 'Top Left', 'surbma-gdpr-proof-google-analytics' )
+	),
+	'top-center' => array(
+		'value' => 'top-center',
+		'label' => __( 'Top Center', 'surbma-gdpr-proof-google-analytics' )
+	),
+	'top-right' => array(
+		'value' => 'top-right',
+		'label' => __( 'Top Right', 'surbma-gdpr-proof-google-analytics' )
+	),
+	'bottom-left' => array(
+		'value' => 'bottom-left',
+		'label' => __( 'Bottom Left', 'surbma-gdpr-proof-google-analytics' )
+	),
+	'bottom-center' => array(
+		'value' => 'bottom-center',
+		'label' => __( 'Bottom Center', 'surbma-gdpr-proof-google-analytics' )
+	),
+	'bottom-right' => array(
+		'value' => 'bottom-right',
+		'label' => __( 'Bottom Right', 'surbma-gdpr-proof-google-analytics' )
+	)
+);
+
 $ga_script = array(
 	'gtagjs' => array(
 		'value' => 'gtagjs',
@@ -118,6 +145,7 @@ function surbma_gpga_settings_page() {
 	global $popupbuttonsize_options;
 	global $popupbuttonalignment_options;
 	global $popup_themes;
+	global $snackbarpos_options;
 	global $ga_script;
 
 ?>
@@ -435,6 +463,78 @@ function surbma_gpga_settings_page() {
 
 					<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
 						<div class="uk-card-header uk-background-muted">
+							<h3 class="uk-card-title"><?php _e( 'Snackbar Settings', 'surbma-gdpr-proof-google-analytics' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #snackbar-settings"></a></h3>
+					    </div>
+					    <div id="snackbar-settings" class="uk-card-body">
+					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
+								<div class="uk-form-label"><?php _e( 'Enable Snackbar', 'surbma-gdpr-proof-google-analytics' ); ?></div>
+								<div class="uk-form-controls">
+									<p class="switch-wrap">
+										<?php _e( 'Display Snackbar before the Popup', 'surbma-gdpr-proof-google-analytics' ); ?>:
+										<label class="switch">
+											<?php $snackbarValue = isset( $options['snackbar'] ) ? $options['snackbar'] : 0; ?>
+											<input id="surbma_gpga_fields[snackbar]" name="surbma_gpga_fields[snackbar]" type="checkbox" value="1" <?php checked( '1', $snackbarValue ); ?><?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
+											<span class="slider round"></span>
+										</label>
+									</p>
+									<p class="uk-text-meta"><?php _e( 'If enabled, a snackbar will be displayed instead of the Popup. Clicking on the Snackbar link will open the Popup.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+					    		</div>
+							</div>
+							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
+								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<?php } ?>
+							<h4 class="uk-heading-divider"><?php _e( 'Content', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
+					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
+								<label class="uk-form-label" for="surbma_gpga_fields[snackbartext]"><?php _e( 'Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
+								<div class="uk-form-controls">
+									<?php $snackbartextValue = isset( $options['snackbartext'] ) ? $options['snackbartext'] : 'We are using Cookies on our website.'; ?>
+									<input id="surbma_gpga_fields[snackbartext]" class="uk-input" type="text" name="surbma_gpga_fields[snackbartext]" value="<?php echo $snackbartextValue; ?>"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
+								</div>
+							</div>
+					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
+								<label class="uk-form-label" for="surbma_gpga_fields[snackbaropenpopuptext]"><?php _e( 'Open Popup Link Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
+								<div class="uk-form-controls">
+									<?php $snackbaropenpopuptextValue = isset( $options['snackbaropenpopuptext'] ) ? $options['snackbaropenpopuptext'] : 'Cookie settings'; ?>
+									<input id="surbma_gpga_fields[snackbaropenpopuptext]" class="uk-input" type="text" name="surbma_gpga_fields[snackbaropenpopuptext]" value="<?php echo $snackbaropenpopuptextValue; ?>"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?> />
+								</div>
+							</div>
+							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
+								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<?php } ?>
+							<h4 class="uk-heading-divider"><?php _e( 'Design Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
+					    	<div class="uk-margin<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>">
+								<label class="uk-form-label" for="surbma_gpga_fields[snackbarpos]"><?php _e( 'Position', 'surbma-gdpr-proof-google-analytics' ); ?></label>
+								<div class="uk-form-controls">
+									<select class="uk-select" name="surbma_gpga_fields[snackbarpos]"<?php if ( surbma_gpga_fs()->is_not_paying() ) echo ' disabled'; ?>>
+										<?php
+											$snackbarposValue = isset( $options['snackbarpos'] ) ? $options['snackbarpos'] : 'bottom-left';
+											$selected = $options['snackbarpos'];
+											$p = '';
+											$r = '';
+
+											foreach ( $snackbarpos_options as $option ) {
+												$label = $option['label'];
+												if ( $selected == $option['value'] ) // Make default first in list
+													$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
+												else
+													$r .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $option['value'] ) . "'>$label</option>";
+											}
+											echo $p . $r;
+										?>
+									</select>
+					    		</div>
+							</div>
+							<?php if ( surbma_gpga_fs()->is_not_paying() ) { ?>
+								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<?php } ?>
+					    </div>
+					    <div class="uk-card-footer uk-background-muted">
+							<p><input type="submit" class="uk-button uk-button-primary" value="<?php _e( 'Save Changes' ); ?>" /></p>
+						</div>
+					</div>
+
+					<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
+						<div class="uk-card-header uk-background-muted">
 							<h3 class="uk-card-title"><?php _e( 'Google Analytics Settings', 'surbma-gdpr-proof-google-analytics' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #ga-settings"></a></h3>
 					    </div>
 					    <div id="ga-settings" class="uk-card-body">
@@ -591,19 +691,6 @@ function surbma_gpga_settings_page() {
 								<p><?php _e( 'The <strong>Limited Liability</strong> setting is required for the plugin to work. Please accept the Limited Liability setting to start using this plugin!', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							</div>
 							<?php } ?>
-							<h4 class="uk-heading-divider"><?php _e( 'Shortcodes', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
-							<p><code>[surbma-cookie-popup-link]</code></p>
-							<p><?php _e( 'It will place a link in your content. Clicking on the link will open the Cookie Popup again, and users can change their settings about the Cookie trackings.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
-							<p><strong><?php _e( 'It has 2 attributes', 'surbma-gdpr-proof-google-analytics' ); ?>:</strong></p>
-							<ul class="uk-list">
-								<li><code>class</code> - <?php _e( 'You can set the class of the link, so you can easily create a button like link.', 'surbma-gdpr-proof-google-analytics' ); ?></li>
-								<li><code>text</code> - <?php _e( 'You can change the default text of the link, which is "Open Cookie Settings".', 'surbma-gdpr-proof-google-analytics' ); ?></li>
-							</ul>
-							<p><strong><?php _e( 'Examples', 'surbma-gdpr-proof-google-analytics' ); ?>:</strong></p>
-							<ul class="uk-list">
-								<li><code style="white-space: normal;">[surbma-cookie-popup-link text="I've changed my mind about Cookie settings."]</code></li>
-								<li><code style="white-space: normal;">[surbma-cookie-popup-link class="button" text="Please show me the Cookie settings again!"]</code></li>
-							</ul>
 							<h4 class="uk-heading-divider"><?php _e( 'Google links', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 							<ul class="uk-list">
 								<li><a href="https://privacy.google.com/businesses/compliance/" target="_blank"><?php _e( 'How Google complies with data protection laws', 'surbma-gdpr-proof-google-analytics' ); ?></a></li>
@@ -617,7 +704,7 @@ function surbma_gpga_settings_page() {
 							</ul>
 							<h4 class="uk-heading-divider"><?php _e( 'Upcoming features', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 							<ul class="uk-list">
-								<li><span uk-icon="icon: check; ratio: 0.8"></span> Modest snackbar before popup display, so the first time is not that aggressive.</li>
+								<li><span uk-icon="icon: check; ratio: 0.8"></span> Snackbar style configurations: text color, background color, width.</li>
 								<li><span uk-icon="icon: check; ratio: 0.8"></span> More tracking services: Facebook Pixel, AdWords Remarketing, HotJar and more.</li>
 								<li><span uk-icon="icon: check; ratio: 0.8"></span> Cookie categories: necessary, performance, marketing, statistics</li>
 								<li><span uk-icon="icon: check; ratio: 0.8"></span> Individual opt-in & opt-out by Cookie categories.</li>
@@ -663,6 +750,7 @@ function surbma_gpga_fields_validate( $input ) {
 	global $popupbuttonsize_options;
 	global $popupbuttonalignment_options;
 	global $popup_themes;
+	global $snackbarpos_options;
 	global $ga_script;
 
 	$options = get_option( 'surbma_gpga_fields' );
@@ -672,6 +760,8 @@ function surbma_gpga_fields_validate( $input ) {
 	$input['popupcookiepolicytext'] = wp_filter_nohtml_kses( $input['popupcookiepolicytext'] );
 	$input['popupbutton1text'] = wp_filter_nohtml_kses( $input['popupbutton1text'] );
 	$input['popupbutton2text'] = wp_filter_nohtml_kses( $input['popupbutton2text'] );
+	$input['snackbartext'] = isset( $input['snackbartext'] ) ? wp_filter_nohtml_kses( $input['snackbartext'] ) : 'We are using Cookies on our website.';
+	$input['snackbaropenpopuptext'] = isset( $input['snackbaropenpopuptext'] ) ? wp_filter_nohtml_kses( $input['snackbaropenpopuptext'] ) : 'Cookie settings';
 	$input['ga'] = wp_filter_nohtml_kses( $input['ga'] );
 
 	// Say our textarea option must be safe text with the allowed tags for posts
@@ -728,6 +818,10 @@ function surbma_gpga_fields_validate( $input ) {
 		$input['popupdebug'] = null;
 	$input['popupdebug'] = ( $input['popupdebug'] == 1 ? 1 : 0 );
 
+	if ( !isset( $input['snackbar'] ) )
+		$input['snackbar'] = null;
+	$input['snackbar'] = ( $input['snackbar'] == 1 ? 1 : 0 );
+
 	if ( !isset( $input['gaanonymizeip'] ) )
 		$input['gaanonymizeip'] = null;
 	$input['gaanonymizeip'] = ( $input['gaanonymizeip'] == 1 ? 1 : 0 );
@@ -759,6 +853,8 @@ function surbma_gpga_fields_validate( $input ) {
 		$input['popupbuttonalignment'] = 'left';
 	if ( !array_key_exists( $input['popupthemes'], $popup_themes ) )
 		$input['popupthemes'] = 'normal';
+	if ( !array_key_exists( $input['snackbarpos'], $snackbarpos_options ) )
+		$input['snackbarpos'] = 'bottom-left';
 	if ( !array_key_exists( $input['gascript'], $ga_script ) )
 		$input['gascript'] = 'gtagjs';
 
@@ -777,12 +873,13 @@ function surbma_gpga_fields_validate( $input ) {
 		$input['popupverticalcenter'] = 0;
 		$input['popuplarge'] = 0;
 
-		// $input['popupclosebutton'] = 0;
 		$input['popupclosekeyboard'] = 0;
 		$input['popupclosebgclose'] = 0;
 		$input['popupdelay'] = 0;
 
 		$input['popupcookiedays'] = 30;
+
+		$input['snackbar'] = 0;
 
 		$input['gaanonymizeip'] = 1;
 

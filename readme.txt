@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 10.0
+Stable tag: 11.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,10 +36,12 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 - Cookie settings link with shortcode
 - Cookie Policy
 - Developer Friendly
-- WPML Compatible
+- WPML & Polylang Compatible
 
 ### Additional features in the Pro version
 
+- Snackbar before Popup
+- 6 positions for Snackbar
 - Full Customizations
 - Cookie Policy Link
 - Themes
@@ -65,7 +67,7 @@ This is the shortcode: `[surbma-live-cookie-scan]`
 
 **It has 1 attribute:**
 
-`cookievalue` - Show or hide the Cookie values in the list.
+cookievalue - Show or hide the Cookie values in the list.
 
 **Example:**
 
@@ -78,8 +80,8 @@ This is the shortcode: `[surbma-cookie-popup-link]`
 
 **It has 2 attributes:**
 
-`class` - You can set the class of the link, so you can easily create a button like link.
-`text` - You can change the default text of the link, which is "Open Cookie Settings".
+class - You can set the class of the link, so you can easily create a button like link.
+text - You can change the default text of the link, which is "Open Cookie Settings".
 
 **Examples:**
 
@@ -92,8 +94,11 @@ Set your Cookie Policy page, where the popup won't load for visitors. Cookie tra
 #### Developer Friendly
 If you enable debug mode, popup will show always, on every refresh, so you can test how it works.
 
-#### WPML Compatible
+#### WPML & Polylang Compatible
 If you have a multilingual website, you can set the texts for each language with WPML String Translation add-on.
+
+#### Snackbar before Popup
+Modest Snackbar before Popup display, so the first time is not that aggressive. The link in the Snackbar opens the Popup. Choose between 6 positions to show the Snackbar.
 
 #### Full Customizations
 Every text is customizable, even the button's texts! You can also set the design of the buttons.
@@ -149,8 +154,13 @@ It is the reverse version of my last name. ;)
 
 == Changelog ==
 
-= 10.0 =
+= 11.0 =
+- PRO - The long awaited and much requested Snackbar is HERE!
+- NEW - Documentation menu with shortcode descriptions and how-tos.
+- ENHANCED - Minor changes in admin styles.
+- ENHANCED - Minor description changes.
 
+= 10.0 =
 - NEW - Shortcode to show the actual Cookies for visitors: [surbma-live-cookie-scan]
 - NEW - Hide Decline button, if you don't want to show it.
 - PRO - 7 days trial can be selected to try all PRO features.

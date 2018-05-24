@@ -3,6 +3,7 @@
 include_once( SURBMA_GPGA_PLUGIN_DIR . '/admin/surbma-admin.php');
 include_once( SURBMA_GPGA_PLUGIN_DIR . '/pages/settings.php');
 include_once( SURBMA_GPGA_PLUGIN_DIR . '/pages/cookies.php');
+include_once( SURBMA_GPGA_PLUGIN_DIR . '/pages/documentation.php');
 
 /* Admin options menu */
 function surbma_gpga_add_menus() {
@@ -23,6 +24,15 @@ function surbma_gpga_add_menus() {
 		'read',
 		'surbma-gpga-cookies-menu',
 		'surbma_gpga_cookies_page'
+	);
+	global $surbma_gpga_documentation_page;
+	$surbma_gpga_documentation_page = add_submenu_page(
+		'surbma-gpga-menu',
+		__( 'Documentation', 'surbma-gdpr-proof-google-analytics' ),
+		__( 'Documentation', 'surbma-gdpr-proof-google-analytics' ),
+		'read',
+		'surbma-gpga-documentation-menu',
+		'surbma_gpga_documentation_page'
 	);
 }
 add_action( 'admin_menu', 'surbma_gpga_add_menus' );
