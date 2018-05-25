@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 12.0
+Stable tag: 12.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,6 +170,12 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 12.1 =
+
+- FIX - Popup display is not dependent of the Google Analytics settings anymore. Free all Popup!
+- ENHANCED - Code optimization and preparing for custom scripts. The big step is coming.
+- PRO & GDPR - New Freemius SDK, that will bring new GDPR compatible features for customers.
 
 = 12.0 =
 

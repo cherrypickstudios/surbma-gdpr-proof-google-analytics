@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Cookies
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 12.0
+Version: 12.1
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -120,41 +120,47 @@ function surbma_gpga_activated() {
 }
 register_activation_hook( __FILE__, 'surbma_gpga_activated' );
 
-function surbma_gpga_google_analytics_load() {
+function surbma_gpga_structure_load() {
 	$options = get_option( 'surbma_gpga_fields' );
 
 	$popupdebugValue = isset( $options['popupdebug'] ) && is_user_logged_in() && !is_admin() ? $options['popupdebug'] : 0;
 
+	$gaValue = isset( $options['ga'] ) ? stripslashes( $options['ga'] ) : '';
 	$galoadadminValue = isset( $options['galoadadmin'] ) ? $options['galoadadmin'] : 1;
 	$galoadloginValue = isset( $options['galoadlogin'] ) ? $options['galoadlogin'] : 1;
 	$galoadloggedinValue = isset( $options['galoadloggedin'] ) ? $options['galoadloggedin'] : 1;
 
+	$fbpixelidValue = isset( $options['fbpixelid'] ) ? stripslashes( $options['fbpixelid'] ) : '';
+
 	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : 0;
 
 	if ( $limitedliabilityValue == 1 ) {
-		if ( $popupdebugValue == 1 || !is_user_logged_in() || $galoadloggedinValue == 1 ) {
-			add_action( 'wp_head', 'surbma_gpga_header_scripts', 999 );
+		add_action( 'wp_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+		add_action( 'wp_head', 'surbma_gpga_header_scripts', 999 );
+		add_action( 'wp_footer', 'surbma_gpga_block', 999 );
+		if ( $gaValue != '' && ( !is_user_logged_in() || $galoadloggedinValue == 1 ) ) {
 			add_action( 'wp_head', 'surbma_gpga_google_analytics_display', 999 );
-			add_action( 'wp_footer', 'surbma_gpga_block', 999 );
-			add_action( 'wp_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
 		}
-		if ( $galoadadminValue == 1 ) {
-			add_action( 'admin_head', 'surbma_gpga_header_scripts', 999 );
+		if ( $fbpixelidValue != '' ) {
+			add_action( 'wp_head', 'surbma_gpga_fbpixel_display', 999 );
+		}
+
+		add_action( 'admin_head', 'surbma_gpga_header_scripts', 999 );
+		// add_action( 'admin_print_footer_scripts', 'surbma_gpga_block', 999 );
+		// add_action( 'admin_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+		if ( $gaValue != '' && $galoadadminValue == 1 ) {
 			add_action( 'admin_head', 'surbma_gpga_google_analytics_display', 999 );
-			// add_action( 'admin_print_footer_scripts', 'surbma_gpga_block', 999 );
-			// add_action( 'admin_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
 		}
-		if ( $galoadadminValue == 1 || $galoadloginValue == 1 ) {
-			add_action( 'login_head', 'surbma_gpga_header_scripts', 999 );
-			add_action( 'login_footer', 'surbma_gpga_block', 999 );
-			add_action( 'login_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
-		}
-		if ( $galoadloginValue == 1 ) {
+
+		add_action( 'login_enqueue_scripts', 'surbma_gpga_enqueue_scripts', 999 );
+		add_action( 'login_head', 'surbma_gpga_header_scripts', 999 );
+		add_action( 'login_footer', 'surbma_gpga_block', 999 );
+		if ( $gaValue != '' && $galoadloginValue == 1 ) {
 			add_action( 'login_head', 'surbma_gpga_google_analytics_display', 999 );
 		}
 	}
 }
-add_action( 'wp_loaded', 'surbma_gpga_google_analytics_load' );
+add_action( 'wp_loaded', 'surbma_gpga_structure_load' );
 
 function surbma_gpga_enqueue_scripts() {
 	$options = get_option( 'surbma_gpga_fields' );
@@ -180,29 +186,11 @@ function surbma_gpga_header_scripts() {
 function surbma_gpga_google_analytics_display() {
 	$options = get_option( 'surbma_gpga_fields' );
 
-	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
-
 	$gaValue = isset( $options['ga'] ) ? stripslashes( $options['ga'] ) : '';
 	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
 	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
 
-	$fbpixelidValue = isset( $options['fbpixelid'] ) ? stripslashes( $options['fbpixelid'] ) : '';
-	$fbpixeladvancedmatching = isset( $options['fbpixeladvancedmatching'] ) ? stripslashes( $options['fbpixeladvancedmatching'] ) : 0;
-	$fbpixelciemValue = isset( $options['fbpixelciem'] ) ? stripslashes( $options['fbpixelciem'] ) : '';
-	$fbpixelcifnValue = isset( $options['fbpixelcifn'] ) ? stripslashes( $options['fbpixelcifn'] ) : '';
-	$fbpixelcilnValue = isset( $options['fbpixelciln'] ) ? stripslashes( $options['fbpixelciln'] ) : '';
-	$fbpixelciphValue = isset( $options['fbpixelciph'] ) ? stripslashes( $options['fbpixelciph'] ) : '';
-	$fbpixelcigeValue = isset( $options['fbpixelcige'] ) ? stripslashes( $options['fbpixelcige'] ) : '';
-	$fbpixelcidbValue = isset( $options['fbpixelcidb'] ) ? stripslashes( $options['fbpixelcidb'] ) : '';
-	$fbpixelcictValue = isset( $options['fbpixelcict'] ) ? stripslashes( $options['fbpixelcict'] ) : '';
-	$fbpixelcistValue = isset( $options['fbpixelcist'] ) ? stripslashes( $options['fbpixelcist'] ) : '';
-	$fbpixelcizpValue = isset( $options['fbpixelcizp'] ) ? stripslashes( $options['fbpixelcizp'] ) : '';
-
-	$customthirdpartyscriptsValue = isset( $options['customthirdpartyscripts'] ) ? stripslashes( $options['customthirdpartyscripts'] ) : '';
-	$custommarketingscriptsValue = isset( $options['custommarketingscripts'] ) ? stripslashes( $options['custommarketingscripts'] ) : '';
-
-	if( $gaValue != '' ) {
-		if( $gascriptValue == 'analyticsjs' ) {
+	if( $gascriptValue == 'analyticsjs' ) {
 ?>
 <!-- Google Analytics -->
 <script>
@@ -239,7 +227,22 @@ if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
 }
 </script>
 <?php }
-	}
+}
+
+function surbma_gpga_fbpixel_display() {
+	$options = get_option( 'surbma_gpga_fields' );
+
+	$fbpixelidValue = isset( $options['fbpixelid'] ) ? stripslashes( $options['fbpixelid'] ) : '';
+	$fbpixeladvancedmatching = isset( $options['fbpixeladvancedmatching'] ) ? stripslashes( $options['fbpixeladvancedmatching'] ) : 0;
+	$fbpixelciemValue = isset( $options['fbpixelciem'] ) ? stripslashes( $options['fbpixelciem'] ) : '';
+	$fbpixelcifnValue = isset( $options['fbpixelcifn'] ) ? stripslashes( $options['fbpixelcifn'] ) : '';
+	$fbpixelcilnValue = isset( $options['fbpixelciln'] ) ? stripslashes( $options['fbpixelciln'] ) : '';
+	$fbpixelciphValue = isset( $options['fbpixelciph'] ) ? stripslashes( $options['fbpixelciph'] ) : '';
+	$fbpixelcigeValue = isset( $options['fbpixelcige'] ) ? stripslashes( $options['fbpixelcige'] ) : '';
+	$fbpixelcidbValue = isset( $options['fbpixelcidb'] ) ? stripslashes( $options['fbpixelcidb'] ) : '';
+	$fbpixelcictValue = isset( $options['fbpixelcict'] ) ? stripslashes( $options['fbpixelcict'] ) : '';
+	$fbpixelcistValue = isset( $options['fbpixelcist'] ) ? stripslashes( $options['fbpixelcist'] ) : '';
+	$fbpixelcizpValue = isset( $options['fbpixelcizp'] ) ? stripslashes( $options['fbpixelcizp'] ) : '';
 
 	if( $fbpixelidValue != '' ) { ?>
 <!-- Facebook Pixel Code -->
@@ -291,13 +294,19 @@ if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
 </script>
 <!-- End Facebook Pixel Code -->
 <?php }
-/*
+}
+
+function surbma_gpga_customscripts_display() {
+	$options = get_option( 'surbma_gpga_fields' );
+
+	$customthirdpartyscriptsValue = isset( $options['customthirdpartyscripts'] ) ? stripslashes( $options['customthirdpartyscripts'] ) : '';
+	$custommarketingscriptsValue = isset( $options['custommarketingscripts'] ) ? stripslashes( $options['custommarketingscripts'] ) : '';
+
 	if( $customthirdpartyscriptsValue != '' )
 		echo $customthirdpartyscriptsValue;
 
 	if( $custommarketingscriptsValue != '' )
 		echo $custommarketingscriptsValue;
-*/
 }
 
 function surbma_gpga_block() {
@@ -347,9 +356,6 @@ function surbma_gpga_block() {
 	$snackbaropenpopuptextValue = isset( $options['snackbaropenpopuptext'] ) ? stripslashes( $options['snackbaropenpopuptext'] ) : '';
 	$snackbarposValue = isset( $options['snackbarpos'] ) ? $options['snackbarpos'] : 'bottom-left';
 
-	$limitedliabilityValue = isset( $options['limitedliability'] ) ? $options['limitedliability'] : '';
-
-	if ( $limitedliabilityValue == 1 ) {
 ?>
 <input type="hidden" id="surbma-gpga-popupdebug" value="<?php echo $popupdebugValue; ?>" />
 <script type="text/javascript">
@@ -462,7 +468,7 @@ function surbma_gpga_block() {
 <?php } ?>
 	};
 </script>
-<?php }
+<?php
 }
 
 } // End of surbma_gpga_fs function exists condition.
