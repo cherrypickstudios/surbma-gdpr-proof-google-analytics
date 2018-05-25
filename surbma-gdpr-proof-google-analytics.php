@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Cookies
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 11.2
+Version: 12.0
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -157,8 +157,11 @@ function surbma_gpga_google_analytics_load() {
 add_action( 'wp_loaded', 'surbma_gpga_google_analytics_load' );
 
 function surbma_gpga_enqueue_scripts() {
+	$options = get_option( 'surbma_gpga_fields' );
+	$popupstylesValue = isset( $options['popupstyles'] ) ? $options['popupstyles'] : 'default';
+
 	wp_enqueue_script( 'surbma-gpga-scripts', plugins_url( '', __FILE__ ) . '/js/scripts-min.js', array( 'jquery' ), '2.27.1', true );
-	wp_enqueue_style( 'surbma-gpga-styles', plugins_url( '', __FILE__ ) . '/css/styles.css', false, '2.27.1' );
+	wp_enqueue_style( 'surbma-gpga-styles', plugins_url( '', __FILE__ ) . '/css/styles-' . $popupstylesValue . '.css', false, '2.27.1' );
 }
 
 function surbma_gpga_header_scripts() {
@@ -183,6 +186,18 @@ function surbma_gpga_google_analytics_display() {
 	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
 	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
 
+	$fbpixelidValue = isset( $options['fbpixelid'] ) ? stripslashes( $options['fbpixelid'] ) : '';
+	$fbpixeladvancedmatching = isset( $options['fbpixeladvancedmatching'] ) ? stripslashes( $options['fbpixeladvancedmatching'] ) : 0;
+	$fbpixelciemValue = isset( $options['fbpixelciem'] ) ? stripslashes( $options['fbpixelciem'] ) : '';
+	$fbpixelcifnValue = isset( $options['fbpixelcifn'] ) ? stripslashes( $options['fbpixelcifn'] ) : '';
+	$fbpixelcilnValue = isset( $options['fbpixelciln'] ) ? stripslashes( $options['fbpixelciln'] ) : '';
+	$fbpixelciphValue = isset( $options['fbpixelciph'] ) ? stripslashes( $options['fbpixelciph'] ) : '';
+	$fbpixelcigeValue = isset( $options['fbpixelcige'] ) ? stripslashes( $options['fbpixelcige'] ) : '';
+	$fbpixelcidbValue = isset( $options['fbpixelcidb'] ) ? stripslashes( $options['fbpixelcidb'] ) : '';
+	$fbpixelcictValue = isset( $options['fbpixelcict'] ) ? stripslashes( $options['fbpixelcict'] ) : '';
+	$fbpixelcistValue = isset( $options['fbpixelcist'] ) ? stripslashes( $options['fbpixelcist'] ) : '';
+	$fbpixelcizpValue = isset( $options['fbpixelcizp'] ) ? stripslashes( $options['fbpixelcizp'] ) : '';
+
 	$customthirdpartyscriptsValue = isset( $options['customthirdpartyscripts'] ) ? stripslashes( $options['customthirdpartyscripts'] ) : '';
 	$custommarketingscriptsValue = isset( $options['custommarketingscripts'] ) ? stripslashes( $options['custommarketingscripts'] ) : '';
 
@@ -191,8 +206,7 @@ function surbma_gpga_google_analytics_display() {
 ?>
 <!-- Google Analytics -->
 <script>
-	if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
-
+if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -205,16 +219,14 @@ function surbma_gpga_google_analytics_display() {
 	ga('send', 'pageview');
 <?php } ?>
 <?php do_action( 'surbma_gpga_analyticsjs_settings' ); ?>
-
-	}
+}
 </script>
 <?php } else {
 ?>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $gaValue; ?>"></script>
 <script>
-	if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
-
+if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
@@ -224,17 +236,68 @@ function surbma_gpga_google_analytics_display() {
 	gtag('config', '<?php echo $gaValue; ?>');
 <?php } ?>
 <?php do_action( 'surbma_gpga_gtagjs_settings' ); ?>
-
-	}
+}
 </script>
 <?php }
 	}
 
+	if( $fbpixelidValue != '' ) { ?>
+<!-- Facebook Pixel Code -->
+<script>
+if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+<?php if( $fbpixeladvancedmatching != 1 ) { ?>
+	fbq('init', '<?php echo $fbpixelidValue; ?>');
+<?php } else { ?>
+	fbq('init', '<?php echo $fbpixelidValue; ?>', {
+<?php if( $fbpixelciemValue != '' ) { ?>
+		'em': '<?php echo $fbpixelciemValue; ?>',
+<?php } ?>
+<?php if( $fbpixelcifnValue != '' ) { ?>
+		'fn': '<?php echo $fbpixelcifnValue; ?>',
+<?php } ?>
+<?php if( $fbpixelcilnValue != '' ) { ?>
+		'ln': '<?php echo $fbpixelcilnValue; ?>',
+<?php } ?>
+<?php if( $fbpixelciphValue != '' ) { ?>
+		'ph': '<?php echo $fbpixelciphValue; ?>',
+<?php } ?>
+<?php if( $fbpixelcigeValue != '' ) { ?>
+		'ge': '<?php echo $fbpixelcigeValue; ?>',
+<?php } ?>
+<?php if( $fbpixelcidbValue != '' ) { ?>
+		'db': '<?php echo $fbpixelcidbValue; ?>',
+<?php } ?>
+<?php if( $fbpixelcictValue != '' ) { ?>
+		'ct': '<?php echo $fbpixelcictValue; ?>',
+<?php } ?>
+<?php if( $fbpixelcistValue != '' ) { ?>
+		'st': '<?php echo $fbpixelcistValue; ?>',
+<?php } ?>
+<?php if( $fbpixelcizpValue != '' ) { ?>
+		'zp': '<?php echo $fbpixelcizpValue; ?>',
+<?php } ?>
+	});
+<?php } ?>
+	fbq('track', 'PageView');
+}
+</script>
+<!-- End Facebook Pixel Code -->
+<?php }
+/*
 	if( $customthirdpartyscriptsValue != '' )
 		echo $customthirdpartyscriptsValue;
 
 	if( $custommarketingscriptsValue != '' )
 		echo $custommarketingscriptsValue;
+*/
 }
 
 function surbma_gpga_block() {
@@ -341,9 +404,9 @@ function surbma_gpga_block() {
 </script>
 <div id="surbma-gpga-modal" class="uk-modal <?php echo 'surbma-gpga-' . $popupthemesValue; ?><?php echo $popupdarkmodeValue; ?><?php echo $popupcentertextValue; ?>">
 	<div class="uk-modal-dialog<?php echo $popuplargeValue; ?>">
-		<?php if( $popupclosebuttonValue == 1 ) { ?>
+<?php if( $popupclosebuttonValue == 1 ) { ?>
 		<a class="uk-modal-close uk-close"></a>
-		<?php } ?>
+<?php } ?>
 		<div class="uk-modal-header">
 			<h2><a href="#"></a><?php echo stripslashes( $options['popuptitle'] ); ?></h2>
 		</div>
@@ -357,41 +420,44 @@ function surbma_gpga_block() {
 				}
 			?>
 		</div>
-		<div class="uk-modal-footer <?php echo 'surbma-gpga-button-' . $popupbuttonalignment; ?>">
-			<?php if( $popupbutton1displayValue == 1 ) { ?>
-				<button id="button1" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton1styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton1textValue ); ?></button>
-				<span>&nbsp;</span>
-			<?php } ?>
+		<div class="uk-modal-footer <?php echo 'surbma-gpga-button-' . $popupbuttonalignmentValue; ?>">
+<?php if( $popupbutton1displayValue == 1 ) { ?>
+			<button id="button1" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton1styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton1textValue ); ?></button>
+			<span>&nbsp;</span>
+<?php } ?>
 			<button id="button2" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton2styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton2textValue ); ?></button>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-	function surbma_gpga_setCookie(cookieValue) {
+	function surbma_gpga_setCookie(cookieName,cookieValue) {
+	    var name = cookieName;
 	    var value = cookieValue;
 	    var d = new Date();
 	    d.setTime(d.getTime() + (<?php echo $popupcookiedaysValue; ?>*24*60*60*1000));
 	    var expires = "expires="+ d.toUTCString();
-	    document.cookie = "surbma-gpga=" + value + ";" + expires + ";path=/";
+	    document.cookie = name + "=" + value + ";" + expires + ";path=/";
 	}
-	<?php if( $popupbutton1displayValue == 1 ) { ?>
-		document.getElementById("button1").onclick = function() {
-			surbma_gpga_setCookie('no');
-		};
-	<?php } ?>
+<?php if( $popupbutton1displayValue == 1 ) { ?>
+	document.getElementById("button1").onclick = function() {
+		surbma_gpga_setCookie('surbma-gpga','no');
+	};
+<?php } ?>
 	document.getElementById("button2").onclick = function() {
-		surbma_gpga_setCookie('yes');
+		surbma_gpga_setCookie('surbma-gpga','yes');
+<?php if( $gaValue != '' ) { ?>
 <?php if( $gascriptValue == 'analyticsjs' ) { ?>
-<?php if ( $gaanonymizeipValue == '1' ) { ?>
-		ga('send', 'pageview', { 'anonymizeIp': true });
+<?php if( $gaanonymizeipValue == '1' ) { ?>
+		// ga('send', 'pageview', { 'anonymizeIp': true });
 <?php } else { ?>
-		ga('send', 'pageview');
+		// ga('send', 'pageview');
 <?php } ?>
 <?php } else { ?>
-<?php if ( $gaanonymizeipValue == '1' ) { ?>
-		gtag('config', '<?php echo $gaValue; ?>', { 'anonymize_ip': true });
+<?php if( $gaanonymizeipValue == '1' ) { ?>
+		// gtag('config', '<?php echo $gaValue; ?>', { 'anonymize_ip': true });
 <?php } else { ?>
-		gtag('config', '<?php echo $gaValue; ?>');
+		// gtag('config', '<?php echo $gaValue; ?>');
+<?php } ?>
 <?php } ?>
 <?php } ?>
 	};

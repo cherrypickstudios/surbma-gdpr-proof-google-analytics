@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 11.2
+Stable tag: 12.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,13 +15,13 @@ This plugin helps your website to comply with GDPR cookie regulations by asking 
 
 >USE **BEFOREGDPR** COUPON CODE FOR 50% OFF FROM YOUR FIRST PURCHASE TILL MAY 26, 2018!
 
-This plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookie tracking. If visitor choose to decline, than no visitor data will be sent to third party services. If visitor accepts tracking, than data will be sent to third parties. So visitors can choose to be tracked or not, before they visit any page of the website.
+This plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookies. If visitor choose to decline, than the tracking codes (Google Anayltics, Facebook Pixel) are not loading. If visitor accepts cookies, than the tracking codes (Google Anayltics, Facebook Pixel) are loading. So visitors can choose to be tracked or not, before they visit any page of the website. They even can change their minds and set again the cookies.
+
+This plugin manages its own codes, so you have to remove old Google Analytics and Facebook Pixel codes.
 
 This plugin can be used as a simple Cookie Policy plugin, if you don't have any tracking or marketing cookies on your website. Simple and beautiful solution for all websites.
 
-The Surbma - GDPR Proof Cookies plugin is born from my original Surbma - GDPR Proof Google Analytics plugin. It is now supporting only Google Analytics tracking, but it will soon support Facebook Pixel, Google Remarketing, HotJar and other popular services also. It will even support custom codes also.
-
-The cookie saved by this plugin is not storing any sensitive personal data, it is storing only two fix values: "yes" or "no". This cookie management is GDPR proof, as it is impossible to identify any user with the cookie data. Cookies will expire in 30 days by default.
+The cookie saved by this plugin is not storing any sensitive personal data, it is storing only two fix values: "yes" or "no". This cookie management is GDPR proof, as it is impossible to identify any user with the cookie data. Cookies will expire after 30 days by default.
 
 ### Limited Liability
 
@@ -29,25 +29,36 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 
 ### Free version features
 
-- Simple Cookie Policy popup
-- Hide Decline button
-- Cookie Scan page
-- Live Cookie Scan shortcode
-- Cookie settings link with shortcode
+- Google Analytics Cookie Management
+- Facebook Pixel Cookie Management
+- Simple Cookie Policy Popup
+- Hide Decline Button
+- Cookie Scan Page
+- Live Cookie Scan Shortcode
+- Cookie Settings Link With Shortcode
 - Cookie Policy
 - Developer Friendly
 - WPML & Polylang Compatible
 
 ### Additional features in the Pro version
 
-- Snackbar before Popup
-- 6 positions for Snackbar
+- Snackbar Before Popup
+- 6 Positions For Snackbar
 - Full Customizations
 - Cookie Policy Link
-- Themes
+- Popup Styles
+- Popup Themes
 - Full Cookie Control
 - Google Analytics IP Anonymization
 - Google Analytics Tracking Code Customizations
+- Facebook Pixel Customer Identifiers Settings
+
+### Available languages
+
+- English
+- Hungarian
+
+>Translators are welcome for other languages. Translators, who add more, than 50% (must be approved) of their language get a life-time license for one website for FREE!
 
 ### Features in details
 
@@ -106,7 +117,10 @@ Every text is customizable, even the button's texts! You can also set the design
 #### Cookie Policy Link
 Show your Cookie Policy page link in the popup.
 
-#### Themes
+#### Popup Styles
+There are popup styles to choose the look and feel of the popup: Default, Almost Flat and Gradient. Fit the style to your website easily.
+
+#### Popup Themes
 There are popup themes to choose the design, you like. The Full Page Themes are hiding the entire content behind the popup. There are a lot of design settings to make the popup fit your website design. Dark mode is also available.
 
 #### Full Cookie Control
@@ -117,6 +131,9 @@ You might need to disable IP Anonymization of the hit sent to Google Analytics. 
 
 #### Google Analytics Tracking Code Customizations
 Choose between gtag.js framework or analytics.js library. You can also set, if you want to track logged in users or the admin area.
+
+#### Facebook Pixel Customer Identifiers Settings
+Add Facebook Pixel Customer Identifiers to your Facebook Pixel code. Improve the ability to match site visitors to people on Facebook by passing additional site visitor information (such as email address or phone number).
 
 ### About Surbma
 
@@ -153,6 +170,17 @@ This plugin shows a simple popup for every new visitors with two options: accept
 It is the reverse version of my last name. ;)
 
 == Changelog ==
+
+= 12.0 =
+
+- NEW - Facebook Pixel has arrived finally. More services are coming soon.
+- PRO - Facebook Pixel Customer Identifiers settings.
+- PRO - New Popup styles. Fit the style to your website easily.
+- FIX - Button alignment is working again.
+- FIX - If Decline button is hidden, no JS trigger for that button.
+- FIX - Accept button is not triggering Google Analytics send function, as the script is blocked.
+- ENHANCED - Cookie set script is modified to create multiple cookies. Preparing for Cookie categories.
+- ENHANCED - Minor code optimization.
 
 = 11.2 =
 
