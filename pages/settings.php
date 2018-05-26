@@ -567,6 +567,20 @@ function surbma_gpga_settings_page() {
 									</select>
 					    		</div>
 							</div>
+					    	<div class="uk-margin<?php if ( $license == 'free' ) echo ' disabled'; ?>">
+								<div class="uk-form-label"><?php _e( 'Full width', 'surbma-gdpr-proof-google-analytics' ); ?></div>
+								<div class="uk-form-controls">
+									<p class="switch-wrap">
+										<?php _e( 'Display Snackbar without padding in full width', 'surbma-gdpr-proof-google-analytics' ); ?>:
+										<label class="switch">
+											<?php $snackbarfullwidthValue = isset( $options['snackbarfullwidth'] ) ? $options['snackbarfullwidth'] : 0; ?>
+											<input id="surbma_gpga_fields[snackbarfullwidth]" name="surbma_gpga_fields[snackbarfullwidth]" type="checkbox" value="1" <?php checked( '1', $snackbarfullwidthValue ); ?><?php if ( $license == 'free' ) echo ' disabled'; ?> />
+											<span class="slider round"></span>
+										</label>
+									</p>
+									<p class="uk-text-meta"><?php _e( 'This will override the Position setting\'s alignment, only top or bottom position will be valid.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+					    		</div>
+							</div>
 							<?php if ( $license == 'free' ) { ?>
 								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 							<?php } ?>
@@ -868,7 +882,9 @@ function surbma_gpga_settings_page() {
 							<?php if ( $license == 'free' ) { ?>
 							<h4 class="uk-heading-divider"><?php _e( 'Get the Pro Version', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 							<p><?php _e( 'Unlock all options and features of GDPR Proof Cookies plugin! Buy the Pro version and get the most out of all display options and get more control over the tracking code! All disabled options are available in the PRO version.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
-							<p><?php _e( '<div class="uk-alert-success" uk-alert>Use this special <strong>BEFOREGDPR</strong> coupon to get 50% OFF your first purchase, which is available till <strong>May 26, 2018</strong>. Hurry, GDPR is coming!</div>', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<div class="uk-alert-success" style="display: none;" uk-alert>
+								<?php _e( '<p>Use this special <strong>BEFOREGDPR</strong> coupon to get 50% OFF your first purchase, which is available till <strong>May 26, 2018</strong>. Hurry, GDPR is coming!</p>', 'surbma-gdpr-proof-google-analytics' ); ?>
+							</div>
 							<p><a class="uk-button uk-button-default uk-width-1-1" href="<?php echo esc_url( get_admin_url() ); ?>admin.php?page=surbma-gpga-menu-pricing"><?php _e( 'BUY Pro Version!', 'surbma-gdpr-proof-google-analytics' ); ?></a></p>
 							<?php } ?>
 							<div class="uk-alert-primary" style="display: none;" uk-alert>
@@ -983,6 +999,10 @@ function surbma_gpga_fields_validate( $input ) {
 	if ( !isset( $input['snackbar'] ) )
 		$input['snackbar'] = null;
 	$input['snackbar'] = ( $input['snackbar'] == 1 ? 1 : 0 );
+
+	if ( !isset( $input['snackbarfullwidth'] ) )
+		$input['snackbarfullwidth'] = null;
+	$input['snackbarfullwidth'] = ( $input['snackbarfullwidth'] == 1 ? 1 : 0 );
 
 	if ( !isset( $input['gaanonymizeip'] ) )
 		$input['gaanonymizeip'] = null;

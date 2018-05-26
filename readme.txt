@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 12.2
+Stable tag: 13.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,10 @@ This plugin helps your website to comply with GDPR cookie regulations by asking 
 
 == Description ==
 
->USE **BEFOREGDPR** COUPON CODE FOR 50% OFF FROM YOUR FIRST PURCHASE TILL MAY 26, 2018!
+>Demo link for Cookie Snackbar and Cookie Popup:
+>[Snackbar & Popup DEMO](https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/)
+>Demo link for Cookie Shortcodes:
+>[Cookie list & Cookie revoke DEMO](https://surbma.com/privacy-cookie-policy/)
 
 This plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookies. If visitor choose to decline, than the tracking codes (Google Anayltics, Facebook Pixel) are not loading. If visitor accepts cookies, than the tracking codes (Google Anayltics, Facebook Pixel) are loading. So visitors can choose to be tracked or not, before they visit any page of the website. They even can change their minds and set again the cookies.
 
@@ -179,6 +182,11 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 13.0 =
+
+- PRO - Full width Snackbar.
+- TWEAK - New demo links added to the plugin's description.
 
 = 12.2 =
 
