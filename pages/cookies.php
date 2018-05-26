@@ -2,7 +2,7 @@
 
 function surbma_gpga_cookies_page() {
 ?>
-<div class="surbma-admin">
+<div class="surbma-admin cookie-page">
 	<?php surbma_gpga_admin_header(); ?>
 	<div class="wrap">
 		<div class="uk-grid-small" uk-grid>

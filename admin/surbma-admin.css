@@ -169,3 +169,10 @@
 #wpfooter {
     display: none;
 }
+
+
+/* Cookie Page */
+
+.surbma-admin.cookie-page {
+    word-break: break-word;
+}
