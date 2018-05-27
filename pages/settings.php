@@ -513,41 +513,35 @@ function surbma_gpga_settings_page() {
 							<h3 class="uk-card-title"><?php _e( 'Snackbar Settings', 'surbma-gdpr-proof-google-analytics' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #snackbar-settings"></a></h3>
 					    </div>
 					    <div id="snackbar-settings" class="uk-card-body">
-					    	<div class="uk-margin<?php if ( $license == 'free' ) echo ' disabled'; ?>">
+					    	<div class="uk-margin">
 								<div class="uk-form-label"><?php _e( 'Enable Snackbar', 'surbma-gdpr-proof-google-analytics' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<?php _e( 'Display Snackbar before the Popup', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $snackbarValue = isset( $options['snackbar'] ) ? $options['snackbar'] : 0; ?>
-											<input id="surbma_gpga_fields[snackbar]" name="surbma_gpga_fields[snackbar]" type="checkbox" value="1" <?php checked( '1', $snackbarValue ); ?><?php if ( $license == 'free' ) echo ' disabled'; ?> />
+											<input id="surbma_gpga_fields[snackbar]" name="surbma_gpga_fields[snackbar]" type="checkbox" value="1" <?php checked( '1', $snackbarValue ); ?> />
 											<span class="slider round"></span>
 										</label>
 									</p>
 									<p class="uk-text-meta"><?php _e( 'If enabled, a snackbar will be displayed instead of the Popup. Clicking on the Snackbar link will open the Popup.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 					    		</div>
 							</div>
-							<?php if ( $license == 'free' ) { ?>
-								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
-							<?php } ?>
 							<h4 class="uk-heading-divider"><?php _e( 'Content', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
-					    	<div class="uk-margin<?php if ( $license == 'free' ) echo ' disabled'; ?>">
+					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[snackbartext]"><?php _e( 'Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $snackbartextValue = isset( $options['snackbartext'] ) ? $options['snackbartext'] : 'We are using Cookies on our website.'; ?>
-									<input id="surbma_gpga_fields[snackbartext]" class="uk-input" type="text" name="surbma_gpga_fields[snackbartext]" value="<?php echo $snackbartextValue; ?>"<?php if ( $license == 'free' ) echo ' disabled'; ?> />
+									<input id="surbma_gpga_fields[snackbartext]" class="uk-input" type="text" name="surbma_gpga_fields[snackbartext]" value="<?php echo $snackbartextValue; ?>" />
 								</div>
 							</div>
-					    	<div class="uk-margin<?php if ( $license == 'free' ) echo ' disabled'; ?>">
+					    	<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[snackbaropenpopuptext]"><?php _e( 'Open Popup Link Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $snackbaropenpopuptextValue = isset( $options['snackbaropenpopuptext'] ) ? $options['snackbaropenpopuptext'] : 'Cookie settings'; ?>
-									<input id="surbma_gpga_fields[snackbaropenpopuptext]" class="uk-input" type="text" name="surbma_gpga_fields[snackbaropenpopuptext]" value="<?php echo $snackbaropenpopuptextValue; ?>"<?php if ( $license == 'free' ) echo ' disabled'; ?> />
+									<input id="surbma_gpga_fields[snackbaropenpopuptext]" class="uk-input" type="text" name="surbma_gpga_fields[snackbaropenpopuptext]" value="<?php echo $snackbaropenpopuptextValue; ?>" />
 								</div>
 							</div>
-							<?php if ( $license == 'free' ) { ?>
-								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
-							<?php } ?>
 							<h4 class="uk-heading-divider"><?php _e( 'Design Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
 					    	<div class="uk-margin<?php if ( $license == 'free' ) echo ' disabled'; ?>">
 								<label class="uk-form-label" for="surbma_gpga_fields[snackbarpos]"><?php _e( 'Position', 'surbma-gdpr-proof-google-analytics' ); ?></label>
@@ -1018,7 +1012,8 @@ function surbma_gpga_fields_validate( $input ) {
 
 		$input['popupcookiedays'] = 30;
 
-		$input['snackbar'] = 0;
+		$input['snackbarpos'] = 'bottom-left';
+		$input['snackbarfullwidth'] = 0;
 
 		$input['gaanonymizeip'] = 1;
 

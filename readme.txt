@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 14.0
+Stable tag: 15.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,7 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 
 - Google Analytics Cookie Management
 - Facebook Pixel Cookie Management
+- Snackbar Before Popup
 - Simple Cookie Policy Popup
 - Hide Decline Button
 - Cookie-Free Social Share Buttons
@@ -46,7 +47,6 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 
 ### Additional features in the Pro version
 
-- Snackbar Before Popup
 - 6 Positions For Snackbar
 - Full Customizations
 - Cookie Policy Link
@@ -187,6 +187,10 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 15.0 =
+
+- NEW - The long awaited and much requested Snackbar is available in the FREE version!
 
 = 14.0 =
 

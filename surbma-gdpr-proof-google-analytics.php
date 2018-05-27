@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Cookies
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 14.0
+Version: 15.0
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -357,7 +357,7 @@ function surbma_gpga_block() {
 	$snackbarValue = isset( $options['snackbar'] ) && $license != 'free' ? $options['snackbar'] : 0;
 	$snackbartextValue = isset( $options['snackbartext'] ) ? stripslashes( $options['snackbartext'] ) : '';
 	$snackbaropenpopuptextValue = isset( $options['snackbaropenpopuptext'] ) ? stripslashes( $options['snackbaropenpopuptext'] ) : '';
-	$snackbarposValue = isset( $options['snackbarpos'] ) ? $options['snackbarpos'] : 'bottom-left';
+	$snackbarposValue = $license != 'free' && isset( $options['snackbarpos'] ) ? $options['snackbarpos'] : 'bottom-left';
 	$snackbarfullwidthValue = isset( $options['snackbarfullwidth'] ) ? $options['snackbarfullwidth'] : 0;
 
 ?>
@@ -371,7 +371,7 @@ function surbma_gpga_block() {
 			text: '<?php echo $snackbartextValue; ?>',
 			textColor: '#fff',
 			pos: '<?php echo $snackbarposValue; ?>',
-<?php if( $snackbarfullwidthValue == 1 ) { ?>
+<?php if( $license != 'free' && $snackbarfullwidthValue == 1 ) { ?>
 			customClass: 'snackbar-fullwidth',
 <?php } ?>
 			width: 'auto',
