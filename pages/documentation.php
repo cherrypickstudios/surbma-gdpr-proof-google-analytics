@@ -3,7 +3,7 @@
 function surbma_gpga_documentation_page() {
 ?>
 <div class="surbma-admin">
-	<?php surbma_gpga_admin_header(); ?>
+	<?php surbma_gpga_admin_header( __( 'Documentation' ) ); ?>
 	<div class="wrap">
 		<div class="uk-grid-small" uk-grid>
 			<div class="uk-width-1-1">

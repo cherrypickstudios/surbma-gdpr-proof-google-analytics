@@ -5,7 +5,7 @@ Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cooki
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 13.0
+Stable tag: 14.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,12 +13,12 @@ This plugin helps your website to comply with GDPR cookie regulations by asking 
 
 == Description ==
 
+This plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookies. If visitor choose to decline, than the tracking codes (Google Anayltics, Facebook Pixel) are not loading. If visitor accepts cookies, than the tracking codes (Google Anayltics, Facebook Pixel) are loading. So visitors can choose to be tracked or not, before they visit any page of the website. They even can change their minds and set again the cookies.
+
 >Demo link for Cookie Snackbar and Cookie Popup:
 >[Snackbar & Popup DEMO](https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/)
 >Demo link for Cookie Shortcodes:
 >[Cookie list & Cookie revoke DEMO](https://surbma.com/privacy-cookie-policy/)
-
-This plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookies. If visitor choose to decline, than the tracking codes (Google Anayltics, Facebook Pixel) are not loading. If visitor accepts cookies, than the tracking codes (Google Anayltics, Facebook Pixel) are loading. So visitors can choose to be tracked or not, before they visit any page of the website. They even can change their minds and set again the cookies.
 
 This plugin manages its own codes, so you have to remove old Google Analytics and Facebook Pixel codes.
 
@@ -36,6 +36,7 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 - Facebook Pixel Cookie Management
 - Simple Cookie Policy Popup
 - Hide Decline Button
+- Cookie-Free Social Share Buttons
 - Cookie Scan Page
 - Live Cookie Scan Shortcode
 - Cookie Settings Link With Shortcode
@@ -55,6 +56,7 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 - Google Analytics IP Anonymization
 - Google Analytics Tracking Code Customizations
 - Facebook Pixel Customer Identifiers Settings
+- Location and design settings for the Cookie-Free Social Share Buttons
 
 ### Available languages
 
@@ -70,6 +72,9 @@ If you don't have such cookies on your website, that need visitor consent, you c
 
 #### Hide Decline button
 If you only want to show the Accept button, you can hide the Decline button.
+
+#### Cookie-Free Social Share Buttons
+You can add Facebook, Google Plus, Twitter, LinkedIn, Pinterest and Email Share Buttons to posts, pages or even custom post types. These share buttons are loading really fast (almost 0 impact in page load time) and they are not using any Cookies on your website. So you can exclude social sharing topic from your Cookie Policy page. Choose if you want to show the buttons before or after the content or both positions. There are pre-defined styles to choose from, but Social Share Buttons can easily changed via CSS.
 
 #### Cookie Scan page
 This page will display all the saved cookies for you, so you can see, what cookies are used in your website.
@@ -182,6 +187,15 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 14.0 =
+
+- NEW - Cookie-Free Social Share Buttons! Yes, really Cookie-Free Social Share Buttons!
+- ENHANCED - Admin pages show the page titles in the header.
+- ENHANCED - Added global sidebar for admin pages.
+- TWEAK - The main submenu is renamed.
+- FIX - "Settings Saved" bar is displayed, when admin pages are saved.
+- FIX - Settings validation is fixed for free version.
 
 = 13.0 =
 
