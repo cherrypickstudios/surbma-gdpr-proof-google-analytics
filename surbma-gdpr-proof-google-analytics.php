@@ -5,7 +5,7 @@ Plugin Name: Surbma - GDPR Proof Cookies
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 15.0
+Version: 15.1
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -46,9 +46,6 @@ function surbma_gpga_fs() {
                 'slug'           => 'surbma-gpga-menu',
                 'support'        => false,
             ),
-            // Set the SDK to work in a sandbox mode (for development & testing).
-            // IMPORTANT: MAKE SURE TO REMOVE SECRET KEY BEFORE DEPLOYMENT.
-            'secret_key'          => 'sk_$5i&}Wavq!rO$FRZwsKwceP^{&50;',
         ) );
     }
 
@@ -79,6 +76,23 @@ function surbma_gpga_fs_custom_connect_message_on_update(
 	);
 }
 surbma_gpga_fs()->add_filter('connect_message_on_update', 'surbma_gpga_fs_custom_connect_message_on_update', 10, 6);
+
+// Check if free or premium version is used
+if( surbma_gpga_fs()->is__premium_only() ) {
+	define( 'SURBMA_GPGA_PLUGIN_VERSION', 'premium' );
+}
+if( !defined( 'SURBMA_GPGA_PLUGIN_VERSION' ) ) {
+	define( 'SURBMA_GPGA_PLUGIN_VERSION', 'free' );
+}
+
+// Check license
+if( surbma_gpga_fs()->can_use_premium_code() ) {
+	define( 'SURBMA_GPGA_PLUGIN_LICENSE', 'valid' );
+} elseif( SURBMA_GPGA_PLUGIN_VERSION == 'premium' ) {
+	define( 'SURBMA_GPGA_PLUGIN_LICENSE', 'expired' );
+} else {
+	define( 'SURBMA_GPGA_PLUGIN_LICENSE', 'free' );
+}
 
 define( 'SURBMA_GPGA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SURBMA_GPGA_PLUGIN_URL', plugins_url( '', __FILE__ ) );
@@ -129,9 +143,9 @@ function surbma_gpga_structure_load() {
 	$popupdebugValue = isset( $options['popupdebug'] ) && is_user_logged_in() && !is_admin() ? $options['popupdebug'] : 0;
 
 	$gaValue = isset( $options['ga'] ) ? stripslashes( $options['ga'] ) : '';
-	$galoadadminValue = isset( $options['galoadadmin'] ) ? $options['galoadadmin'] : 1;
-	$galoadloginValue = isset( $options['galoadlogin'] ) ? $options['galoadlogin'] : 1;
-	$galoadloggedinValue = isset( $options['galoadloggedin'] ) ? $options['galoadloggedin'] : 1;
+	$galoadadminValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['galoadadmin'] ) ? $options['galoadadmin'] : 1;
+	$galoadloginValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['galoadlogin'] ) ? $options['galoadlogin'] : 1;
+	$galoadloggedinValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['galoadloggedin'] ) ? $options['galoadloggedin'] : 1;
 
 	$fbpixelidValue = isset( $options['fbpixelid'] ) ? stripslashes( $options['fbpixelid'] ) : '';
 
@@ -167,7 +181,7 @@ add_action( 'wp_loaded', 'surbma_gpga_structure_load' );
 
 function surbma_gpga_enqueue_scripts() {
 	$options = get_option( 'surbma_gpga_fields' );
-	$popupstylesValue = isset( $options['popupstyles'] ) ? $options['popupstyles'] : 'default';
+	$popupstylesValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupstyles'] ) ? $options['popupstyles'] : 'default';
 
 	wp_enqueue_script( 'surbma-gpga-scripts', plugins_url( '', __FILE__ ) . '/js/scripts-min.js', array( 'jquery' ), '2.27.1', true );
 	wp_enqueue_style( 'surbma-gpga-styles', plugins_url( '', __FILE__ ) . '/css/styles-' . $popupstylesValue . '.css', false, '2.27.1' );
@@ -190,8 +204,8 @@ function surbma_gpga_google_analytics_display() {
 	$options = get_option( 'surbma_gpga_fields' );
 
 	$gaValue = isset( $options['ga'] ) ? stripslashes( $options['ga'] ) : '';
-	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
-	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
+	$gaanonymizeipValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
+	$gascriptValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
 
 	if( $gascriptValue == 'analyticsjs' ) {
 ?>
@@ -236,16 +250,16 @@ function surbma_gpga_fbpixel_display() {
 	$options = get_option( 'surbma_gpga_fields' );
 
 	$fbpixelidValue = isset( $options['fbpixelid'] ) ? stripslashes( $options['fbpixelid'] ) : '';
-	$fbpixeladvancedmatching = isset( $options['fbpixeladvancedmatching'] ) ? stripslashes( $options['fbpixeladvancedmatching'] ) : 0;
-	$fbpixelciemValue = isset( $options['fbpixelciem'] ) ? stripslashes( $options['fbpixelciem'] ) : '';
-	$fbpixelcifnValue = isset( $options['fbpixelcifn'] ) ? stripslashes( $options['fbpixelcifn'] ) : '';
-	$fbpixelcilnValue = isset( $options['fbpixelciln'] ) ? stripslashes( $options['fbpixelciln'] ) : '';
-	$fbpixelciphValue = isset( $options['fbpixelciph'] ) ? stripslashes( $options['fbpixelciph'] ) : '';
-	$fbpixelcigeValue = isset( $options['fbpixelcige'] ) ? stripslashes( $options['fbpixelcige'] ) : '';
-	$fbpixelcidbValue = isset( $options['fbpixelcidb'] ) ? stripslashes( $options['fbpixelcidb'] ) : '';
-	$fbpixelcictValue = isset( $options['fbpixelcict'] ) ? stripslashes( $options['fbpixelcict'] ) : '';
-	$fbpixelcistValue = isset( $options['fbpixelcist'] ) ? stripslashes( $options['fbpixelcist'] ) : '';
-	$fbpixelcizpValue = isset( $options['fbpixelcizp'] ) ? stripslashes( $options['fbpixelcizp'] ) : '';
+	$fbpixeladvancedmatching = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixeladvancedmatching'] ) ? stripslashes( $options['fbpixeladvancedmatching'] ) : 0;
+	$fbpixelciemValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixelciem'] ) ? stripslashes( $options['fbpixelciem'] ) : '';
+	$fbpixelcifnValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixelcifn'] ) ? stripslashes( $options['fbpixelcifn'] ) : '';
+	$fbpixelcilnValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixelciln'] ) ? stripslashes( $options['fbpixelciln'] ) : '';
+	$fbpixelciphValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixelciph'] ) ? stripslashes( $options['fbpixelciph'] ) : '';
+	$fbpixelcigeValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixelcige'] ) ? stripslashes( $options['fbpixelcige'] ) : '';
+	$fbpixelcidbValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixelcidb'] ) ? stripslashes( $options['fbpixelcidb'] ) : '';
+	$fbpixelcictValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixelcict'] ) ? stripslashes( $options['fbpixelcict'] ) : '';
+	$fbpixelcistValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixelcist'] ) ? stripslashes( $options['fbpixelcist'] ) : '';
+	$fbpixelcizpValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['fbpixelcizp'] ) ? stripslashes( $options['fbpixelcizp'] ) : '';
 
 	if( $fbpixelidValue != '' ) { ?>
 <!-- Facebook Pixel Code -->
@@ -313,52 +327,47 @@ function surbma_gpga_customscripts_display() {
 }
 
 function surbma_gpga_block() {
-	$license = 'all';
-	if ( surbma_gpga_fs()->is_not_paying() && !surbma_gpga_fs()->is_trial() ) {
-		$license = 'free';
-	}
-
 	$options = get_option( 'surbma_gpga_fields' );
 
 	$popuptextValue = isset( $options['popuptext'] ) ? $options['popuptext'] : '';
 
-	$popupcookiepolicytextValue = isset( $options['popupcookiepolicytext'] ) ? $options['popupcookiepolicytext'] : '';
+	$popupcookiepolicytextValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupcookiepolicytext'] ) ? $options['popupcookiepolicytext'] : '';
 	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
 
 	$popupbutton1displayValue = isset( $options['popupbutton1display'] ) ? $options['popupbutton1display'] : 1;
-	$popupbutton1styleValue = isset( $options['popupbutton1style'] ) ? $options['popupbutton1style'] : 'default';
+	$popupbutton1styleValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupbutton1style'] ) ? $options['popupbutton1style'] : 'default';
 	$popupbutton1textValue = isset( $options['popupbutton1text'] ) ? $options['popupbutton1text'] : 'Decline';
-	$popupbutton2styleValue = isset( $options['popupbutton2style'] ) ? $options['popupbutton2style'] : 'primary';
+	$popupbutton2styleValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupbutton2style'] ) ? $options['popupbutton2style'] : 'primary';
 	$popupbutton2textValue = isset( $options['popupbutton2text'] ) ? $options['popupbutton2text'] : 'Accept';
-	$popupbuttonsizeValue = isset( $options['popupbuttonsize'] ) ? $options['popupbuttonsize'] : 'large';
-	$popupbuttonalignmentValue = isset( $options['popupbuttonalignment'] ) ? $options['popupbuttonalignment'] : 'left';
+	$popupbuttonsizeValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupbuttonsize'] ) ? $options['popupbuttonsize'] : 'large';
+	$popupbuttonalignmentValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupbuttonalignment'] ) ? $options['popupbuttonalignment'] : 'left';
 
-	$popupthemesValue = isset( $options['popupthemes'] ) ? $options['popupthemes'] : 'normal';
-	$popupdarkmodeValue = isset( $options['popupdarkmode'] ) && $options['popupdarkmode'] == 1 ? ' surbma-gpga-dark' : '';
-	$popupcentertextValue = isset( $options['popupcentertext'] ) && $options['popupcentertext'] == 1 ? ' surbma-gpga-text-center' : '';
-	$popupverticalcenterValue = isset( $options['popupverticalcenter'] ) && $options['popupverticalcenter'] == 1 ? 'true' : 'false';
-	$popuplargeValue = isset( $options['popuplarge'] ) && $options['popuplarge'] == 1 ? ' uk-modal-dialog-large' : '';
+	$popupthemesValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupthemes'] ) ? $options['popupthemes'] : 'normal';
+	$popupdarkmodeValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupdarkmode'] ) && $options['popupdarkmode'] == 1 ? ' surbma-gpga-dark' : '';
+	$popupcentertextValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupcentertext'] ) && $options['popupcentertext'] == 1 ? ' surbma-gpga-text-center' : '';
+	$popupverticalcenterValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupverticalcenter'] ) && $options['popupverticalcenter'] == 1 ? 'true' : 'false';
+	$popuplargeValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popuplarge'] ) && $options['popuplarge'] == 1 ? ' uk-modal-dialog-large' : '';
 
 	$popupdebugValue = isset( $options['popupdebug'] ) && is_user_logged_in() && !is_admin() ? $options['popupdebug'] : 0;
 
 	$popupclosebuttonValue = isset( $options['popupclosebutton'] ) ? $options['popupclosebutton'] : 0;
-	$popupclosekeyboardValue = $popupdebugValue == 1 || ( isset( $options['popupclosekeyboard'] ) && $options['popupclosekeyboard'] == 1 ) ? 'true' : 'false';
-	$popupclosebgcloseValue = isset( $options['popupclosebgclose'] ) && $options['popupclosebgclose'] == 1 ? 'true' : 'false';
+	$popupclosekeyboardValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && $popupdebugValue == 1 || ( isset( $options['popupclosekeyboard'] ) && $options['popupclosekeyboard'] == 1 ) ? 'true' : 'false';
+	$popupclosebgcloseValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupclosebgclose'] ) && $options['popupclosebgclose'] == 1 ? 'true' : 'false';
 
-	$popupdelayValue = isset( $options['popupdelay'] ) ? $options['popupdelay'] : 0;
+	$popupdelayValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupdelay'] ) ? $options['popupdelay'] : 0;
 	$popupdelayValue = 1000 * (int)$popupdelayValue;
 
 	$gaValue = isset( $options['ga'] ) ? $options['ga'] : '';
-	$gaanonymizeipValue = isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
-	$gascriptValue = isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
+	$gaanonymizeipValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['gaanonymizeip'] ) ? $options['gaanonymizeip'] : 1;
+	$gascriptValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['gascript'] ) ? $options['gascript'] : 'gtagjs';
 
-	$popupcookiedaysValue = isset( $options['popupcookiedays'] ) && $options['popupcookiedays'] != 0 ? $options['popupcookiedays'] : 30;
+	$popupcookiedaysValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupcookiedays'] ) && $options['popupcookiedays'] != 0 ? $options['popupcookiedays'] : 30;
 
-	$snackbarValue = isset( $options['snackbar'] ) && $license != 'free' ? $options['snackbar'] : 0;
+	$snackbarValue = isset( $options['snackbar'] ) ? $options['snackbar'] : 0;
 	$snackbartextValue = isset( $options['snackbartext'] ) ? stripslashes( $options['snackbartext'] ) : '';
 	$snackbaropenpopuptextValue = isset( $options['snackbaropenpopuptext'] ) ? stripslashes( $options['snackbaropenpopuptext'] ) : '';
-	$snackbarposValue = $license != 'free' && isset( $options['snackbarpos'] ) ? $options['snackbarpos'] : 'bottom-left';
-	$snackbarfullwidthValue = isset( $options['snackbarfullwidth'] ) ? $options['snackbarfullwidth'] : 0;
+	$snackbarposValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['snackbarpos'] ) ? $options['snackbarpos'] : 'bottom-left';
+	$snackbarfullwidthValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['snackbarfullwidth'] ) ? $options['snackbarfullwidth'] : 0;
 
 ?>
 <input type="hidden" id="surbma-gpga-popupdebug" value="<?php echo $popupdebugValue; ?>" />

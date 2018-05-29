@@ -52,10 +52,7 @@ function surbma_gpga_social_page() {
 	global $ssbcontentlocation_options;
 	global $ssbstyle_options;
 
-	$license = 'all';
-	if ( surbma_gpga_fs()->is_not_paying() && !surbma_gpga_fs()->is_trial() ) {
-		$license = 'free';
-	}
+	$freeNotification = '<p class="uk-text-meta uk-text-center">' . __( 'Inactive options are available in the Premium Version of this plugin with an Active License.', 'surbma-gdpr-proof-google-analytics' ) . '</p>';
 
 ?>
 <div class="surbma-admin surbma-social-page">
@@ -143,31 +140,31 @@ function surbma_gpga_social_page() {
 									</p>
 					    		</div>
 							</div>
-					    	<div class="uk-margin<?php if ( $license == 'free' ) echo ' disabled'; ?>">
+					    	<div class="uk-margin<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?>">
 								<div class="uk-form-label"><?php _e( 'Pages', 'surbma-gdpr-proof-google-analytics' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<?php _e( 'Display Social Share Buttons on single pages', 'surbma-gdpr-proof-google-analytics' ); ?>:
 										<label class="switch">
 											<?php $ssbpagesValue = isset( $options['ssbpages'] ) ? $options['ssbpages'] : 0; ?>
-											<input id="surbma_gpga_social_fields[ssbpages]" name="surbma_gpga_social_fields[ssbpages]" type="checkbox" value="1" <?php checked( '1', $ssbpagesValue ); ?><?php if ( $license == 'free' ) echo ' disabled'; ?> />
+											<input id="surbma_gpga_social_fields[ssbpages]" name="surbma_gpga_social_fields[ssbpages]" type="checkbox" value="1" <?php checked( '1', $ssbpagesValue ); ?><?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?> />
 											<span class="slider round"></span>
 										</label>
 									</p>
 					    		</div>
 							</div>
-					    	<div class="uk-margin<?php if ( $license == 'free' ) echo ' disabled'; ?>">
+					    	<div class="uk-margin<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?>">
 								<label class="uk-form-label" for="surbma_gpga_social_fields[ssbcpts]"><?php _e( 'Custom Post Types', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
 									<?php $ssbcptsValue = isset( $options['ssbcpts'] ) ? $options['ssbcpts'] : ''; ?>
-									<input id="surbma_gpga_social_fields[ssbcpts]" class="uk-input" type="text" name="surbma_gpga_social_fields[ssbcpts]" value="<?php echo $ssbcptsValue; ?>" placeholder="CPT slugs in apostrophes, comma separated"<?php if ( $license == 'free' ) echo ' disabled'; ?> />
+									<input id="surbma_gpga_social_fields[ssbcpts]" class="uk-input" type="text" name="surbma_gpga_social_fields[ssbcpts]" value="<?php echo $ssbcptsValue; ?>" placeholder="CPT slugs in apostrophes, comma separated"<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?> />
 									<p class="uk-text-meta"><?php _e( 'This will enable Social Share Buttons on CPT single pages.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
 								</div>
 							</div>
-					    	<div class="uk-margin<?php if ( $license == 'free' ) echo ' disabled'; ?>">
+					    	<div class="uk-margin<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?>">
 								<label class="uk-form-label" for="surbma_gpga_social_fields[ssbcontentlocation]"><?php _e( 'Content Location', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
-									<select class="uk-select" name="surbma_gpga_social_fields[ssbcontentlocation]"<?php if ( $license == 'free' ) echo ' disabled'; ?>>
+									<select class="uk-select" name="surbma_gpga_social_fields[ssbcontentlocation]"<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?>>
 										<?php
 											$ssbcontentlocationValue = isset( $options['ssbcontentlocation'] ) ? $options['ssbcontentlocation'] : 'after';
 											$selected = $ssbcontentlocationValue;
@@ -186,14 +183,13 @@ function surbma_gpga_social_page() {
 									</select>
 					    		</div>
 							</div>
-							<?php if ( $license == 'free' ) { ?>
-								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) { ?>
 							<?php } ?>
 							<h4 class="uk-heading-divider"><?php _e( 'Design Settings', 'surbma-gdpr-proof-google-analytics' ); ?></h4>
-					    	<div class="uk-margin<?php if ( $license == 'free' ) echo ' disabled'; ?>">
+					    	<div class="uk-margin<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?>">
 								<label class="uk-form-label" for="surbma_gpga_social_fields[ssbstyle]"><?php _e( 'Styles', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
-									<select class="uk-select" name="surbma_gpga_social_fields[ssbstyle]"<?php if ( $license == 'free' ) echo ' disabled'; ?>>
+									<select class="uk-select" name="surbma_gpga_social_fields[ssbstyle]"<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?>>
 										<?php
 											$ssbstyleValue = isset( $options['ssbstyle'] ) ? $options['ssbstyle'] : 'simple-colored';
 											$selected = $ssbstyleValue;
@@ -212,8 +208,7 @@ function surbma_gpga_social_page() {
 									</select>
 					    		</div>
 							</div>
-							<?php if ( $license == 'free' ) { ?>
-								<p class="uk-text-meta uk-text-center"><?php _e( 'Inactive options are available in the Pro Version of this plugin.', 'surbma-gdpr-proof-google-analytics' ); ?></p>
+							<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) { ?>
 							<?php } ?>
 						</div>
 				    	<div class="uk-card-footer uk-background-muted">
@@ -240,59 +235,33 @@ function surbma_gpga_social_fields_validate( $input ) {
 	global $ssbcontentlocation_options;
 	global $ssbstyle_options;
 
-	$license = 'all';
-	if ( surbma_gpga_fs()->is_not_paying() && !surbma_gpga_fs()->is_trial() ) {
-		$license = 'free';
-	}
+	$options = get_option( 'surbma_gpga_social_fields' );
 
-	// Say our text option must be safe text with no HTML tags
+	// Say our text option must be safe text with no HTML tags.
 	$input['ssbcpts'] = wp_filter_nohtml_kses( str_replace( ' ', '', $input['ssbcpts'] ) );
 
-	if ( ! isset( $input['ssbfacebook'] ) )
-		$input['ssbfacebook'] = null;
-	$input['ssbfacebook'] = ( $input['ssbfacebook'] == 1 ? 1 : 0 );
+	// Checkbox validation.
+	$input['ssbfacebook'] = isset( $input['ssbfacebook'] ) && $input['ssbfacebook'] == 1 ? 1 : 0;
+	$input['ssbgoogleplus'] = isset( $input['ssbgoogleplus'] ) && $input['ssbgoogleplus'] == 1 ? 1 : 0;
+	$input['ssbtwitter'] = isset( $input['ssbtwitter'] ) && $input['ssbtwitter'] == 1 ? 1 : 0;
+	$input['ssblinkedin'] = isset( $input['ssblinkedin'] ) && $input['ssblinkedin'] == 1 ? 1 : 0;
+	$input['ssbpinterest'] = isset( $input['ssbpinterest'] ) && $input['ssbpinterest'] == 1 ? 1 : 0;
+	$input['ssbemail'] = isset( $input['ssbemail'] ) && $input['ssbemail'] == 1 ? 1 : 0;
+	$input['ssbposts'] = isset( $input['ssbposts'] ) && $input['ssbposts'] == 1 ? 1 : 0;
+	$input['ssbpages'] = isset( $input['ssbpages'] ) && $input['ssbpages'] == 1 ? 1 : 0;
 
-	if ( ! isset( $input['ssbgoogleplus'] ) )
-		$input['ssbgoogleplus'] = null;
-	$input['ssbgoogleplus'] = ( $input['ssbgoogleplus'] == 1 ? 1 : 0 );
-
-	if ( ! isset( $input['ssbtwitter'] ) )
-		$input['ssbtwitter'] = null;
-	$input['ssbtwitter'] = ( $input['ssbtwitter'] == 1 ? 1 : 0 );
-
-	if ( ! isset( $input['ssblinkedin'] ) )
-		$input['ssblinkedin'] = null;
-	$input['ssblinkedin'] = ( $input['ssblinkedin'] == 1 ? 1 : 0 );
-
-	if ( ! isset( $input['ssbpinterest'] ) )
-		$input['ssbpinterest'] = null;
-	$input['ssbpinterest'] = ( $input['ssbpinterest'] == 1 ? 1 : 0 );
-
-	if ( ! isset( $input['ssbemail'] ) )
-		$input['ssbemail'] = null;
-	$input['ssbemail'] = ( $input['ssbemail'] == 1 ? 1 : 0 );
-
-	if ( ! isset( $input['ssbposts'] ) )
-		$input['ssbposts'] = null;
-	$input['ssbposts'] = ( $input['ssbposts'] == 1 ? 1 : 0 );
-
-	if ( ! isset( $input['ssbpages'] ) )
-		$input['ssbpages'] = null;
-	$input['ssbpages'] = ( $input['ssbpages'] == 1 ? 1 : 0 );
-
-	// Our select option must actually be in our array of select options
-	if ( ! array_key_exists( $input['ssbcontentlocation'], $ssbcontentlocation_options ) )
+	// Our select option must actually be in our array of select options.
+	if ( !array_key_exists( $input['ssbcontentlocation'], $ssbcontentlocation_options ) )
 		$input['ssbcontentlocation'] = 'after';
-	if ( ! array_key_exists( $input['ssbstyle'], $ssbstyle_options ) )
+	if ( !array_key_exists( $input['ssbstyle'], $ssbstyle_options ) )
 		$input['ssbstyle'] = 'simple-colored';
 
-	// Set Free version's default values
-	if ( $license == 'free' ) {
-		$input['ssbpages'] = 0;
-		$ssbcptsValue = isset( $options['ssbcpts'] ) ? $options['ssbcpts'] : '';
-		$input['ssbcpts'] = $ssbcptsValue;
-		$input['ssbcontentlocation'] = 'after';
-		$input['ssbstyle'] = 'simple-colored';
+	// If no valid license, check if field has any value. If yes, save it, if no, set to default.
+	if ( SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) {
+		$input['ssbpages'] = isset( $options['ssbpages'] ) ? $options['ssbpages'] : 0;
+		$input['ssbcpts'] = isset( $options['ssbcpts'] ) ? $options['ssbcpts'] : '';
+		$input['ssbcontentlocation'] = isset( $options['ssbcontentlocation'] ) ? $options['ssbcontentlocation'] : 'after';
+		$input['ssbstyle'] = isset( $options['ssbstyle'] ) ? $options['ssbstyle'] : 'simple-colored';
 	}
 
 	return $input;

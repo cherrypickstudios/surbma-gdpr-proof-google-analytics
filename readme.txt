@@ -188,6 +188,11 @@ It is the reverse version of my last name. ;)
 
 == Changelog ==
 
+= 15.1 =
+
+- NEW - Added notifications for free and premium users in different situations.
+- ENHANCED - A lot of code optimization.
+
 = 15.0 =
 
 - NEW - The long awaited and much requested Snackbar is available in the FREE version!
