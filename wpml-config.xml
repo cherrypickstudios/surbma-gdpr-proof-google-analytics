@@ -7,6 +7,8 @@
             <key name="popupcookiepolicypage" />
             <key name="popupbutton1text" />
             <key name="popupbutton2text" />
+            <key name="snackbartext" />
+            <key name="snackbaropenpopuptext" />
         </key>
     </admin-texts>
 </wpml-config>
