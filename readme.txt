@@ -1,11 +1,11 @@
-=== Surbma - GDPR Proof Cookies ===
+=== Surbma | GDPR Proof Cookie Consent & Notice Bar ===
 Contributors: Surbma
 Donate link: https://surbma.com/donate/
-Tags: gdpr, analytics, google analytics, popup, cookie, cookie compliance, cookie law, cookies, eu cookie, facebook, facebook pixel, hotjar
+Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 15.3
+Stable tag: 15.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,18 +13,24 @@ This plugin helps your website to comply with GDPR cookie regulations by asking 
 
 == Description ==
 
-This plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookies. If visitor choose to decline, than the tracking codes (Google Anayltics, Facebook Pixel) are not loading. If visitor accepts cookies, than the tracking codes (Google Anayltics, Facebook Pixel) are loading. So visitors can choose to be tracked or not, before they visit any page of the website. They even can change their minds and set again the cookies.
+The Surbma | GDPR Proof Cookie Consent & Notice Bar plugin helps your website to comply with GDPR cookie regulations by asking every visitors to accept or decline cookies. If visitor choose to decline, than the tracking codes (Google Anayltics, Facebook Pixel) are not loading. If visitor accepts cookies, than the tracking codes (Google Anayltics, Facebook Pixel) are loading. So visitors can choose to be tracked or not, before they visit any page of the website. They even can change their minds and set again the cookies.
 
 >Demo link for Cookie Snackbar and Cookie Popup:
 >[Snackbar & Popup DEMO](https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/)
 >Demo link for Cookie Shortcodes:
 >[Cookie list & Cookie revoke DEMO](https://surbma.com/privacy-cookie-policy/)
 
-This plugin manages its own codes, so you have to remove old Google Analytics and Facebook Pixel codes.
+### All In One Tracking & Marketing Solution
 
-This plugin can be used as a simple Cookie Policy plugin, if you don't have any tracking or marketing cookies on your website. Simple and beautiful solution for all websites.
+This plugin manages its own codes, so you have to remove old Google Analytics and Facebook Pixel codes. It is an easy way to embed your tracking and marketing scripts, without coding and file modifications.
+
+The Surbma | GDPR Proof Cookie Consent & Notice Bar plugin can be used as a simple Cookie Policy plugin, if you don't have any tracking or marketing cookies on your website. Simple and beautiful solution for all websites.
 
 The cookie saved by this plugin is not storing any sensitive personal data, it is storing only two fix values: "yes" or "no". This cookie management is GDPR proof, as it is impossible to identify any user with the cookie data. Cookies will expire after 30 days by default.
+
+### Cache Proof Technology
+
+The Surbma | GDPR Proof Cookie Consent & Notice Bar plugin is the first cookie notice solution, that is compatible with all kind of cache systems. It even works with all managed WordPress hostings' server side cache solutions.
 
 ### Limited Liability
 
@@ -60,8 +66,9 @@ The cookie saved by this plugin is not storing any sensitive personal data, it i
 
 ### Available languages
 
-- English
+- English (US)
 - Hungarian
+- Spanish (Spain)
 
 >Translators are welcome for other languages. Translators, who add more, than 50% (must be approved) of their language get a life-time license for one website for FREE!
 
@@ -162,7 +169,7 @@ You can donate me for FREE here: [Surbma.com](https://surbma.com/donate/)
 == Installation ==
 
 1. Upload `surbma-gdpr-proof-google-analytics` folder to the `/wp-content/plugins/` directory
-2. Activate the Surbma - GDPR Proof Cookies plugin through the 'Plugins' menu in WordPress
+2. Activate the GDPR Proof Cookie Consent & Notice Bar plugin through the 'Plugins' menu in WordPress
 3. Go to settings page: Settings -> GDPR Proof Cookies
 4. Set the Popup content, display options, tracking code settings and approve the Limited Liability option.
 5. That's it. :)
@@ -187,6 +194,12 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 15.4 =
+
+- Plugin name is changed to GDPR Proof Cookie Consent & Notice Bar
+- TWEAK - New main menu name and icon.
+- Minor changes in description.
 
 = 15.3 =
 
