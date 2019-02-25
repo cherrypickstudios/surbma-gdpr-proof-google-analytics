@@ -5,7 +5,7 @@ Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, faceboo
 Requires at least: 4.6
 Tested up to: 5.0
 Requires PHP: 5.6
-Stable tag: 16.0
+Stable tag: 16.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -192,6 +192,10 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 16.1 =
+
+- FIX - Security fix.
 
 = 16.0 =
 
