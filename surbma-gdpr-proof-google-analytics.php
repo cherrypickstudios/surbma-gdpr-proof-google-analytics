@@ -5,7 +5,7 @@ Plugin Name: Surbma | GDPR Proof Cookie Consent & Notice Bar
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 15.4
+Version: 16.0
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -24,32 +24,32 @@ if ( !function_exists( 'surbma_gpga_fs' ) ) {
 
 // Create a helper function for easy SDK access.
 function surbma_gpga_fs() {
-    global $surbma_gpga_fs;
+	global $surbma_gpga_fs;
 
-    if ( ! isset( $surbma_gpga_fs ) ) {
-        // Include Freemius SDK.
-        require_once dirname(__FILE__) . '/freemius/start.php';
+	if ( ! isset( $surbma_gpga_fs ) ) {
+		// Include Freemius SDK.
+		require_once dirname(__FILE__) . '/freemius/start.php';
 
-        $surbma_gpga_fs = fs_dynamic_init( array(
-            'id'                  => '1930',
-            'slug'                => 'surbma-gdpr-proof-google-analytics',
-            'type'                => 'plugin',
-            'public_key'          => 'pk_ec2dc653523a01a2ca1fd5a0ff31e',
-            'is_premium'          => true,
-            'has_addons'          => false,
-            'has_paid_plans'      => true,
-            'trial'               => array(
-                'days'               => 7,
-                'is_require_payment' => true,
-            ),
-            'menu'                => array(
-                'slug'           => 'surbma-gpga-menu',
-                'support'        => false,
-            ),
-        ) );
-    }
+		$surbma_gpga_fs = fs_dynamic_init( array(
+			'id'                  => '1930',
+			'slug'                => 'surbma-gdpr-proof-google-analytics',
+			'type'                => 'plugin',
+			'public_key'          => 'pk_ec2dc653523a01a2ca1fd5a0ff31e',
+			'is_premium'          => true,
+			'has_addons'          => false,
+			'has_paid_plans'      => true,
+			'trial'               => array(
+				'days'               => 7,
+				'is_require_payment' => true,
+			),
+			'menu'                => array(
+				'slug'           => 'surbma-gpga-menu',
+				'support'        => false,
+			),
+		) );
+	}
 
-    return $surbma_gpga_fs;
+	return $surbma_gpga_fs;
 }
 
 // Init Freemius.
@@ -453,12 +453,12 @@ function surbma_gpga_block() {
 </div>
 <script type="text/javascript">
 	function surbma_gpga_setCookie(cookieName,cookieValue) {
-	    var name = cookieName;
-	    var value = cookieValue;
-	    var d = new Date();
-	    d.setTime(d.getTime() + (<?php echo $popupcookiedaysValue; ?>*24*60*60*1000));
-	    var expires = "expires="+ d.toUTCString();
-	    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+		var name = cookieName;
+		var value = cookieValue;
+		var d = new Date();
+		d.setTime(d.getTime() + (<?php echo $popupcookiedaysValue; ?>*24*60*60*1000));
+		var expires = "expires="+ d.toUTCString();
+		document.cookie = name + "=" + value + ";" + expires + ";path=/";
 	}
 <?php if( $popupbutton1displayValue == 1 ) { ?>
 	document.getElementById("button1").onclick = function() {
