@@ -174,7 +174,7 @@ function surbma_gpga_settings_page() {
 		<?php } ?>
 
 		<div class="uk-grid-small" uk-grid>
-			<div class="uk-width-4-5@l">
+			<div class="uk-width-3-4@l">
 				<form class="uk-form-horizontal" method="post" action="options.php">
 					<?php settings_fields( 'surbma_gpga_options' ); ?>
 					<?php $options = get_option( 'surbma_gpga_fields' ); ?>
@@ -833,7 +833,7 @@ function surbma_gpga_settings_page() {
 					</div>
 				</form>
 			</div>
-			<div class="uk-width-1-5@l">
+			<div class="uk-width-1-4@l">
 				<?php surbma_gpga_admin_sidebar(); ?>
 			</div>
 		</div>

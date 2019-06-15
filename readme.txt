@@ -2,10 +2,10 @@
 Contributors: Surbma
 Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
-Requires at least: 4.6
-Tested up to: 5.0
+Requires at least: 5.0
+Tested up to: 5.2
+Stable tag: 16.2
 Requires PHP: 5.6
-Stable tag: 16.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -192,6 +192,26 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 16.2 =
+
+Release date: 2019-06-15
+
+This version is a maintenance release with small fixes and modifications. It is safe to upgrade the plugin on live installs. Changes are valid for free and pro versions also. If you use the social share buttons, note that the design is changed.
+
+ENHANCEMENTS
+
+- Optimized share buttons code and css.
+- Genericons removed, new social-logos added.
+
+FIXES
+
+- Snackbar display fixed with debug mode on.
+
+OTHER
+
+- Google+ share button removed.
+- Added UIkit 2 framework to plugin.
 
 = 16.1 =
 

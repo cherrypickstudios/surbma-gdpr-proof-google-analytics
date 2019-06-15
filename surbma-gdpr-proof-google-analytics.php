@@ -5,7 +5,7 @@ Plugin Name: Surbma | GDPR Proof Cookie Consent & Notice Bar
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 16.1
+Version: 16.2
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -28,7 +28,7 @@ function surbma_gpga_fs() {
 
 	if ( ! isset( $surbma_gpga_fs ) ) {
 		// Include Freemius SDK.
-		require_once dirname(__FILE__) . '/freemius/start.php';
+		require_once dirname(__FILE__) . '/vendors/freemius/start.php';
 
 		$surbma_gpga_fs = fs_dynamic_init( array(
 			'id'                  => '1930',
@@ -398,12 +398,8 @@ function surbma_gpga_block() {
 	jQuery(document).ready(function($) {
 		<?php if ( $snackbarValue != 1 ) { ?>
 		var show_modal = 0;
-		if( $('#surbma-gpga-popupdebug').val() == '1' ) {
+		if( $('#surbma-gpga-popupdebug').val() == '1' || !surbma_gpga_readCookie('surbma-gpga') ) {
 			show_modal = 1;
-		} else {
-			if( !surbma_gpga_readCookie('surbma-gpga') ) {
-				show_modal = 1;
-			}
 		}
 		if( show_modal == 1 ) {
 			setTimeout(function() {
@@ -414,7 +410,7 @@ function surbma_gpga_block() {
 		<?php } else { ?>
 		// https://www.polonel.com/snackbar/
 		var show_snackbar = 0;
-		if( !surbma_gpga_readCookie('surbma-gpga') ) {
+		if( $('#surbma-gpga-popupdebug').val() == '1' || !surbma_gpga_readCookie('surbma-gpga') ) {
 			show_snackbar = 1;
 		}
 		if( show_snackbar == 1 ) {

@@ -63,7 +63,7 @@ function surbma_gpga_social_page() {
 		<?php } ?>
 
 		<div class="uk-grid-small" uk-grid>
-			<div class="uk-width-4-5@l">
+			<div class="uk-width-3-4@l">
 				<form class="uk-form-horizontal" method="post" action="options.php">
 					<?php settings_fields( 'surbma_gpga_social_options' ); ?>
 					<?php $options = get_option( 'surbma_gpga_social_fields' ); ?>
@@ -81,14 +81,6 @@ function surbma_gpga_social_page() {
 										<label class="switch">
 											<?php $ssbfacebookValue = isset( $options['ssbfacebook'] ) ? $options['ssbfacebook'] : 0; ?>
 											<input id="surbma_gpga_social_fields[ssbfacebook]" name="surbma_gpga_social_fields[ssbfacebook]" type="checkbox" value="1" <?php checked( '1', $ssbfacebookValue ); ?> />
-											<span class="slider round"></span>
-										</label>
-									</p>
-									<p class="switch-wrap">
-										<?php _e( 'Google+ Share', 'surbma-gdpr-proof-google-analytics' ); ?>:
-										<label class="switch">
-											<?php $ssbgoogleplusValue = isset( $options['ssbgoogleplus'] ) ? $options['ssbgoogleplus'] : 0; ?>
-											<input id="surbma_gpga_social_fields[ssbgoogleplus]" name="surbma_gpga_social_fields[ssbgoogleplus]" type="checkbox" value="1" <?php checked( '1', $ssbgoogleplusValue ); ?> />
 											<span class="slider round"></span>
 										</label>
 									</p>
@@ -217,7 +209,7 @@ function surbma_gpga_social_page() {
 					</div>
 				</form>
 			</div>
-			<div class="uk-width-1-5@l">
+			<div class="uk-width-1-4@l">
 				<?php surbma_gpga_admin_sidebar(); ?>
 			</div>
 		</div>
@@ -242,7 +234,6 @@ function surbma_gpga_social_fields_validate( $input ) {
 
 	// Checkbox validation.
 	$input['ssbfacebook'] = isset( $input['ssbfacebook'] ) && $input['ssbfacebook'] == 1 ? 1 : 0;
-	$input['ssbgoogleplus'] = isset( $input['ssbgoogleplus'] ) && $input['ssbgoogleplus'] == 1 ? 1 : 0;
 	$input['ssbtwitter'] = isset( $input['ssbtwitter'] ) && $input['ssbtwitter'] == 1 ? 1 : 0;
 	$input['ssblinkedin'] = isset( $input['ssblinkedin'] ) && $input['ssblinkedin'] == 1 ? 1 : 0;
 	$input['ssbpinterest'] = isset( $input['ssbpinterest'] ) && $input['ssbpinterest'] == 1 ? 1 : 0;
