@@ -5,10 +5,17 @@
 			<key name="popuptext" />
 			<key name="popupcookiepolicytext" />
 			<key name="popupcookiepolicypage" />
-			<key name="popupbutton1text" />
 			<key name="popupbutton2text" />
 			<key name="snackbartext" />
 			<key name="snackbaropenpopuptext" />
+			<key name="cookiecategory1name" />
+			<key name="cookiecategory1description" />
+			<key name="cookiecategory2name" />
+			<key name="cookiecategory2description" />
+			<key name="cookiecategory3name" />
+			<key name="cookiecategory3description" />
+			<key name="cookiecategory4name" />
+			<key name="cookiecategory4description" />
 		</key>
 	</admin-texts>
 </wpml-config>

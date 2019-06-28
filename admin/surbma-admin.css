@@ -9,6 +9,8 @@ body {
 .surbma-admin pre {
     background: #f6f6f6;
     white-space: pre-wrap;
+    font-size: 10px;
+    margin-top: 5px;
 }
 
 .surbma-admin #surbma-header {
@@ -22,7 +24,7 @@ body {
     color: #fff;
 }
 
-.surbma-admin .uk-navbar-container .uk-navbar-nav>li>a {
+.surbma-admin .uk-navbar-container .uk-navbar-nav > li > a {
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -76,6 +78,7 @@ body {
 .surbma-admin .disabled .uk-form-label,
 .surbma-admin .disabled .slider,
 .surbma-admin .disabled input,
+.surbma-admin .disabled textarea,
 .surbma-admin .disabled select {
     cursor: not-allowed;
 }

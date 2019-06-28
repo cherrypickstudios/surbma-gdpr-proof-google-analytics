@@ -5,7 +5,7 @@ Plugin Name: Surbma | GDPR Proof Cookie Consent & Notice Bar
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 16.3
+Version: 16.4
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -36,7 +36,7 @@ function surbma_gpga_fs() {
 			'type'                => 'plugin',
 			'public_key'          => 'pk_ec2dc653523a01a2ca1fd5a0ff31e',
 			'is_premium'          => true,
-			'premium_suffix'      => '(Pro)',
+			'premium_suffix'      => '(Premium)',
 			// If your plugin is a serviceware, set this option to false.
 			'has_premium_version' => true,
 			'has_addons'          => false,
@@ -125,9 +125,9 @@ function surbma_gpga_activated() {
 	if ( !$defaultfields ) {
 		$defaultfields['popuptitle'] = 'We are using cookies on our website';
 		$defaultfields['popuptext'] = 'Please confirm, if you accept our tracking cookies. You can also decline the tracking, so you can continue to visit our website without any data sent to third party services.';
-		$defaultfields['popupbutton1display'] = 1;
-		$defaultfields['popupbutton1text'] = 'Decline';
-		$defaultfields['popupbutton1style'] = 'default';
+		$defaultfields['popupbuttoncookiepolicydisplay'] = 1;
+		$defaultfields['popupbuttoncookiepolicytext'] = 'Cookie Policy';
+		$defaultfields['popupbuttoncookiepolicystyle'] = 'default';
 		$defaultfields['popupbutton2text'] = 'Accept';
 		$defaultfields['popupbutton2style'] = 'primary';
 		$defaultfields['popupbuttonsize'] = 'large';
@@ -218,7 +218,7 @@ function surbma_gpga_google_analytics_display() {
 ?>
 <!-- Google Analytics -->
 <script>
-if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
+if( surbma_gpga_readCookie('surbma-gpga') == '1' ) {
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -238,7 +238,7 @@ if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $gaValue; ?>"></script>
 <script>
-if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
+if( surbma_gpga_readCookie('surbma-gpga') == '1' ) {
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
@@ -271,7 +271,7 @@ function surbma_gpga_fbpixel_display() {
 	if( $fbpixelidValue != '' ) { ?>
 <!-- Facebook Pixel Code -->
 <script>
-if( surbma_gpga_readCookie('surbma-gpga') == 'yes' ) {
+if( surbma_gpga_readCookie('surbma-gpga') == '1' ) {
 	!function(f,b,e,v,n,t,s)
 	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -338,12 +338,24 @@ function surbma_gpga_block() {
 
 	$popuptextValue = isset( $options['popuptext'] ) ? $options['popuptext'] : '';
 
+	$cookiecategory1nameValue = isset( $options['cookiecategory1name'] ) ? $options['cookiecategory1name'] : 'Necessary';
+	$cookiecategory1descriptionValue = isset( $options['cookiecategory1description'] ) ? $options['cookiecategory1description'] : '';
+	$cookiecategory2nameValue = isset( $options['cookiecategory2name'] ) ? $options['cookiecategory2name'] : 'Preferences';
+	$cookiecategory2descriptionValue = isset( $options['cookiecategory2description'] ) ? $options['cookiecategory2description'] : '';
+	$cookiecategory2headscriptsValue = isset( $options['cookiecategory2headscripts'] ) ? $options['cookiecategory2headscripts'] : '';
+	$cookiecategory3nameValue = isset( $options['cookiecategory3name'] ) ? $options['cookiecategory3name'] : 'Statistics';
+	$cookiecategory3descriptionValue = isset( $options['cookiecategory3description'] ) ? $options['cookiecategory3description'] : '';
+	$cookiecategory3headscriptsValue = isset( $options['cookiecategory3headscripts'] ) ? $options['cookiecategory3headscripts'] : '';
+	$cookiecategory4nameValue = isset( $options['cookiecategory4name'] ) ? $options['cookiecategory4name'] : 'Marketing';
+	$cookiecategory4descriptionValue = isset( $options['cookiecategory4description'] ) ? $options['cookiecategory4description'] : '';
+	$cookiecategory4headscriptsValue = isset( $options['cookiecategory4headscripts'] ) ? $options['cookiecategory4headscripts'] : '';
+
 	$popupcookiepolicytextValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupcookiepolicytext'] ) ? $options['popupcookiepolicytext'] : '';
 	$popupcookiepolicypageValue = isset( $options['popupcookiepolicypage'] ) ? $options['popupcookiepolicypage'] : 0;
 
-	$popupbutton1displayValue = isset( $options['popupbutton1display'] ) ? $options['popupbutton1display'] : 1;
-	$popupbutton1styleValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupbutton1style'] ) ? $options['popupbutton1style'] : 'default';
-	$popupbutton1textValue = isset( $options['popupbutton1text'] ) ? $options['popupbutton1text'] : 'Decline';
+	$popupbuttoncookiepolicydisplayValue = isset( $options['popupbuttoncookiepolicydisplay'] ) ? $options['popupbuttoncookiepolicydisplay'] : 1;
+	$popupbuttoncookiepolicystyleValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupbuttoncookiepolicystyle'] ) ? $options['popupbuttoncookiepolicystyle'] : 'default';
+	$popupbuttoncookiepolicytextValue = isset( $options['popupbuttoncookiepolicytext'] ) ? $options['popupbuttoncookiepolicytext'] : 'Cookie Policy';
 	$popupbutton2styleValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupbutton2style'] ) ? $options['popupbutton2style'] : 'primary';
 	$popupbutton2textValue = isset( $options['popupbutton2text'] ) ? $options['popupbutton2text'] : 'Accept';
 	$popupbuttonsizeValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupbuttonsize'] ) ? $options['popupbuttonsize'] : 'large';
@@ -428,31 +440,64 @@ function surbma_gpga_block() {
 	<?php } ?>
 </script>
 <div id="surbma-gpga-modal" class="uk-modal <?php echo 'surbma-gpga-' . $popupthemesValue; ?><?php echo $popupdarkmodeValue; ?><?php echo $popupcentertextValue; ?>">
-	<div class="uk-modal-dialog<?php echo $popuplargeValue; ?>">
+	<section class="uk-modal-dialog<?php echo $popuplargeValue; ?>">
 <?php if( $popupclosebuttonValue == 1 ) { ?>
 		<a class="uk-modal-close uk-close"></a>
 <?php } ?>
-		<div class="uk-modal-header">
+		<header class="uk-modal-header">
 			<h2><a href="#"></a><?php echo stripslashes( $options['popuptitle'] ); ?></h2>
-		</div>
+		</header>
 		<div class="uk-modal-content">
-			<?php
-				echo stripslashes( $popuptextValue );
-				if( $popupcookiepolicytextValue != '' && $popupcookiepolicypageValue != 0 ) {
-					echo '<p class="cookie-policy"><a href="' . esc_url( get_permalink( $popupcookiepolicypageValue ) ) . '" target="_blank">';
-					echo stripslashes( $popupcookiepolicytextValue );
-					echo '</a></p>';
-				}
-			?>
+			<div class="surbma-gpga-popup-content"><?php echo stripslashes( $popuptextValue ); ?></div>
+			<div class="surbma-gpga-cookie-categories">
+				<div class="switch-wrap disabled">
+					<strong><?php echo $cookiecategory1nameValue; ?></strong>
+					<label class="switch">
+						<input type="checkbox" id="surbma-gpga-cookies-category-1" name="surbma-gpga-cookies-category-1" value="" checked disabled />
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="surbma-gpga-cookie-category-description"><?php echo $cookiecategory1descriptionValue; ?></div>
+				<?php if( $cookiecategory2headscriptsValue != '' ) { ?>
+				<div class="switch-wrap">
+					<strong><?php echo $cookiecategory2nameValue; ?></strong>
+					<label class="switch">
+						<input type="checkbox" id="surbma-gpga-cookies-category-2" name="surbma-gpga-cookies-category-2" value="" checked />
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="surbma-gpga-cookie-category-description"><?php echo $cookiecategory2descriptionValue; ?></div>
+				<?php } ?>
+				<?php if( $cookiecategory3headscriptsValue != '' ) { ?>
+				<div class="switch-wrap">
+					<strong><?php echo $cookiecategory3nameValue; ?></strong>
+					<label class="switch">
+						<input type="checkbox" id="surbma-gpga-cookies-category-3" name="surbma-gpga-cookies-category-3" value="" checked />
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="surbma-gpga-cookie-category-description"><?php echo $cookiecategory3descriptionValue; ?></div>
+				<?php } ?>
+				<?php if( $cookiecategory4headscriptsValue != '' ) { ?>
+				<div class="switch-wrap">
+					<strong><?php echo $cookiecategory4nameValue; ?></strong>
+					<label class="switch">
+						<input type="checkbox" id="surbma-gpga-cookies-category-4" name="surbma-gpga-cookies-category-4" value="" checked />
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="surbma-gpga-cookie-category-description"><?php echo $cookiecategory4descriptionValue; ?></div>
+				<?php } ?>
+			</div>
 		</div>
-		<div class="uk-modal-footer <?php echo 'surbma-gpga-button-' . $popupbuttonalignmentValue; ?>">
-<?php if( $popupbutton1displayValue == 1 ) { ?>
-			<button id="button1" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton1styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton1textValue ); ?></button>
+		<footer class="uk-modal-footer <?php echo 'surbma-gpga-button-' . $popupbuttonalignmentValue; ?>">
+<?php if( $popupbuttoncookiepolicydisplayValue == 1 && $popupcookiepolicytextValue != '' && $popupcookiepolicypageValue != 0 ) { ?>
+			<a href="<?php echo esc_url( get_permalink( $popupcookiepolicypageValue ) ); ?>" id="buttoncookiepolicy" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbuttoncookiepolicystyleValue; ?>" target="_blank"><?php echo stripslashes( $popupcookiepolicytextValue ); ?></a>
 			<span>&nbsp;</span>
 <?php } ?>
 			<button id="button2" type="button" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbutton2styleValue; ?> uk-modal-close"><?php echo stripslashes( $popupbutton2textValue ); ?></button>
-		</div>
-	</div>
+		</footer>
+	</section>
 </div>
 <script type="text/javascript">
 	function surbma_gpga_setCookie(cookieName,cookieValue) {
@@ -463,27 +508,16 @@ function surbma_gpga_block() {
 		var expires = "expires="+ d.toUTCString();
 		document.cookie = name + "=" + value + ";" + expires + ";path=/";
 	}
-<?php if( $popupbutton1displayValue == 1 ) { ?>
-	document.getElementById("button1").onclick = function() {
-		surbma_gpga_setCookie('surbma-gpga','no');
-	};
-<?php } ?>
 	document.getElementById("button2").onclick = function() {
-		surbma_gpga_setCookie('surbma-gpga','yes');
-<?php if( $gaValue != '' ) { ?>
-<?php if( $gascriptValue == 'analyticsjs' ) { ?>
-<?php if( $gaanonymizeipValue == '1' ) { ?>
-		// ga('send', 'pageview', { 'anonymizeIp': true });
-<?php } else { ?>
-		// ga('send', 'pageview');
+		surbma_gpga_setCookie('surbma-gpga','1');
+<?php if( $cookiecategory2headscriptsValue != '' ) { ?>
+		surbma_gpga_setCookie('surbma-gpga-category-2','1');
 <?php } ?>
-<?php } else { ?>
-<?php if( $gaanonymizeipValue == '1' ) { ?>
-		// gtag('config', '<?php echo $gaValue; ?>', { 'anonymize_ip': true });
-<?php } else { ?>
-		// gtag('config', '<?php echo $gaValue; ?>');
+<?php if( $cookiecategory3headscriptsValue != '' ) { ?>
+		surbma_gpga_setCookie('surbma-gpga-category-3','1');
 <?php } ?>
-<?php } ?>
+<?php if( $cookiecategory4headscriptsValue != '' ) { ?>
+		surbma_gpga_setCookie('surbma-gpga-category-4','1');
 <?php } ?>
 	};
 </script>

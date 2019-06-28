@@ -4,7 +4,7 @@ Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.0
 Tested up to: 5.2
-Stable tag: 16.3
+Stable tag: 16.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -192,6 +192,23 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 16.4 =
+
+Release date: 2019-06-28
+
+Finally cookie categories are here. This is the first version with the new cookie category feature. This is not a production version yet, still needs some work.
+
+NEW
+
+- New Cookie category settings.
+
+ENHANCEMENTS
+
+- Minor changes in admin CSS.
+- LESS files are optimized.
+- JS codes are coming from local UIkit files.
+- Some minor code cleaning in front end.
 
 = 16.2 & 16.3 =
 
