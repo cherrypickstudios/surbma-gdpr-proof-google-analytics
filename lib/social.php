@@ -1,7 +1,15 @@
 <?php
 
+// Social Share Buttons Styles
+function surbma_gpga_social_buttons_scripts() {
+	wp_register_style( 'surbma-gpga-social', plugins_url( '', dirname(__FILE__) ) . '/css/social.css' );
+}
+add_action( 'wp_enqueue_scripts', 'surbma_gpga_social_buttons_scripts' );
+
 // Social Share Buttons
 function surbma_gpga_social_buttons_show() {
+	$divi_page_builder_used = wp_basename( get_bloginfo( 'template_directory' ) ) == 'Divi' ? et_pb_is_pagebuilder_used( get_the_ID() ) : false;
+
 	$options = get_option( 'surbma_gpga_social_fields' );
 
 	$license = 'all';
@@ -9,15 +17,18 @@ function surbma_gpga_social_buttons_show() {
 		$license = 'free';
 	}
 
-	if( isset( $options['ssbposts'] ) && $options['ssbposts'] == 1 && is_singular( 'post' ) ) {
+	if( isset( $options['ssbposts'] ) && $options['ssbposts'] == 1 && is_singular( 'post' ) && !$divi_page_builder_used ) {
+		wp_enqueue_style( 'surbma-gpga-social' );
 		add_filter( 'the_content', 'surbma_gpga_social_add_share_buttons', 20 );
 	}
-	if( $license != 'free' && isset( $options['ssbpages'] ) && $options['ssbpages'] == 1 && is_page() ) {
+	if( $license != 'free' && isset( $options['ssbpages'] ) && $options['ssbpages'] == 1 && is_page() && !is_page_template() && !$divi_page_builder_used ) {
+		wp_enqueue_style( 'surbma-gpga-social' );
 		add_filter( 'the_content', 'surbma_gpga_social_add_share_buttons', 20 );
 	}
-	if( $license != 'free' && isset( $options['ssbcpts'] ) ) {
+	if( $license != 'free' && isset( $options['ssbcpts'] ) && $options['ssbcpts'] != '' ) {
 		$includeposttypes = $options['ssbcpts'] ? explode( ',', $options['ssbcpts'] ) : '';
-		if( $options['ssbcpts'] != '' && is_singular( $includeposttypes ) ) {
+		if( is_singular( $includeposttypes ) && !$divi_page_builder_used ) {
+			wp_enqueue_style( 'surbma-gpga-social' );
 			add_filter( 'the_content', 'surbma_gpga_social_add_share_buttons', 20 );
 		}
 	}

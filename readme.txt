@@ -4,7 +4,7 @@ Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.0
 Tested up to: 5.2
-Stable tag: 16.4
+Stable tag: 17.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -192,6 +192,23 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 17.0 =
+
+Release date: 2019-07-18
+
+This release is fixing some things, that needed to be fixed. Freemius SDK updated to the latest version and files & folders structure is modified. The social share buttons CSS is moved to separate file and it is loaded only pages, where it is needed.
+
+ENHANCEMENTS
+
+- Freemius SDK updated to 2.3.0 version.
+- Social share button CSS moved to a separate file.
+- Files & folders structure modified.
+- Social share buttons are not loaded on Divi Page Builder pages.
+
+FIXES
+
+- Settings fields validation fixed for premium fields.
 
 = 16.4 =
 

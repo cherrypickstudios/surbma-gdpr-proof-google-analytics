@@ -296,7 +296,8 @@ function surbma_gpga_settings_page() {
 							<div class="uk-margin">
 								<label class="uk-form-label" for="surbma_gpga_fields[popupbutton2text]"><?php _e( 'Accept Button Text', 'surbma-gdpr-proof-google-analytics' ); ?></label>
 								<div class="uk-form-controls">
-									<input id="surbma_gpga_fields[popupbutton2text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton2text]" value="<?php echo esc_attr( stripslashes( $options['popupbutton2text'] ) ); ?>" />
+									<?php $popupbutton2textValue = isset( $options['popupbutton2text'] ) ? $options['popupbutton2text'] : 'Accept'; ?>
+									<input id="surbma_gpga_fields[popupbutton2text]" class="uk-input" type="text" name="surbma_gpga_fields[popupbutton2text]" value="<?php echo esc_attr( stripslashes( $popupbutton2textValue ) ); ?>" />
 								</div>
 							</div>
 							<div class="uk-margin<?php if ( SURBMA_GPGA_PLUGIN_VERSION == 'free' || SURBMA_GPGA_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?>">
@@ -997,38 +998,38 @@ function surbma_gpga_fields_validate( $input ) {
 	$options = get_option( 'surbma_gpga_fields' );
 
 	// Say our text option must be safe text with no HTML tags
-	$input['popuptitle'] = wp_filter_nohtml_kses( $input['popuptitle'] );
-	$input['popupcookiepolicytext'] = wp_filter_nohtml_kses( $input['popupcookiepolicytext'] );
-	$input['popupbutton2text'] = wp_filter_nohtml_kses( $input['popupbutton2text'] );
+	$input['popuptitle'] = isset( $input['popuptitle'] ) ? wp_filter_nohtml_kses( $input['popuptitle'] ) : '';
+	$input['popupcookiepolicytext'] = isset( $input['popupcookiepolicytext'] ) ? wp_filter_nohtml_kses( $input['popupcookiepolicytext'] ) : '';
+	$input['popupbutton2text'] = isset( $input['popupbutton2text'] ) ? wp_filter_nohtml_kses( $input['popupbutton2text'] ) : 'Accept';
 	$input['snackbartext'] = isset( $input['snackbartext'] ) ? wp_filter_nohtml_kses( $input['snackbartext'] ) : 'We are using Cookies on our website.';
 	$input['snackbaropenpopuptext'] = isset( $input['snackbaropenpopuptext'] ) ? wp_filter_nohtml_kses( $input['snackbaropenpopuptext'] ) : 'Cookie settings';
-	$input['ga'] = wp_filter_nohtml_kses( $input['ga'] );
-	$input['fbpixelid'] = wp_filter_nohtml_kses( $input['fbpixelid'] );
-	$input['fbpixelciem'] = wp_filter_nohtml_kses( $input['fbpixelciem'] );
-	$input['fbpixelcifn'] = wp_filter_nohtml_kses( $input['fbpixelcifn'] );
-	$input['fbpixelciln'] = wp_filter_nohtml_kses( $input['fbpixelciln'] );
-	$input['fbpixelciph'] = wp_filter_nohtml_kses( $input['fbpixelciph'] );
-	$input['fbpixelcige'] = wp_filter_nohtml_kses( $input['fbpixelcige'] );
-	$input['fbpixelcidb'] = wp_filter_nohtml_kses( $input['fbpixelcidb'] );
-	$input['fbpixelcict'] = wp_filter_nohtml_kses( $input['fbpixelcict'] );
-	$input['fbpixelcist'] = wp_filter_nohtml_kses( $input['fbpixelcist'] );
-	$input['fbpixelcizp'] = wp_filter_nohtml_kses( $input['fbpixelcizp'] );
-	$input['cookiecategory1name'] = wp_filter_nohtml_kses( $input['cookiecategory1name'] );
-	$input['cookiecategory2name'] = wp_filter_nohtml_kses( $input['cookiecategory2name'] );
-	$input['cookiecategory3name'] = wp_filter_nohtml_kses( $input['cookiecategory3name'] );
-	$input['cookiecategory4name'] = wp_filter_nohtml_kses( $input['cookiecategory4name'] );
+	$input['ga'] = isset( $input['ga'] ) ? wp_filter_nohtml_kses( $input['ga'] ) : '';
+	$input['fbpixelid'] = isset( $input['fbpixelid'] ) ? wp_filter_nohtml_kses( $input['fbpixelid'] ) : '';
+	$input['fbpixelciem'] = isset( $input['fbpixelciem'] ) ? wp_filter_nohtml_kses( $input['fbpixelciem'] ) : '';
+	$input['fbpixelcifn'] = isset( $input['fbpixelcifn'] ) ? wp_filter_nohtml_kses( $input['fbpixelcifn'] ) : '';
+	$input['fbpixelciln'] = isset( $input['fbpixelciln'] ) ? wp_filter_nohtml_kses( $input['fbpixelciln'] ) : '';
+	$input['fbpixelciph'] = isset( $input['fbpixelciph'] ) ? wp_filter_nohtml_kses( $input['fbpixelciph'] ) : '';
+	$input['fbpixelcige'] = isset( $input['fbpixelcige'] ) ? wp_filter_nohtml_kses( $input['fbpixelcige'] ) : '';
+	$input['fbpixelcidb'] = isset( $input['fbpixelcidb'] ) ? wp_filter_nohtml_kses( $input['fbpixelcidb'] ) : '';
+	$input['fbpixelcict'] = isset( $input['fbpixelcict'] ) ? wp_filter_nohtml_kses( $input['fbpixelcict'] ) : '';
+	$input['fbpixelcist'] = isset( $input['fbpixelcist'] ) ? wp_filter_nohtml_kses( $input['fbpixelcist'] ) : '';
+	$input['fbpixelcizp'] = isset( $input['fbpixelcizp'] ) ? wp_filter_nohtml_kses( $input['fbpixelcizp'] ) : '';
+	$input['cookiecategory1name'] = isset( $input['cookiecategory1name'] ) ? wp_filter_nohtml_kses( $input['cookiecategory1name'] ) : 'Necessary';
+	$input['cookiecategory2name'] = isset( $input['cookiecategory2name'] ) ? wp_filter_nohtml_kses( $input['cookiecategory2name'] ) : 'Preferences';
+	$input['cookiecategory3name'] = isset( $input['cookiecategory3name'] ) ? wp_filter_nohtml_kses( $input['cookiecategory3name'] ) : 'Statistics';
+	$input['cookiecategory4name'] = isset( $input['cookiecategory4name'] ) ? wp_filter_nohtml_kses( $input['cookiecategory4name'] ) : 'Marketing';
 
 	// Say our textarea option must be safe text with the allowed tags for posts
-	$input['popuptext'] = wp_filter_post_kses( $input['popuptext'] );
-	$input['cookiecategory1description'] = wp_filter_post_kses( $input['cookiecategory1description'] );
-	$input['cookiecategory2description'] = wp_filter_post_kses( $input['cookiecategory2description'] );
-	$input['cookiecategory3description'] = wp_filter_post_kses( $input['cookiecategory3description'] );
-	$input['cookiecategory4description'] = wp_filter_post_kses( $input['cookiecategory4description'] );
+	$input['popuptext'] = isset( $input['popuptext'] ) ? wp_filter_post_kses( $input['popuptext'] ) : '';
+	$input['cookiecategory1description'] = isset( $input['cookiecategory1description'] ) ? wp_filter_post_kses( $input['cookiecategory1description'] ) : '';
+	$input['cookiecategory2description'] = isset( $input['cookiecategory2description'] ) ? wp_filter_post_kses( $input['cookiecategory2description'] ) : '';
+	$input['cookiecategory3description'] = isset( $input['cookiecategory3description'] ) ? wp_filter_post_kses( $input['cookiecategory3description'] ) : '';
+	$input['cookiecategory4description'] = isset( $input['cookiecategory4description'] ) ? wp_filter_post_kses( $input['cookiecategory4description'] ) : '';
 
 	if ( current_user_can( 'unfiltered_html' ) ) {
-		$input['cookiecategory2headscripts'] = $input['cookiecategory2headscripts'];
-		$input['cookiecategory3headscripts'] = $input['cookiecategory3headscripts'];
-		$input['cookiecategory4headscripts'] = $input['cookiecategory4headscripts'];
+		$input['cookiecategory2headscripts'] = isset( $input['cookiecategory2headscripts'] ) ? wp_kses_allowed_html( $input['cookiecategory2headscripts'] ) : '';
+		$input['cookiecategory3headscripts'] = isset( $input['cookiecategory3headscripts'] ) ? wp_kses_allowed_html( $input['cookiecategory3headscripts'] ) : '';
+		$input['cookiecategory4headscripts'] = isset( $input['cookiecategory4headscripts'] ) ? wp_kses_allowed_html( $input['cookiecategory4headscripts'] ) : '';
 	} else {
 		$cookiecategory2headscriptsValue = isset( $options['cookiecategory2headscripts'] ) ? $options['cookiecategory2headscripts'] : '';
 		$cookiecategory3headscriptsValue = isset( $options['cookiecategory3headscripts'] ) ? $options['cookiecategory3headscripts'] : '';
@@ -1039,8 +1040,8 @@ function surbma_gpga_fields_validate( $input ) {
 	}
 
 	// Say our input option must be only numbers
-	$input['popupdelay'] = preg_replace( "/[^0-9]/", "", $input['popupdelay'] );
-	$input['popupcookiedays'] = preg_replace( "/[^0-9]/", "", $input['popupcookiedays'] );
+	$input['popupdelay'] = isset( $options['popupdelay'] ) ? preg_replace( "/[^0-9]/", "", $input['popupdelay'] ) : 0;
+	$input['popupcookiedays'] = isset( $options['popupcookiedays'] ) ? preg_replace( "/[^0-9]/", "", $input['popupcookiedays'] ) : 30;
 
 	// Checkbox validation.
 	$input['popupbuttoncookiepolicydisplay'] = isset( $input['popupbuttoncookiepolicydisplay'] ) && $input['popupbuttoncookiepolicydisplay'] == 1 ? 1 : 0;
