@@ -1,10 +1,10 @@
 === Surbma | GDPR Proof Cookie Consent & Notice Bar ===
-Contributors: Surbma
+Contributors: CherryPickStudios, Surbma
 Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.0
 Tested up to: 5.2
-Stable tag: 17.0
+Stable tag: 17.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -192,6 +192,20 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 17.1 =
+
+Release date: 2019-08-23
+
+Minor fixes and code optimizations. It is safe to update it on production sites.
+
+ENHANCEMENTS
+
+- Better variable handling.
+
+FIXES
+
+- Option validation fixes.
 
 = 17.0 =
 

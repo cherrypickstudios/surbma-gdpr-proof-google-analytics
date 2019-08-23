@@ -5,7 +5,7 @@ Plugin Name: Surbma | GDPR Proof Cookie Consent & Notice Bar
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 17.0
+Version: 17.1
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -439,7 +439,7 @@ function surbma_gpga_block() {
 	});
 	<?php } ?>
 </script>
-<div id="surbma-gpga-modal" class="uk-modal <?php echo 'surbma-gpga-' . $popupthemesValue; ?><?php echo $popupdarkmodeValue; ?><?php echo $popupcentertextValue; ?>">
+<div id="surbma-gpga-modal" class="uk-modal surbma-gpga-<?php echo $popupthemesValue; ?><?php echo $popupdarkmodeValue; ?><?php echo $popupcentertextValue; ?>">
 	<section class="uk-modal-dialog<?php echo $popuplargeValue; ?>">
 <?php if( $popupclosebuttonValue == 1 ) { ?>
 		<a class="uk-modal-close uk-close"></a>
@@ -490,7 +490,7 @@ function surbma_gpga_block() {
 				<?php } ?>
 			</div>
 		</div>
-		<footer class="uk-modal-footer <?php echo 'surbma-gpga-button-' . $popupbuttonalignmentValue; ?>">
+		<footer class="uk-modal-footer surbma-gpga-button-<?php echo $popupbuttonalignmentValue; ?>">
 <?php if( $popupbuttoncookiepolicydisplayValue == 1 && $popupcookiepolicytextValue != '' && $popupcookiepolicypageValue != 0 ) { ?>
 			<a href="<?php echo esc_url( get_permalink( $popupcookiepolicypageValue ) ); ?>" id="buttoncookiepolicy" class="uk-button uk-button-<?php echo $popupbuttonsizeValue; ?> uk-button-<?php echo $popupbuttoncookiepolicystyleValue; ?>" target="_blank"><?php echo stripslashes( $popupcookiepolicytextValue ); ?></a>
 			<span>&nbsp;</span>
