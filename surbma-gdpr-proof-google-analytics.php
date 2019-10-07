@@ -5,7 +5,7 @@ Plugin Name: Surbma | GDPR Proof Cookie Consent & Notice Bar
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 16.4
+Version: 16.5
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -15,6 +15,8 @@ License: GPLv2
 Text Domain: surbma-gdpr-proof-google-analytics
 Domain Path: /languages/
 */
+
+define( 'SURBMA_GPGA_PLUGIN_VERSION_NUMBER', '16.5' );
 
 // Prevent direct access to the plugin
 if ( !defined( 'ABSPATH' ) ) exit( 'Good try! :)' );
@@ -190,8 +192,9 @@ function surbma_gpga_enqueue_scripts() {
 	$options = get_option( 'surbma_gpga_fields' );
 	$popupstylesValue = SURBMA_GPGA_PLUGIN_LICENSE == 'valid' && isset( $options['popupstyles'] ) ? $options['popupstyles'] : 'default';
 
-	wp_enqueue_script( 'surbma-gpga-scripts', plugins_url( '', __FILE__ ) . '/js/scripts-min.js', array( 'jquery' ), '2.27.1', true );
-	wp_enqueue_style( 'surbma-gpga-styles', plugins_url( '', __FILE__ ) . '/css/styles-' . $popupstylesValue . '.css', false, '2.27.1' );
+	wp_enqueue_script( 'surbma-gpga-scripts', plugins_url( '', __FILE__ ) . '/js/scripts-min.js', array( 'jquery' ), SURBMA_GPGA_PLUGIN_VERSION_NUMBER, true );
+	wp_register_style( 'surbma-gpga-social-share', plugins_url( '', __FILE__ ) . '/css/social-share.css', false, SURBMA_GPGA_PLUGIN_VERSION_NUMBER );
+	wp_enqueue_style( 'surbma-gpga-styles', plugins_url( '', __FILE__ ) . '/css/styles-' . $popupstylesValue . '.css', false, SURBMA_GPGA_PLUGIN_VERSION_NUMBER );
 }
 
 function surbma_gpga_header_scripts() {

@@ -33,3 +33,9 @@ function surbma_gpga_cookie_scan_shortcode( $atts ) {
 return $cookieScan;
 }
 add_shortcode( 'surbma-live-cookie-scan', 'surbma_gpga_cookie_scan_shortcode' );
+
+function surbma_gpga_social_buttons_shortcode() {
+    wp_enqueue_style( 'surbma-gpga-social-share' );
+    return surbma_gpga_social_add_share_buttons();
+}
+add_shortcode( 'surbma-social-buttons', 'surbma_gpga_social_buttons_shortcode' );
