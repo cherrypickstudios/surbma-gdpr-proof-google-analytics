@@ -4,7 +4,7 @@ Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 18.0
+Stable tag: 18.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,14 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 18.1 =
+
+Release date: 2019-10-07
+
+FIXES
+
+- Minor fix for modal header link focus.
 
 = 18.0 =
 
