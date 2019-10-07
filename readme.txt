@@ -3,8 +3,8 @@ Contributors: CherryPickStudios, Surbma
 Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.0
-Tested up to: 5.2
-Stable tag: 17.1
+Tested up to: 5.3
+Stable tag: 18.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -80,6 +80,10 @@ If you only want to show the Accept button, you can hide the Decline button.
 
 #### Cookie-Free Social Share Buttons
 You can add Facebook, Google Plus, Twitter, LinkedIn, Pinterest and Email Share Buttons to posts, pages or even custom post types. These share buttons are loading really fast (almost 0 impact in page load time) and they are not using any Cookies on your website. So you can exclude social sharing topic from your Cookie Policy page. Choose if you want to show the buttons before or after the content or both positions. There are pre-defined styles to choose from, but Social Share Buttons can easily changed via CSS.
+
+There is a shortcode also for the social share buttons, that can be used anywhere on your website:
+
+	`[surbma-social-buttons]`
 
 #### Cookie Scan page
 This page will display all the saved cookies for you, so you can see, what cookies are used in your website.
@@ -192,6 +196,23 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 18.0 =
+
+Release date: 2019-10-07
+
+Added new shortcode for social share buttons.
+
+ENHANCEMENTS
+
+- New shortcode for social share buttons.
+- Social share buttons css is separated from the main css file.
+- Enqueued scripts and styles get the version from a global variable to follow the plugin's version.
+
+FIXES
+
+- Modal z-index fixed to cover every layer.
+- Buttons hover states fixed.
 
 = 17.1 =
 
