@@ -1,10 +1,10 @@
 === Surbma | GDPR Proof Cookie Consent & Notice Bar ===
-Contributors: Surbma
+Contributors: Surbma, CherryPickStudios
 Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
-Requires at least: 5.0
+Requires at least: 5.1
 Tested up to: 5.3
-Stable tag: 16.8
+Stable tag: 17.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,18 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 17.0 =
+
+Release date: 2020-02-10
+
+This version has no new feature, but has important changes under the hood. It is safe to update the plugin.
+
+OTHER
+
+- Tested with WordPress 5.3 version.
+- Freemius SDK updated to 2.3.2 version.
+- Updated to use a new way to deploy it to wp.org repo.
 
 = 16.8 =
 
