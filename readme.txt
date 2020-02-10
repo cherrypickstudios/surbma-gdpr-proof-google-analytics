@@ -4,7 +4,7 @@ Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.1
 Tested up to: 5.3
-Stable tag: 17.0
+Stable tag: 17.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -197,7 +197,7 @@ It is the reverse version of my last name. ;)
 
 == Changelog ==
 
-= 17.0 =
+= 17.0 & 17.1 =
 
 Release date: 2020-02-10
 
