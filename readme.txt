@@ -1,5 +1,5 @@
 === Surbma | GDPR Proof Cookie Consent & Notice Bar ===
-Contributors: Surbma, CherryPickStudios
+Contributors: Surbma, CherryPickStudios, freemius
 Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.1
