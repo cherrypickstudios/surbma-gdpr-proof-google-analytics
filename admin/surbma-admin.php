@@ -25,7 +25,8 @@ function surbma_gpga_admin_header( $pageTitle ) {
 	        	<div><span uk-icon="icon: settings; ratio: 2"></span> <?php echo $plugin_name ?> | <?php echo $pageTitle ?></div>
 	    	</div>
 	    </div>
-	</nav><?php
+	</nav>
+	<div id="surbma-admin-notification-placeholder" class="wrap"><h1></h1></div><?php
 }
 
 function surbma_gpga_admin_footer() {
