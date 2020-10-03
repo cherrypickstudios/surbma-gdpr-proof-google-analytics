@@ -2,9 +2,9 @@
 Contributors: Surbma, CherryPickStudios, freemius
 Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
-Requires at least: 5.2
-Tested up to: 5.4
-Stable tag: 17.2
+Requires at least: 5.3
+Tested up to: 5.5
+Stable tag: 17.3
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -197,18 +197,32 @@ It is the reverse version of my last name. ;)
 
 == Changelog ==
 
-= 17.2 =
+= 17.3 =
 
-Release date: 2020-05-16
+Release date: 2020-10-03
 
 FIXES
 
-- Minor CSS fix for the full width Snackbar.
+- Source JS file fix, so paths are pointing to the right folders.
 
 OTHER
 
-- Tested with WordPress 5.4 version.
-- Freemius SDK updated with new files.
+- CSS maps are regenerated.
+
+= 17.2 =
+
+Release date: 2020-10-03
+
+FIXES
+
+- Admin header fix to put the notices in the right place.
+- Minor CSS fix for full width Snackbar.
+
+OTHER
+
+- Admin UIkit version updated to 3.5.8 version.
+- Freemius SDK updated to 2.4.0.1 version.
+- Tested with WordPress 5.5 version.
 
 = 17.0 & 17.1 =
 
