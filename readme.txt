@@ -4,7 +4,7 @@ Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.3
 Tested up to: 5.5
-Stable tag: 17.3
+Stable tag: 17.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,17 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 17.4 =
+
+Release date: 2020-10-10
+
+FIXES
+
+- Dependent files are loading only, if Limited Liability is enabled.
+- Social share parameters are escaped properly.
+- Social share links are fixed to follow the latest standards. Pinterest and LinkedIn seems removed support for link sharing.
+- Email share link opens in new tab.
 
 = 17.3 =
 

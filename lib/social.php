@@ -42,7 +42,8 @@ function surbma_gpga_social_add_share_buttons() {
 
 		global $post;
 
-		$url = get_permalink();
+		$url = urlencode( esc_url( get_permalink() ) );
+		$title = urlencode( esc_attr( get_the_title() ) );
 
 		$fblike_button = '';
 		$tweet_button = '';
@@ -51,19 +52,19 @@ function surbma_gpga_social_add_share_buttons() {
 		$email_button = '';
 
 		if ( $ssbfacebookValue == '1' )
-			$fblike_button = '<li class="surbma-gpga-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u='.$url.'" target="_blank"><span></span></a></li>';
+			$fblike_button = '<li class="surbma-gpga-facebook"><a href="https://www.facebook.com/sharer/sharer.php?t='.$title.'&u='.$url.'" target="_blank"><span></span></a></li>';
 
 		if ( $ssbtwitterValue == '1' )
-			$tweet_button = '<li class="surbma-gpga-twitter"><a href="https://twitter.com/home?status='.$url.'" target="_blank"><span></span></a></li>';
+			$tweet_button = '<li class="surbma-gpga-twitter"><a href="https://twitter.com/intent/tweet?text='.$title.'&url='.$url.'" target="_blank"><span></span></a></li>';
 
 		if ( $ssblinkedinValue == '1' )
-			$linkedin_button = '<li class="surbma-gpga-linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&url='.$url.'" target="_blank"><span></span></a></li>';
+			$linkedin_button = '<li class="surbma-gpga-linkedin"><a href="https://www.linkedin.com/sharing/share-offsite/?url='.$url.'" target="_blank"><span></span></a></li>';
 
 		if ( $ssbpinterestValue == '1' )
 			$pinterest_button = '<li class="surbma-gpga-pinterest"><a href="https://pinterest.com/pin/create/button/?url='.$url.'" target="_blank"><span></span></a></li>';
 
 		if ( $ssbemailValue == '1' )
-			$email_button = '<li class="surbma-gpga-email"><a href="mailto:?body='.$url.'"><span></span></a></li>';
+			$email_button = '<li class="surbma-gpga-email"><a href="mailto:?subject='.urldecode( $title ).'&body='.$url.'" target="_blank"><span></span></a></li>';
 
 		$social_buttons = '<ul class="surbma-gpga-share-buttons surbma-gpga-' . $ssbstyleValue . '">' . $fblike_button . $tweet_button . $linkedin_button . $pinterest_button . $email_button . '</ul>';
 	}
