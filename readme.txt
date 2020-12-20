@@ -3,9 +3,9 @@ Contributors: Surbma, CherryPickStudios
 Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.3
-Tested up to: 5.5
-Stable tag: 17.4
-Requires PHP: 5.6
+Tested up to: 5.6
+Stable tag: 17.5.0
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -196,6 +196,16 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 17.5.0 =
+
+Release date: 2020-12-20
+
+OTHER
+
+- Freemius SDK updated to 2.4.1 version.
+- Tested with WordPress 5.6 version.
+- Version number management by semver.org (again).
 
 = 17.4 =
 
