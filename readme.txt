@@ -1,10 +1,10 @@
 === Surbma | GDPR Proof Cookie Consent & Notice Bar ===
-Contributors: Surbma, CherryPickStudios
+Contributors: Surbma, CherryPickStudios, freemius
 Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
-Requires at least: 5.3
-Tested up to: 5.6
-Stable tag: 17.5.1
+Requires at least: 5.4
+Tested up to: 5.8
+Stable tag: 17.5.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,19 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 17.5.2 =
+
+Release date: 2021-08-13
+
+FIXES
+
+- Popup text will display paragraphs automatically without special html code.
+- Popup text will be showed in a box with its own scroll bar, if text is too long. So buttons will be always visible.
+
+OTHER
+
+- Tested with WordPress 5.8 version.
 
 = 17.5.1 =
 
