@@ -5,7 +5,9 @@ add_shortcode( 'surbma-cookie-popup-link', function( $atts ) {
 		'class' => '',
 		'text' => 'Open Cookie Settings'
 	), $atts ) );
-	return '<a class="surbma-gpga-cookie-popup-link '.$class.'" onclick="surbma_gpga_openModal();">'.$text.'</a>';
+	$class = esc_attr( $class );
+	$text = wp_filter_nohtml_kses( $text );
+	return '<a class="surbma-gpga-cookie-popup-link ' . $class . '" onclick="surbma_gpga_openModal();">' . $text . '</a>';
 } );
 
 add_shortcode( 'surbma-live-cookie-scan', function( $atts ) {
@@ -18,7 +20,7 @@ add_shortcode( 'surbma-live-cookie-scan', function( $atts ) {
 			$cookieScan .= '<dl>';
 			$cookieScan .= '<dt>' . __( 'Cookie name', 'surbma-gdpr-proof-google-analytics' ) . ':</dt>';
 			$cookieScan .= '<dd>' . $key . '</dd>';
-			if( $cookievalue == 'true' ) {
+			if( $cookievalue === 'true' ) {
 				$cookieScan .= '<dt>' . __( 'Cookie value', 'surbma-gdpr-proof-google-analytics' ) . ':</dt>';
 				$cookieScan .= '<dd>' . $val . '</dd>';
 			}
