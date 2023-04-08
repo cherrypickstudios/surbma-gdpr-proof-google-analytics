@@ -4,7 +4,7 @@ Donate link: https://surbma.com/donate/
 Tags: gdpr, cookie, cookie compliance, cookie consent, google analytics, facebook pixel
 Requires at least: 5.4
 Tested up to: 6.2
-Stable tag: 17.6.0
+Stable tag: 17.7.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,14 @@ It is the reverse version of my last name. ;)
 6. Pricing page in admin
 
 == Changelog ==
+
+= 17.7.0 =
+
+Release date: 2023-04-08
+
+OTHER
+
+- Freemius SDK updated to 2.5.6 version.
 
 = 17.6.0 =
 

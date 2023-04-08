@@ -5,7 +5,7 @@ Plugin Name: Surbma | GDPR Proof Cookie Consent & Notice Bar
 Plugin URI: https://surbma.com/wordpress-plugins/surbma-gdpr-proof-cookies/
 Description: Adds GDPR compatible cookie management to your website.
 
-Version: 17.6.0
+Version: 17.7.0
 
 Author: Surbma
 Author URI: https://surbma.com/
@@ -15,7 +15,7 @@ License: GPLv2
 Text Domain: surbma-gdpr-proof-google-analytics
 Domain Path: /languages/
 */
-define( 'SURBMA_GPGA_PLUGIN_VERSION_NUMBER', '17.6.0' );
+define( 'SURBMA_GPGA_PLUGIN_VERSION_NUMBER', '17.7.0' );
 // Prevent direct access to the plugin
 if ( !defined( 'ABSPATH' ) ) {
     exit( 'Good try! :)' );
